@@ -1,0 +1,43 @@
+Allegro 5 -> VS15
+
+
+*Instalació
+https://wiki.allegro.cc/index.php?title=Windows,_Visual_Studio_2015_and_Nuget_Allegro_5
+> Go to File>New>Visual C++>Genral>Empty Project
+> Right click your solution name, and select Manage NuGet Packages.
+> Go to the Browse tab and search for Allegro in the search bar. You should see the main Allegro 5 package there.
+> Press the Install button on the right.
+> Allegro should now be installed!
+
+*Configuració
+> Allegro utilitza "Add-ons" (diferents toolkits) per a diferents funcionalintats (Textures, fonts, audio...). 
+Es necessari activar els "Add-ons" que necessitem utilitzar en el nostre projecte. Per fer-ho, fer click dret
+sobre el projecte (no la solucio) al "Solution Explorer" i anar a:
+Properties>Allegro 5>Add-ons>No/Yes a cada Add-on
+
+"When sending your program to other people, it's best to select the Static Monolith Release - Static runtime. That way, there'll be no extra binaries aside from your .exe file."
+
+(API Tutorials) https://wiki.allegro.cc/index.php?title=Allegro_5_API_Tutorials
+
+*ScreenModes/FullScreen/Resolution
+https://wiki.allegro.cc/index.php?title=Creating_a_fullscreen_display_with_maximum/minimum_resolution
+
+*Events
+https://wiki.allegro.cc/index.php?title=Allegro_5_Tutorial/Events
+> Els events s'utilitzen per evitar invertir recursos de forma innecessaria en preguntar constantment si esta
+passant alguna cosa ("IsKeyPressed?, IsMouseBeingMoved?"). En ves daixo, el event es posara a la cua si ha de ser
+atés. ("KeyHasBeenPressed!, MouseIsBeeingMoved!") <- Els exemples son abstraccions, no representen el funcionament
+real. 
+> Cua d'events -> FIFO
+> S'agafara un event de la cua, si no nhi ha esperara X segons a rebren algún i si no en rep, continuara, si en rep
+el guardara a la variable event. Seguidament en comprovarem el tipus i realitzarem la accio corresponent. 
+(Comprobar necessitat de temps d'espera i quin es el seu minim)
+
+*Timers
+https://wiki.allegro.cc/index.php?title=Allegro_5_Tutorial/Timers
+> Son "generadors" d'events que enviaran un events amb un interval.
+> Crearem un timer, i li establierem un lapse de temps. Quan aquest temps hagui passat, el timer enviara un event a la cua. 
+> Comprobar possibles retard o desincronitzacions. Exemple_1: Timer a 0.06s (60 fps), passat el temps, envia levent a la cua, pero a la cua que ja s'hi
+trovaben 2 events, ¿es perdran 2 frames? Utilitzar diferents cues? Cua per a FPS, cua per a Inputs, etc.? Exemple2: Volem actualitzar el Draw/Update a
+60 fps i el PhysicsUpdate a 120 fps, quan coincideixin, un dels dos es retrassara 1 frame? Es rellevant? Es el motiu del tipic framerate 59-60?
+

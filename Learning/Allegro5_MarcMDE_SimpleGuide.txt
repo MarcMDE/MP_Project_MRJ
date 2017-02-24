@@ -1,4 +1,4 @@
-Allegro 5 -> VS15
+Allegro 5 -> VS15 (Cheatsheet -> https://www.allegro.cc/manual/5/)
 
 
 *Instalació
@@ -20,7 +20,8 @@ Properties>Allegro 5>Add-ons>No/Yes a cada Add-on
 (API Tutorials) https://wiki.allegro.cc/index.php?title=Allegro_5_API_Tutorials
 
 *ScreenModes/FullScreen/Resolution
-https://wiki.allegro.cc/index.php?title=Creating_a_fullscreen_display_with_maximum/minimum_resolution
+https://wiki.allegro.cc/index.php?title=Creating_a_fullscreen_display_with_maximum/minimum_resolutionallegro 5 cheatsheet
+
 
 *Events
 https://wiki.allegro.cc/index.php?title=Allegro_5_Tutorial/Events
@@ -32,6 +33,7 @@ real.
 > S'agafara un event de la cua, si no nhi ha esperara X segons a rebren algún i si no en rep, continuara, si en rep
 el guardara a la variable event. Seguidament en comprovarem el tipus i realitzarem la accio corresponent. 
 (Comprobar necessitat de temps d'espera i quin es el seu minim)
+> Per cada "event source" (ex. display, mouse, etc.), podrem comprovar diferents tipus d'events (ex. IsKeyPressed, IsMouseOnScreen, etc.)  
 
 *Timers
 https://wiki.allegro.cc/index.php?title=Allegro_5_Tutorial/Timers
@@ -40,4 +42,7 @@ https://wiki.allegro.cc/index.php?title=Allegro_5_Tutorial/Timers
 > Comprobar possibles retard o desincronitzacions. Exemple_1: Timer a 0.06s (60 fps), passat el temps, envia levent a la cua, pero a la cua que ja s'hi
 trovaben 2 events, ¿es perdran 2 frames? Utilitzar diferents cues? Cua per a FPS, cua per a Inputs, etc.? Exemple2: Volem actualitzar el Draw/Update a
 60 fps i el PhysicsUpdate a 120 fps, quan coincideixin, un dels dos es retrassara 1 frame? Es rellevant? Es el motiu del tipic framerate 59-60?
+
+*Bitmaps
+> Podem cambiar el "target bitmap" del back buffer a qualsevol altre bitmap. Totes les funcions de dibuixat es realitzaran sobre el target bitmap. 
 

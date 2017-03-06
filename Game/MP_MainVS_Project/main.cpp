@@ -9,6 +9,8 @@
 #include <stdio.h> // L'utilitzem per "debugejar" per consola
 #include <allegro5/allegro_native_dialog.h> // Error Message dialog
 
+#include "Game.h"
+
 void Initialize();
 void GameLoop();
 void Destroyer();
@@ -18,8 +20,7 @@ ALLEGRO_EVENT_QUEUE *eventQueue;
 ALLEGRO_TIMER *fpsTimer;
 ALLEGRO_DISPLAY *display;
 
-// TODO
-//Game game;
+Game game;
 
 int main()
 {
@@ -32,7 +33,6 @@ int main()
 
 void Initialize()
 {
-	Error("Raquel guapeta");
 	// Inicialitzem allegro
 	if (!al_init())
 	{
@@ -72,8 +72,7 @@ void Initialize()
 	al_register_event_source(eventQueue, al_get_keyboard_event_source());
 	al_register_event_source(eventQueue, al_get_timer_event_source(fpsTimer));
 
-	// TODO
-	//game.Initialize();
+	game.Initialize();
 }
 
 void GameLoop()
@@ -91,8 +90,7 @@ void GameLoop()
 		if (event.type == ALLEGRO_EVENT_TIMER)
 		{
 			draw = true;
-			// TODO
-			// game.Update();
+			game.Update();
 		}
 		else if (event.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
@@ -110,7 +108,7 @@ void GameLoop()
 		{
 			draw = false;
 			al_clear_to_color(al_map_rgb(0, 0, 0));
-			//game.Draw();
+			game.Draw();
 			al_flip_display();
 		}
 
@@ -125,6 +123,8 @@ void Destroyer()
 	al_destroy_event_queue(eventQueue);
 	al_destroy_timer(fpsTimer);
 	al_destroy_display(display);
+
+	game.~Game();
 }
 
 void Error(const char *msg)

@@ -1,0 +1,9 @@
+* Crear classes 
+	> Character Controller
+	> Dynamic Object
+
+* Llistar metodes necessaris per cada classe
+
+* Implementar metodes
+
+* Crear una mini demo on es dibuixa un terra de blocs, un bloc com a obstacle i un bloc personatge i on el personatge pugui interactuar.

@@ -46,3 +46,7 @@ trovaben 2 events, ¿es perdran 2 frames? Utilitzar diferents cues? Cua per a FPS
 *Bitmaps
 > Podem cambiar el "target bitmap" del back buffer a qualsevol altre bitmap. Totes les funcions de dibuixat es realitzaran sobre el target bitmap. 
 
+*Basic Game Structure
+> https://wiki.allegro.cc/index.php?title=Allegro_Vivace/Game_Structure
+> https://wiki.allegro.cc/index.php?title=Allegro_game_from_zero
+> Tips (+ animation): https://www.allegro.cc/forums/thread/607529/920236

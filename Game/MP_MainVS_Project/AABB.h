@@ -6,6 +6,7 @@ class AABB
 {
 public:
 	AABB();
+	AABB(Vector2 position, Vector2 offset, Vector2 lenght);
 	~AABB();
 	Vector2 GetPosition() const;
 	Vector2 GetLenght() const;

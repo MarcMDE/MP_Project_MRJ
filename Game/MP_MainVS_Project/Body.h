@@ -6,15 +6,16 @@ class Body
 {
 public:
 	Body();
+	Body(Transform transform, Vector2 colliderOffset, Vector2 colliderLenght);
 	~Body();
-	void SetPosition(Vector2 position);
 	Vector2 GetPosition() const;
 	void SetRotation(float degrees);
-	Vector2 GetRotation() const;
+	float GetRotation() const;
 	void SetScale(float scale);
-	Vector2 GetScale() const;
+	float GetScale() const;
 	void SetCollider(Vector2 offset, Vector2 lenght);
-	void Update();
+	void SetPosition(Vector2 position);
+	void UpdatePosition(Vector2 displacement);
 private:
 	Transform transform;
 	AABB collider;

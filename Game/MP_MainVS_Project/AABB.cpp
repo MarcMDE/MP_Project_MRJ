@@ -4,6 +4,14 @@ AABB::AABB()
 {
 }
 
+AABB::AABB(Vector2 position, Vector2 offset, Vector2 lenght)
+{
+	this->offset = offset;
+	this->lenght = lenght;
+	bool active = true;
+	UpdatePosition(position);
+}
+
 
 AABB::~AABB()
 {

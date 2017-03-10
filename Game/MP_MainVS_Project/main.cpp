@@ -8,7 +8,7 @@
 #include <allegro5/allegro.h> // Allegro 5 (default)
 #include <stdio.h> // L'utilitzem per "debugejar" per consola
 #include <allegro5/allegro_native_dialog.h> // Error Message dialog
-
+#include "GameUtils.h"
 #include "Game.h"
 
 void Initialize();
@@ -22,11 +22,14 @@ ALLEGRO_DISPLAY *display;
 
 Game game;
 
-int main()
+int main(int argc, char **argv)
 {
 	Initialize();
+	printf("GAME_INITIALIZE_FINISHED\n");
 	GameLoop();
+	printf("GAME_LOOP_FINISHED\n");
 	Destroyer();
+	printf("GAME_EXIT\n");
 	
 	return 0;
 }
@@ -37,6 +40,11 @@ void Initialize()
 	if (!al_init())
 	{
 		Error("Allegro inicialitzation failed");
+	}
+
+	if (!al_init_image_addon())
+	{
+		Error("Allegro image addon incialitzation failed");
 	}
 
 	// Inicialitzem fpsTimer
@@ -68,52 +76,64 @@ void Initialize()
 	}
 
 	// Registrem les diferents Events Sources(Inputs d'on poden procedir events)
-	al_register_event_source(eventQueue, al_get_display_event_source(display));
-	al_register_event_source(eventQueue, al_get_keyboard_event_source());
+	//al_register_event_source(eventQueue, al_get_display_event_source(display));
+	//al_register_event_source(eventQueue, al_get_keyboard_event_source());
 	al_register_event_source(eventQueue, al_get_timer_event_source(fpsTimer));
 
 	game.Initialize();
+
+	al_set_target_bitmap(al_get_backbuffer(display));
 }
 
 void GameLoop()
 {
 	bool finish = false;
 	bool draw = true; // draw ens diu quan hem de redibuixar el joc
+
 	ALLEGRO_EVENT event;
 	al_start_timer(fpsTimer); // Inicialitzem contador just abans de l'inici del main loop
 
 	// Main game loop
 	do
 	{
+		printf("BEFORE\n");
 		al_wait_for_event(eventQueue, &event);
+		printf("AFTER\n");
 
 		if (event.type == ALLEGRO_EVENT_TIMER)
 		{
+			//printf("UPDATE\n");
 			draw = true;
 			game.Update();
 		}
+		/*
 		else if (event.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
+			
 			if (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
 			{
 				// EXIT GAME
+				finish = true;
 			}
 			else
 			{
 				// game.SetKey();
 			}
+			
 		}
-
-		if (draw && al_is_event_queue_empty(eventQueue))
+		*/
+		//if (draw && al_is_event_queue_empty(eventQueue))
+		if (draw)
 		{
+			//printf("DRAW\n");
 			draw = false;
 			al_clear_to_color(al_map_rgb(0, 0, 0));
 			game.Draw();
 			al_flip_display();
 		}
-
-	} while (!finish);
-
+		//printf("ISWORKING\n");
+	} while (1);
+	//printf("WHILE EXIT\n");
 }
 
 void Destroyer()
@@ -123,8 +143,6 @@ void Destroyer()
 	al_destroy_event_queue(eventQueue);
 	al_destroy_timer(fpsTimer);
 	al_destroy_display(display);
-
-	game.~Game();
 }
 
 void Error(const char *msg)

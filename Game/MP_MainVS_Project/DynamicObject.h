@@ -12,8 +12,10 @@ private:
 	Vector2 friction;
 	Vector2 speed;
 	Vector2 maxSpeed;
-	void UpdateVelocity();
+	bool grounded;
+	bool active;
 
+	void UpdateVelocity();
 
 public:
 	DynamicObject();
@@ -22,5 +24,8 @@ public:
 	void SetDirection(Vector2 direction);
 	void AddForce(Vector2 force, Vector2 direction);
 	void Update();
+	void SetAsGrounded();
+	void SetAsActive(bool active);
+	Vector2 GetPosition();
 };
 

@@ -1,22 +1,20 @@
+#ifndef GAMEUTILS_H
+#define GAMEUTILS_H
+
+
 //BASIC STRUCTS
 
-struct Vector2
+typedef struct
 {
 	float x;
 	float y;
-};
+}Vector2;
 
-struct Collider
-{
-	Vector2 position;
-	Vector2 offset;
-	Vector2 lenght;
-	bool active;
-};
-
-struct Transform
+typedef struct
 {
 	Vector2 position;
 	float rotation;
 	float scale;
-};
+}Transform;
+
+#endif // !GAMEUTILS_H

@@ -5,6 +5,7 @@
 *
 */
 
+/*
 #include <allegro5/allegro.h> // Allegro 5 (default)
 #include <stdio.h> // L'utilitzem per "debugejar" per consola
 #include <allegro5/allegro_native_dialog.h> // Error Message dialog
@@ -121,7 +122,7 @@ void GameLoop()
 			}
 			
 		}
-		*/
+		
 		//if (draw && al_is_event_queue_empty(eventQueue))
 		if (draw)
 		{
@@ -151,3 +152,4 @@ void Error(const char *msg)
 	al_show_native_message_box(al_get_current_display(), "Error", "Error", msg, NULL, ALLEGRO_MESSAGEBOX_ERROR);
 	exit(1);
 }
+*/

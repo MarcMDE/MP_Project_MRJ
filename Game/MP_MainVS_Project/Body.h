@@ -16,6 +16,7 @@ public:
 	void SetCollider(Vector2 offset, Vector2 lenght);
 	void SetPosition(Vector2 position);
 	void UpdatePosition(Vector2 displacement);
+
 private:
 	Transform transform;
 	AABB collider;

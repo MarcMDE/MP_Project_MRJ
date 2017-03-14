@@ -6,10 +6,11 @@ CharacterController::CharacterController()
 {
 }
 
-CharacterController::CharacterController(Transform transform, Vector2 speed, Vector2 friction, Vector2 colliderOffset, Vector2 colliderLenght)
+CharacterController::CharacterController(Transform transform,Vector2 maxSpeed, Vector2 acceleration, Vector2 friction, Vector2 colliderOffset, Vector2 colliderLenght)
 {
-	dynamic = DynamicObject(transform, colliderOffset, colliderLenght, friction);
-	this->speed = speed;
+	dynamic = DynamicObject(transform, maxSpeed, colliderOffset, colliderLenght, friction);
+	this->acceleration = acceleration;
+	std::cout << acceleration.x;
 }
 
 
@@ -19,7 +20,7 @@ CharacterController::~CharacterController()
 
 void CharacterController::Move()
 {
-	dynamic.AddForce(speed, { 1, 0 });
+	dynamic.AddForce(acceleration, { 1, 0 });
 	dynamic.Update();
 }
 

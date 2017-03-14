@@ -11,13 +11,13 @@ DynamicObject::DynamicObject()
 {
 }
 
-DynamicObject::DynamicObject(Transform transform, Vector2 colliderOffset, Vector2 colliderLenght, Vector2 friction)
+DynamicObject::DynamicObject(Transform transform, Vector2 maxSpeed, Vector2 colliderOffset, Vector2 colliderLenght, Vector2 friction)
 {
 	body = Body(transform, colliderOffset, colliderLenght);
 	velocity = { 0, 0 };
 	direction = { 0, 0 };
 	speed = { 0, 0 };
-	maxSpeed = { 0.1f, 0.1f };
+	this->maxSpeed = maxSpeed; // -1 == unlimited
 	this->friction = friction;
 	grounded = true;
 	active = true;
@@ -53,6 +53,7 @@ void DynamicObject::Update()
 {
 	if (active)
 	{
+		std::cout << "Player Velocity: " << velocity.x;
 		UpdateVelocity();
 		body.UpdatePosition(velocity);
 	

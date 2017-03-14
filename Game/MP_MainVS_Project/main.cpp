@@ -48,7 +48,7 @@ void Initialize()
 	}
 
 	// Inicialitzem fpsTimer
-	fpsTimer = al_create_timer(1 / 60);
+	fpsTimer = al_create_timer(1.0f / 60);
 	if (!fpsTimer)
 	{
 		Error("fpsTimer inicialitzation failed");
@@ -76,8 +76,8 @@ void Initialize()
 	}
 
 	// Registrem les diferents Events Sources(Inputs d'on poden procedir events)
-	//al_register_event_source(eventQueue, al_get_display_event_source(display));
-	//al_register_event_source(eventQueue, al_get_keyboard_event_source());
+	al_register_event_source(eventQueue, al_get_display_event_source(display));
+	al_register_event_source(eventQueue, al_get_keyboard_event_source());
 	al_register_event_source(eventQueue, al_get_timer_event_source(fpsTimer));
 
 	game.Initialize();
@@ -96,9 +96,7 @@ void GameLoop()
 	// Main game loop
 	do
 	{
-		printf("BEFORE\n");
 		al_wait_for_event(eventQueue, &event);
-		printf("AFTER\n");
 
 		if (event.type == ALLEGRO_EVENT_TIMER)
 		{
@@ -106,7 +104,7 @@ void GameLoop()
 			draw = true;
 			game.Update();
 		}
-		/*
+		
 		else if (event.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
 			
@@ -121,9 +119,8 @@ void GameLoop()
 			}
 			
 		}
-		*/
-		//if (draw && al_is_event_queue_empty(eventQueue))
-		if (draw)
+		
+		if (draw && al_is_event_queue_empty(eventQueue))
 		{
 			//printf("DRAW\n");
 			draw = false;
@@ -131,9 +128,7 @@ void GameLoop()
 			game.Draw();
 			al_flip_display();
 		}
-		//printf("ISWORKING\n");
 	} while (1);
-	//printf("WHILE EXIT\n");
 }
 
 void Destroyer()

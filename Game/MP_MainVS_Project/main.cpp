@@ -49,7 +49,7 @@ void Initialize()
 	}
 
 	// Inicialitzem fpsTimer
-	fpsTimer = al_create_timer(1 / 60);
+	fpsTimer = al_create_timer(1.0f / 60);
 	if (!fpsTimer)
 	{
 		//Error("fpsTimer inicialitzation failed");

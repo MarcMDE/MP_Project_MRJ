@@ -19,5 +19,5 @@ void InputManager::SetKey()
 
 bool InputManager::IsKeyDown()
 {
-	if (treturn false;
+	return false;
 }

@@ -12,7 +12,7 @@ void Game::Initialize()
 {
 	// Replace Initialize -> Constructor
 	player.Initialize({ spawnPosition, 0, 0 }, friction);
-	background.LoadTexture("bg.jpg");
+	//background.LoadTexture("bg.jpg");
 }
 
 void Game::Update()
@@ -24,6 +24,6 @@ void Game::Update()
 void Game::Draw()
 {
 	// GAME DRAW
-	background.Draw({ 0, 0 });
+	//background.Draw({ 0, 0 });
 	player.Draw();
 }

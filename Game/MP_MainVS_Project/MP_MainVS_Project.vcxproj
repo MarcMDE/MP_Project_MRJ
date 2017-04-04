@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{769BC3D9-8E85-4567-A1EA-27E60DB52831}</ProjectGuid>
     <RootNamespace>MP_MainVS_Project</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,8 +74,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Allegro_AddonImage>true</Allegro_AddonImage>
-    <Allegro_AddonFont>true</Allegro_AddonFont>
-    <Allegro_AddonColor>true</Allegro_AddonColor>
+    <Allegro_AddonPrimitives>true</Allegro_AddonPrimitives>
     <Allegro_AddonDialog>true</Allegro_AddonDialog>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -128,7 +127,6 @@
     <ClCompile Include="CharacterController.cpp" />
     <ClCompile Include="DynamicObject.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -142,7 +140,6 @@
     <ClInclude Include="DynamicObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameUtils.h" />
-    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Sprite.h" />

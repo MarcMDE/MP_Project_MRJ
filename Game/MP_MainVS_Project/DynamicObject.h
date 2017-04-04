@@ -1,7 +1,6 @@
 #pragma once
 #include "GameUtils.h"
 #include "Body.h"
-#include <iostream>
 
 
 class DynamicObject
@@ -20,7 +19,7 @@ private:
 
 public:
 	DynamicObject();
-	DynamicObject(Transform transform, Vector2 maxSpeed, Vector2 colliderOffset, Vector2 colliderLenght, Vector2 friction);
+	DynamicObject(Transform transform, Vector2 colliderOffset, Vector2 colliderLenght, Vector2 friction);
 	~DynamicObject();
 	void SetDirection(Vector2 direction);
 	void AddForce(Vector2 force, Vector2 direction);

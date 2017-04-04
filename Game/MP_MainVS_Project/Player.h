@@ -6,8 +6,7 @@ class Player
 {
 private:
 	const Vector2 playerLenght = { 64, 128 };
-	const Vector2 acceleration = { 1, 1 };
-	const Vector2 maxSpeed = { 4.0f, 4.0f };
+	const Vector2 speed = { 0.01f, 0.01f };
 	const Vector2 colliderOffset = {playerLenght.x / 2, playerLenght.y / 2};
 	CharacterController controller;
 	// Animation anim

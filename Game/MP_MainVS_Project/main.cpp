@@ -2,6 +2,7 @@
 *
 *	MP MAIN PROJECT - BASIC GAME STRUCTURE
 *	JONATHAN PONCE, RAQUEL NAVARRO, MARC MONTAGUT
+*   //Cagu en el murci
 *
 */
 
@@ -9,7 +10,7 @@
 
 #include <allegro5/allegro.h> // Allegro 5 (default)
 #include <stdio.h> // L'utilitzem per "debugejar" per consola
-#include <cstdio>
+//#include <cstdio>
 #include <allegro5/allegro_native_dialog.h> // Error Message dialog
 #include "GameUtils.h"
 #include "Game.h"
@@ -17,7 +18,7 @@
 void Initialize();
 void GameLoop();
 void Destroyer();
-void Error(const char *msg);
+//void Error(char *msg);
 
 ALLEGRO_EVENT_QUEUE *eventQueue;
 ALLEGRO_TIMER *fpsTimer;
@@ -42,25 +43,25 @@ void Initialize()
 	// Inicialitzem allegro
 	if (!al_init())
 	{
-		Error("Allegro inicialitzation failed");
+		//Error("Allegro inicialitzation failed");
 	}
 
 	if (!al_init_image_addon())
 	{
-		Error("Allegro image addon incialitzation failed");
+		//Error("Allegro image addon incialitzation failed");
 	}
 
 	// Inicialitzem fpsTimer
 	fpsTimer = al_create_timer(1.0f / 60);
 	if (!fpsTimer)
 	{
-		Error("fpsTimer inicialitzation failed");
+		//Error("fpsTimer inicialitzation failed");
 	}
 
 	// Inicialitzem input teclat
 	if (!al_install_keyboard())
 	{
-		Error("Keyboard inicialitzation failed");
+		//Error("Keyboard inicialitzation failed");
 	}
 
 	// Inicialitzem display
@@ -68,19 +69,19 @@ void Initialize()
 	display = al_create_display(640, 480);
 	if (!display)
 	{
-		Error("Display inicialitzation failed");
+		//Error("Display inicialitzation failed");
 	}
 
 	// Inicialitzem eventQueue
 	eventQueue = al_create_event_queue();
 	if (!eventQueue)
 	{
-		Error("Event Queue inicialitzation failed");
+		//Error("Event Queue inicialitzation failed");
 	}
 
 	// Registrem les diferents Events Sources(Inputs d'on poden procedir events)
-	al_register_event_source(eventQueue, al_get_display_event_source(display));
-	al_register_event_source(eventQueue, al_get_keyboard_event_source());
+	//al_register_event_source(eventQueue, al_get_display_event_source(display));
+	//al_register_event_source(eventQueue, al_get_keyboard_event_source());
 	al_register_event_source(eventQueue, al_get_timer_event_source(fpsTimer));
 
 	game.Initialize();
@@ -107,7 +108,7 @@ void GameLoop()
 			draw = true;
 			game.Update();
 		}
-		
+		/*
 		else if (event.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
 			
@@ -122,8 +123,9 @@ void GameLoop()
 			}
 			
 		}
-		
-		if (draw && al_is_event_queue_empty(eventQueue))
+		*/
+		//if (draw && al_is_event_queue_empty(eventQueue))
+		if (draw)
 		{
 			//printf("DRAW\n");
 			draw = false;
@@ -131,7 +133,9 @@ void GameLoop()
 			game.Draw();
 			al_flip_display();
 		}
+		//printf("ISWORKING\n");
 	} while (1);
+	//printf("WHILE EXIT\n");
 }
 
 void Destroyer()
@@ -143,9 +147,11 @@ void Destroyer()
 	al_destroy_display(display);
 }
 
-void Error(const char *msg)
+/*
+void Error(char *msg)
 {
 	// Mostra finestra error i surt del joc
 	al_show_native_message_box(al_get_current_display(), "Error", "Error", msg, NULL, ALLEGRO_MESSAGEBOX_ERROR);
 	exit(1);
 }
+*/

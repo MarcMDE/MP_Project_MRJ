@@ -1,6 +1,10 @@
 #pragma once
 #include "Player.h"
 #include "GameUtils.h"
+#include "Scene.h"
+
+const int MAX_LEVELS = 3;
+
 class Game
 {
 	private:
@@ -11,7 +15,7 @@ class Game
 		const Vector2 friction = { 0.0005f, 0.0005f };
 
 		Player player;
-		Sprite background;
+		Scene scenes[MAX_LEVELS];
 
 	public:
 		Game();

@@ -22,6 +22,11 @@ void Sprite::LoadTexture(char * path)
 	offset = { 0, 0 };
 }
 
+void Sprite::SetTexture(ALLEGRO_BITMAP * texture)
+{
+	this->texture = texture;
+}
+
 void Sprite::CreateFlatTexture(Vector2 lenght, ALLEGRO_COLOR color)
 {
 	texture = al_create_bitmap(lenght.x, lenght.y);

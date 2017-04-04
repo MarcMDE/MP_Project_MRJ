@@ -7,6 +7,7 @@
 
 #include <allegro5/allegro.h> // Allegro 5 (default)
 #include <stdio.h> // L'utilitzem per "debugejar" per consola
+#include <cstdio>
 #include <allegro5/allegro_native_dialog.h> // Error Message dialog
 #include "GameUtils.h"
 #include "Game.h"
@@ -29,7 +30,7 @@ int main(int argc, char **argv)
 	GameLoop();
 	printf("GAME_LOOP_FINISHED\n");
 	Destroyer();
-	printf("GAME_EXIT\n");
+	//printf("GAME_EXIT\n");
 	
 	return 0;
 }

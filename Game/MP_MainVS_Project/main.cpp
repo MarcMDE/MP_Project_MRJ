@@ -5,6 +5,8 @@
 *
 */
 
+//MARC CARA CUL
+
 #include <allegro5/allegro.h> // Allegro 5 (default)
 #include <stdio.h> // L'utilitzem per "debugejar" per consola
 #include <cstdio>

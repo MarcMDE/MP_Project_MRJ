@@ -1,20 +1,20 @@
 #pragma once
-#include "DynamicObject.h"
+#include "GameUtils.h"
 
 class CharacterController
 {
 private:
-	DynamicObject dynamic;
+	Vector2 friction;
 	Vector2 speed;
+	Vector2 topSpeed;
+	Vector2 speedIncrement;
+	Vector2 direction;
+	bool isJumping;
+	bool isGrounded;
+	Vector2 velocity;
 
 public:
 	CharacterController();
-	CharacterController(Transform transform, Vector2 speed, Vector2 friction, Vector2 colliderOffset, Vector2 colliderLenght);
 	~CharacterController();
-	//void Jump(); // Jump Logic Class??
-	//void Move(char inputKey);
-	void Move();
-	//void Update();
-	Vector2 GetPosition();
 };
 

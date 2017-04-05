@@ -10,11 +10,4 @@ typedef struct
 	float y;
 }Vector2;
 
-typedef struct
-{
-	Vector2 position;
-	float rotation;
-	float scale;
-}Transform;
-
 #endif // !GAMEUTILS_H

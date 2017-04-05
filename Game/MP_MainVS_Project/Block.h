@@ -1,22 +1,19 @@
 #pragma once
 #include "Body.h"
-#include "Sprite.h"
-
-typedef enum BlockTypes {ICE_BLOCK, STONE_BLOCK};
 
 class Block
 {
 private:
 	Body body;
-	Sprite sprite;
-	BlockTypes type;
-	bool active;
+	float friction;
 
 public:
 	Block();
-	Block(Vector2 position, Vector2 lenght, BlockTypes type, ALLEGRO_BITMAP *texture);
+	Block(Vector2 position, Vector2 lenght,  float friction);
 	~Block();
-	//AABB GetAABB();
-	Vector2 GetPosition();
+	Vector2 GetPosition() const;
+	float GetFriction() const;
+	void Update();
+	void DrawUpdate(Sprite sprite);
 };
 

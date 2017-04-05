@@ -5,6 +5,8 @@
 void CharacterController::UpdateVelocity()
 {
 	velocity = velocity + speed * direction;
+	//if (direction.x > 0 && )
+
 }
 
 CharacterController::CharacterController()

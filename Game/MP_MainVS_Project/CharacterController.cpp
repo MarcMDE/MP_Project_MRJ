@@ -35,7 +35,7 @@ Vector2 CharacterController::GetPos() const
 	return body.GetPos();
 }
 
-void CharacterController::Move(char key, bool isKeyDown, )
+void CharacterController::Move(char key, bool isKeyDown)
 {
 	isGrounded = false;
 	updateSpeed = false;

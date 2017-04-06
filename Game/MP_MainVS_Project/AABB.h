@@ -4,6 +4,12 @@
 
 class AABB
 {
+private: 
+	Vector2 position;
+	Vector2 offset;
+	Vector2 lenght;
+	bool isActive;
+
 public:
 	AABB();
 	AABB(Vector2 position, Vector2 offset, Vector2 lenght);
@@ -12,12 +18,9 @@ public:
 	Vector2 GetLenght() const;
 	bool AABBCollide(AABB b);
 	void UpdatePosition(Vector2 position);
+	void SetActive(bool active);
+	bool IsActive();
 
-private: 
-	Vector2 position;
-	Vector2 offset;
-	Vector2 lenght;
-	bool active;
 };
 
  

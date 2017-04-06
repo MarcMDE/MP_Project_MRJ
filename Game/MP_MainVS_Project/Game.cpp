@@ -8,22 +8,26 @@ Game::~Game()
 {
 }
 
-void Game::Initialize()
+void Game::Initialize(int level)
 {
-	// Replace Initialize -> Constructor
-	player.Initialize({ spawnPosition, 0, 0 }, friction);
-	//background.LoadTexture("bg.jpg");
+	currentLevel = level;
+
+	// Backgrounds, + bitmap scene
+	scenes[currentLevel] = Scene();
+	//player = Player();
+
 }
 
 void Game::Update()
 {
 	// GAME UPDATE
 	player.Update();
+	scenes[currentLevel].Update();
 }
 
 void Game::Draw()
 {
 	// GAME DRAW
-	//background.Draw({ 0, 0 });
 	player.Draw();
+	scenes[currentLevel].DrawUpdate();
 }

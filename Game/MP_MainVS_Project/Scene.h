@@ -1,22 +1,31 @@
 #pragma once
 #include "Block.h"
 
+typedef enum BlockTypes {STONE = 0, ICE};
+
 class Scene
 {
 private:
-	Block *blocks;
+	const static int blockTypesLenght = 2;
+	Block **blocks = new Block*[blockTypesLenght];
+	Sprite blockSprites[blockTypesLenght];
+	int blocksLengt[blockTypesLenght];
+
+	Sprite *backgrounds;
+	int backgroundsLenght;
+
 	//Trap *traps
 	//UI ui
-	Sprite background_01;
-	Sprite background_02;
-	Sprite foreground;
+	
+	void UpdateBlocks();
+	void DrawBlocks();
+	void UpdateBackgrounds();
 
 public:
 	Scene();
+	Scene(ALLEGRO_BITMAP * sceneBitmap, Sprite *backgrounds, int backgroundsLenght);
 	~Scene();
-	void UpdateBackgrounds();
-	void UpdateBlocks();
-	void UpdateTraps();
-	void UpdateUI();
+	void Update();
+	void DrawUpdate();
 };
 

@@ -18,8 +18,8 @@ public:
 	Vector2 GetLenght() const;
 	bool AABBCollide(AABB b);
 	void UpdatePosition(Vector2 position);
-	void SetActive(bool active);
-	bool IsActive();
+	//void SetActive(bool active);
+	//bool IsActive();
 
 };
 

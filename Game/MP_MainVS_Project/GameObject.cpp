@@ -15,7 +15,7 @@ bool GameObject::OnScreen()
 {
 	return onScreen;
 }
-
+/*
 void GameObject::UpdateOnScreen(Vector2 lenght)
 {
 	if (GetPosition().x < 0 - lenght.x / 2 || GetPosition().x > SCREEN_LENGHT.x + lenght.x / 2 ||
@@ -25,9 +25,11 @@ void GameObject::UpdateOnScreen(Vector2 lenght)
 	}
 	else onScreen = true;
 }
+*/
 
 GameObject::GameObject()
 {
+
 }
 
 

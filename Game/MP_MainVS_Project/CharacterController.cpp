@@ -1,4 +1,5 @@
 #include "CharacterController.h"
+#include <stdio.h>
 
 CharacterController::CharacterController()
 {
@@ -6,7 +7,8 @@ CharacterController::CharacterController()
 
 CharacterController::CharacterController(Vector2 position, Vector2 topSpeed, Vector2 speedIncrement, Vector2 colliderOffset, Vector2 colliderLenght)
 {
-	Body(position, colliderOffset, colliderLenght);
+
+	body = Body(position, colliderOffset, colliderLenght);
 	friction = { 0, 0 };
 	speed = { 0, 0 };
 	this->topSpeed = topSpeed;
@@ -17,16 +19,24 @@ CharacterController::CharacterController(Vector2 position, Vector2 topSpeed, Vec
 	updateSpeed = false;
 	isJumping = false;
 	isGrounded = false;
+	printf("BodyPos%f\n", GetPos().x);
 }
 
 void CharacterController::Update()
 {
-	Move();
+	//Move();
+	//printf("playerPosX = %f\n", body.GetTransform().GetPosition().x);
+	//printf("playerPosY = %f\n", body.GetTransform().GetPosition().y);
 }
 
 void CharacterController::Draw(Sprite sprite)
 {
-	Body::Draw(sprite);
+	//body.Draw(sprite);
+}
+
+Vector2 CharacterController::GetPos() const
+{
+	return body.GetPos();
 }
 
 void CharacterController::Move()
@@ -84,7 +94,7 @@ void CharacterController::Move()
 
 	finalVelocity = auxVelocity * direction;
 
-	Translate(finalVelocity);
+	body.GetTransform().Translate(finalVelocity);
 	
 }
 

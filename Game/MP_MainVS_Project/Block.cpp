@@ -17,7 +17,7 @@ Block::~Block()
 
 Vector2 Block::GetPosition() const
 {
-	return body.GetPosition();
+	return body.GetTransform().GetPosition();
 }
 
 float Block::GetFriction() const
@@ -27,11 +27,11 @@ float Block::GetFriction() const
 
 void Block::Update()
 {
-	body.UpdateOnScreen();
+	//body.UpdateOnScreen();
 }
 
 void Block::DrawUpdate(Sprite sprite)
 {
-	body.Draw(sprite)
+	body.Draw(sprite);
 }
 

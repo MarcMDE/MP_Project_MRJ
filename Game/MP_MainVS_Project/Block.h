@@ -1,5 +1,8 @@
-#pragma once
+#ifndef BLOCK_H
+#define BLOCK_H
+
 #include "Body.h"
+#include "Transform.h"
 
 class Block
 {
@@ -17,3 +20,4 @@ public:
 	void DrawUpdate(Sprite sprite);
 };
 
+#endif

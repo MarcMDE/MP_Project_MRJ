@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SCENE_H
+#define SCENE_H
 #include "Block.h"
 
 enum BlockTypes {STONE = 0, ICE};
@@ -29,3 +30,4 @@ public:
 	void DrawUpdate();
 };
 
+#endif 

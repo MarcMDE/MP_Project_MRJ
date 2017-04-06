@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 #include "Player.h"
 #include "GameUtils.h"
 #include "Scene.h"
@@ -17,7 +18,9 @@ class Game
 
 		int currentLevel;
 		Player player;
-		//Scene scenes[levelsLenght];
+		Scene scenes[levelsLenght];
+
+		ALLEGRO_BITMAP * tst;
 
 	public:
 		Game();
@@ -27,3 +30,4 @@ class Game
 		void Draw();
 };
 
+#endif

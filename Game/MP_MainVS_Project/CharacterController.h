@@ -2,10 +2,11 @@
 #include "GameUtils.h"
 #include "Body.h"
 
-class CharacterController : public Body
+class CharacterController
 {
 private:
 	
+	Body body;
 	Vector2 friction;
 	Vector2 speed;
 	Vector2 topSpeed;
@@ -26,6 +27,6 @@ public:
  	~CharacterController();
 	void Update();
 	void Draw(Sprite sprite);
-
+	Vector2 GetPos() const;
 };
 

@@ -2,10 +2,11 @@
 #include "CharacterController.h"
 #include "GameUtils.h"
 
-class Player : public CharacterController
+class Player
 {
 private:
 	Sprite sprite;
+	CharacterController controller;
 
 public:
 	Player();
@@ -13,5 +14,6 @@ public:
 	~Player();
 	void Update();
 	void Draw();
+	Vector2 GetPos() const;
 };
 

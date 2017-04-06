@@ -24,10 +24,13 @@ Game game;
 
 int main(int argc, char **argv)
 {
+	printf("GAME_INITIALIZE\n");
 	Initialize();
 	printf("GAME_INITIALIZE_FINISHED\n");
+	printf("GAME_UPDATE\n");
 	GameLoop();
 	printf("GAME_LOOP_FINISHED\n");
+	printf("GAME_DESTROYER\n");
 	Destroyer();
 	printf("GAME_EXIT\n");
 	
@@ -81,7 +84,7 @@ void Initialize()
 	al_register_event_source(eventQueue, al_get_timer_event_source(fpsTimer));
 
 	game.Initialize(0);
-
+	
 	al_set_target_bitmap(al_get_backbuffer(display));
 }
 

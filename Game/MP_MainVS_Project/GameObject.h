@@ -1,8 +1,7 @@
 #pragma once
 #include "Transform.h"
-#include "Game.h"
 
-class GameObject : public Transform
+class GameObject 
 {
 private:
 	bool isActive;
@@ -11,7 +10,7 @@ public:
 	void SetActive(bool active);
 	bool IsActive();
 	bool OnScreen();
-	void UpdateOnScreen(Vector2 lenght);
+	//void UpdateOnScreen(Vector2 lenght);
 
 	GameObject();
 	~GameObject();

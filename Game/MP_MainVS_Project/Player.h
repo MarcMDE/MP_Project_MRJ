@@ -12,8 +12,9 @@ public:
 	Player();
 	Player(Vector2 sourcePosition, Vector2 topSpeed, Vector2 speedIncrement, ALLEGRO_BITMAP * texture );
 	~Player();
-	void Update();
+	void Update(char key, bool isKeyDown);
 	void Draw();
 	Vector2 GetPos() const;
+	
 };
 

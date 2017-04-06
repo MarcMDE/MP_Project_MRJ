@@ -18,14 +18,14 @@ private:
 	bool isJumping;
 	bool isGrounded;
 
-	void Move();
-	void Jump();
+	void Move(char key, bool isKeyDown);
+	void Jump(char key, bool isKeyDown);
 
 public:
 	CharacterController();
 	CharacterController(Vector2 position, Vector2 topSpeed, Vector2 speedIncrement, Vector2 colliderOffset, Vector2 colliderLenght);
  	~CharacterController();
-	void Update();
+	void Update(char key, bool isKeyDown);
 	void Draw(Sprite sprite);
 	Vector2 GetPos() const;
 };

@@ -4,8 +4,8 @@
 Transform::Transform()
 {
 	
-	printf("here");
-	position = { 50, 0};
+	printf("default t c\n");
+	position = { 0, 0};
 	scale = 1.0f;
 	rotation = 0.0f;
 	
@@ -55,7 +55,7 @@ void Transform::SetRotation(float v)
 
 void Transform::Translate(Vector2 v)
 {
-	position.x += v.x;
+	position += v;
 }
 
 void Transform::ScaleUp(float v)

@@ -13,10 +13,8 @@ Body::Body(Transform transform, Vector2 colliderOffset, Vector2 colliderLenght)
 
 Body::Body(Vector2 position, Vector2 colliderOffset, Vector2 colliderLenght)
 {
-	printf("posToT%f\n", position.x);
 	transform = Transform(position);
 	collider = AABB(position, colliderOffset, colliderLenght);
-	printf("posFromT%f\n", transform.GetPosition().x);
 }
 
 Body::Body(Vector2 position, float scale, Vector2 colliderOffset, Vector2 colliderLenght)
@@ -32,24 +30,24 @@ Body::~Body()
 
 void Body::SetCollider(Vector2 offset, Vector2 lenght)
 {
-	//collider = AABB(transform.GetPosition(), offset, lenght);
+	collider = AABB(transform.GetPosition(), offset, lenght);
 }
 
 void Body::UpdatePosition(Vector2 displacement)
 {
-	//transform.Translate(displacement);
-	//collider.UpdatePosition(transform.GetPosition());
+	transform.Translate(displacement);
+	collider.UpdatePosition(transform.GetPosition());
 }
 
 void Body::SetInstantPosition(Vector2 position)
 {
-	//transform.SetPosition(position);
-	//collider.UpdatePosition(position);
+	transform.SetPosition(position);
+	collider.UpdatePosition(position);
 }
 
 void Body::Draw(Sprite sprite)
 {
-//	sprite.Draw(transform.GetPosition());	
+	sprite.Draw(transform.GetPosition());	
 }
 
 Transform Body::GetTransform() const

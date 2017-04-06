@@ -80,7 +80,7 @@ void Initialize()
 
 	// Registrem les diferents Events Sources(Inputs d'on poden procedir events)
 	//al_register_event_source(eventQueue, al_get_display_event_source(display));
-	//al_register_event_source(eventQueue, al_get_keyboard_event_source());
+	al_register_event_source(eventQueue, al_get_keyboard_event_source());
 	al_register_event_source(eventQueue, al_get_timer_event_source(fpsTimer));
 
 	game.Initialize(0);
@@ -107,7 +107,6 @@ void GameLoop()
 			draw = true;
 			game.Update();
 		}
-		/*
 		else if (event.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
 			
@@ -118,11 +117,15 @@ void GameLoop()
 			}
 			else
 			{
-				// game.SetKey();
+				game.SetKeyDown(event.keyboard.keycode, true);
 			}
 			
 		}
-		*/
+		else if (event.type == ALLEGRO_EVENT_KEY_UP)
+		{
+			game.SetKeyDown('a', false);
+		}
+		
 		//if (draw && al_is_event_queue_empty(eventQueue))
 		if (draw)
 		{

@@ -11,7 +11,9 @@ private:
 	Vector2 topSpeed;
 	Vector2 speedIncrement;
 	Vector2 direction;
-	Vector2 velocity;
+	Vector2 auxVelocity;
+	Vector2 finalVelocity;
+	bool updateVelocity;
 	bool isJumping;
 	bool isGrounded;
 
@@ -21,7 +23,7 @@ public:
 	CharacterController();
 	CharacterController(Vector2 position, Vector2 topSpeed, Vector2 speedIncrement, Vector2 colliderOffset, Vector2 colliderLenght);
 	void Update();
-	void Move(Vector2 direction);
+	void Move();
 	void Jump();
 
 	~CharacterController();

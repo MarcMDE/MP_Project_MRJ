@@ -20,6 +20,14 @@ Scene::~Scene()
 {
 }
 
+void Scene::Update()
+{
+}
+
+void Scene::DrawUpdate()
+{
+}
+
 void Scene::UpdateBlocks()
 {
 	for (int i = 0; i < blockTypesLenght; i++)

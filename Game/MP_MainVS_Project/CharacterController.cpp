@@ -14,21 +14,28 @@ CharacterController::CharacterController(Vector2 position, Vector2 topSpeed, Vec
 	direction = { 0, 0 };
 	auxVelocity = { 0, 0 };
 	finalVelocity = { 0, 0 };
-	updateVelocity = true;
+	updateSpeed = false;
 	isJumping = false;
 	isGrounded = false;
 }
 
 void CharacterController::Update()
 {
+	Move();
+}
+
+void CharacterController::Draw(Sprite sprite)
+{
+	Body::Draw(sprite);
 }
 
 void CharacterController::Move()
 {
 	isGrounded = false;
-	updateVelocity = false;
+	updateSpeed = false;
 
 	// Input needed
+	/*
 	char key;
 
 	switch (key)
@@ -42,7 +49,7 @@ void CharacterController::Move()
 			}
 			else
 			{
-				updateVelocity = true;
+				updateSpeed = true;
 			}
 		break;
 
@@ -55,20 +62,30 @@ void CharacterController::Move()
 			}
 			else
 			{
-				updateVelocity = true;
+				updateSpeed = true;
 			}
 
-		default: updateVelocity = false;
+		default: 
+			updateSpeed = false;
+			speed.x = 0;
 	}
-
+	if (updateSpeed)
+	{
+		speed += speedIncrement;
+	}
+	*/
+	speed += speedIncrement;
 	if (speed.x > topSpeed.x) speed.x = topSpeed.x;
 
 	auxVelocity += speed;
-	auxVelocity -= friction;
+	//auxVelocity -= friction;
 
 	if (auxVelocity.x < 0) auxVelocity.x = 0;
 
 	finalVelocity = auxVelocity * direction;
+
+	Translate(finalVelocity);
+	
 }
 
 void CharacterController::Jump()

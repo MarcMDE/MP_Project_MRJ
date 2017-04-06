@@ -1,23 +1,16 @@
 #include "Player.h"
-#include <stdio.h>
+
 
 
 Player::Player()
 {
 }
 
-Player::Player(Transform transform, Vector2 friction)
+Player::Player(Vector2 sourcePosition, Vector2 topSpeed, Vector2 speedIncrement, ALLEGRO_BITMAP * texture)
 {
-	controller = CharacterController(transform, speed, friction, colliderOffset, playerLenght);
-	sprite = Sprite(playerLenght, { 255, 0, 0 });
+	sprite = Sprite({ -al_get_bitmap_width(texture) / 2, -al_get_bitmap_height(texture) }, texture);
+	CharacterController(sourcePosition, topSpeed, speedIncrement, {0, -sprite.GetLenght().y/2}, sprite.GetLenght());
 }
-
-void Player::Initialize(Transform transform, Vector2 friction)
-{
-	controller = CharacterController(transform, speed, friction, colliderOffset, playerLenght);
-	sprite = Sprite(playerLenght, al_map_rgb(255, 0, 0));
-}
-
 
 Player::~Player()
 {
@@ -25,11 +18,10 @@ Player::~Player()
 
 void Player::Update()
 {
-	controller.Move();
-	printf("PlayerPosition: %f\n", controller.GetPosition().x);
+	Update();
 }
 
 void Player::Draw()
 {
-	sprite.Draw(controller.GetPosition());
+	CharacterController::Draw(sprite);
 }

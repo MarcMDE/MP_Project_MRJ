@@ -42,6 +42,11 @@ Sprite::Sprite(Vector2 offset, char * path)
 	this->offset = offset;
 }
 
+Vector2 Sprite::GetLenght()
+{
+	return{ (float)al_get_bitmap_width(texture), (float)al_get_bitmap_height(texture) };
+}
+
 Sprite::~Sprite()
 {
 }

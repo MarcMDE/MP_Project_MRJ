@@ -11,10 +11,9 @@ Game::~Game()
 void Game::Initialize(int level)
 {
 	currentLevel = level;
-
+	player = Player(spawnPosition, { 5, 5 }, { 0.1f, 0.1f }, al_load_bitmap("player.jpg"));
 	// Backgrounds, + bitmap scene
 	scenes[currentLevel] = Scene();
-	//player = Player();
 
 }
 

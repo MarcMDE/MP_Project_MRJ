@@ -1,7 +1,7 @@
 #pragma once
 #include "Block.h"
 
-typedef enum BlockTypes {STONE = 0, ICE};
+enum BlockTypes {STONE = 0, ICE};
 
 class Scene
 {

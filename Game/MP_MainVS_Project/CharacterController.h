@@ -2,7 +2,7 @@
 #include "GameUtils.h"
 #include "Body.h"
 
-class CharacterController : Body
+class CharacterController : public Body
 {
 private:
 	
@@ -13,19 +13,19 @@ private:
 	Vector2 direction;
 	Vector2 auxVelocity;
 	Vector2 finalVelocity;
-	bool updateVelocity;
+	bool updateSpeed;
 	bool isJumping;
 	bool isGrounded;
 
-	void UpdateVelocity();
+	void Move();
+	void Jump();
 
 public:
 	CharacterController();
 	CharacterController(Vector2 position, Vector2 topSpeed, Vector2 speedIncrement, Vector2 colliderOffset, Vector2 colliderLenght);
+ 	~CharacterController();
 	void Update();
-	void Move();
-	void Jump();
+	void Draw(Sprite sprite);
 
-	~CharacterController();
 };
 

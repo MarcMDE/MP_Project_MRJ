@@ -18,6 +18,7 @@ public:
 	Sprite(Vector2 offset, ALLEGRO_BITMAP * texture);
 	Sprite(char * path);
 	Sprite(Vector2 offset, char * path);
+	Vector2 GetLenght();
 	~Sprite();
 	void Draw(Vector2 position);
 };

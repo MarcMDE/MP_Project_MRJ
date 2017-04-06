@@ -80,7 +80,7 @@ void Initialize()
 	//al_register_event_source(eventQueue, al_get_keyboard_event_source());
 	al_register_event_source(eventQueue, al_get_timer_event_source(fpsTimer));
 
-	game.Initialize();
+	game.Initialize(0);
 
 	al_set_target_bitmap(al_get_backbuffer(display));
 }

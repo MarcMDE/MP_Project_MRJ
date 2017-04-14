@@ -15,6 +15,12 @@ Scene::Scene(ALLEGRO_BITMAP * sceneBitmap, Sprite *backgrounds, int backgroundsL
 	//block[0] = new Block[blocksLenght[0]];
 }
 
+Scene::Scene(Sprite *backgrounds, int backgroundsLenght)
+{
+	this->backgrounds = backgrounds;
+	this->backgroundsLenght = backgroundsLenght;
+}
+
 
 Scene::~Scene()
 {
@@ -50,7 +56,7 @@ void Scene::DrawBlocks()
 	}
 }
 
-void Scene::UpdateBackgrounds()
+void Scene::DrawBackgrounds()
 {
 	for (int i=0; i<backgroundsLenght; i++) backgrounds[i].Draw({ 0, 0 });
 }

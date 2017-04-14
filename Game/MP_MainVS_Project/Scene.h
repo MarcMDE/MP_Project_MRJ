@@ -20,11 +20,12 @@ private:
 	
 	void UpdateBlocks();
 	void DrawBlocks();
-	void UpdateBackgrounds();
+	void DrawBackgrounds();
 
 public:
 	Scene();
 	Scene(ALLEGRO_BITMAP * sceneBitmap, Sprite *backgrounds, int backgroundsLenght);
+	Scene(Sprite *backgrounds, int backgroundsLenght);
 	~Scene();
 	void Update();
 	void DrawUpdate();

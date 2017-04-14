@@ -44,7 +44,11 @@ void CharacterController::Move(char key, bool isKeyDown)
 	if (!isGrounded && body.GetPos().y >= 480)
 	{
 		isGrounded = true;
-		isJumping = false;
+		if (isJumping)
+		{
+			direction.x = direction.y;
+			isJumping = false;
+		}
 		body.SetInstantPosition({ body.GetPos().x, 480 });
 		speed.y = 0;
 		auxVelocity.y = 0;
@@ -108,10 +112,11 @@ void CharacterController::Move(char key, bool isKeyDown)
 		speed.x += speedIncrement.x;
 	}
 	
-	if (speed.x > topSpeed.x) speed.x = topSpeed.x;
 
 	auxVelocity.x += speed.x;
 	auxVelocity.x -= friction.x;
+	
+	if (auxVelocity.x > topSpeed.x) auxVelocity.x = topSpeed.x;
 
 	if (auxVelocity.x < 0) auxVelocity.x = 0;
 
@@ -129,7 +134,7 @@ void CharacterController::Jump(char key, bool isKeyDown)
 		{
 			speed.y += speedIncrement.y;
 			isJumping = true;
-			direction.y = 1;
+			direction.y = direction.x;
 			auxVelocity.y -= speed.y;
 		}
 	}

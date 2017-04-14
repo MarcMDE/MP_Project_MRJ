@@ -1,5 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
+
 #include "Player.h"
 #include "GameUtils.h"
 #include "Scene.h"
@@ -11,7 +12,7 @@ const int BLOCKS_WIDTH = 64;
 class Game
 {
 	private:
-		static const int levelsLenght = 3;
+		static const int levelsLenght = 1;
 		const int groundY = SCREEN_LENGHT.y - BLOCKS_WIDTH * 1;
 		const Vector2 spawnPosition = { (float)BLOCKS_WIDTH * 3, (float)BLOCKS_WIDTH * 6.0f };
 		const Vector2 friction = { 0.0005f, 0.0005f };
@@ -24,7 +25,7 @@ class Game
 		Player player;
 		//Scene scenes[levelsLenght];
 
-		//ALLEGRO_BITMAP * tst;
+		ALLEGRO_BITMAP * bg;
 
 	public:
 		Game();

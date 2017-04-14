@@ -12,8 +12,9 @@ Game::~Game()
 void Game::Initialize(int level)
 {
 	currentLevel = level;
-	player = Player(spawnPosition, { 1, 1 }, { 0.0005f, 10.0f }, al_load_bitmap("player.jpeg"));
-	//tst = al_load_bitmap("player.jpeg");
+	player = Player(spawnPosition, { 4, 10 }, { 0.01f, 10.0f }, al_load_bitmap("player.jpeg"));
+	//scenes[0] = Scene(al_load_bitmap("bg.png"), 1);
+	bg = al_load_bitmap("bg.jpg");
 	// Backgrounds, + bitmap scene
 	//scenes[currentLevel] = Scene();
 }
@@ -27,9 +28,10 @@ void Game::Update()
 
 void Game::Draw()
 {
-	//al_draw_bitmap(tst, 20, 20, 0);
+	al_draw_bitmap(bg, 0, 0, 0);
 	// GAME DRAW
 	player.Draw();
+	//scenes[0].DrawUpdate();
 	//scenes[currentLevel].DrawUpdate();
 }
 

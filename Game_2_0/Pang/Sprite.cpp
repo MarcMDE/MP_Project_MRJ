@@ -43,18 +43,38 @@ Sprite::Sprite(ALLEGRO_BITMAP *image, Vector2 offset)
 	this->offset = offset;
 }
 
-
 Sprite::~Sprite()
 {
 	al_destroy_bitmap(image);
 }
 
-void Sprite::Ini(ALLEGRO_BITMAP * image)
+void Sprite::New(Vector2 lenght, ALLEGRO_COLOR color)
+{
+	CreateFlatTexture(lenght, color);
+
+	// Sprites are drawed from the center by default
+	offset.x = -lenght.x / 2;
+	offset.y = -lenght.y / 2;
+}
+
+void Sprite::New(Vector2 lenght, Vector2 offset, ALLEGRO_COLOR color)
+{
+	CreateFlatTexture(lenght, color);
+	this->offset = offset;
+}
+
+void Sprite::New(ALLEGRO_BITMAP * image)
 {
 	this->image = image;
 	// Sprites are drawed from the center by default
 	offset.x = -al_get_bitmap_width(image) / 2;
 	offset.y = -al_get_bitmap_height(image) / 2;
+}
+
+void Sprite::New(ALLEGRO_BITMAP * image, Vector2 offset)
+{
+	this->image = image;
+	this->offset = offset;
 }
 
 int Sprite::GetWidth()

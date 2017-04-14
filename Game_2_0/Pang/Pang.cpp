@@ -13,7 +13,7 @@ Pang::~Pang()
 
 void Pang::Initialize()
 {
-	test.Ini(al_load_bitmap("explosion2.png"), 9, 9, 1);
+	test.New(al_load_bitmap("explosion2.png"), 9, 9, 1);
 }
 
 void Pang::Update()
@@ -23,5 +23,5 @@ void Pang::Update()
 
 void Pang::Draw()
 {
-	test.Draw({ SCREEN_WIDTH, SCREEN_HEIGHT}, false);
+	test.Draw({ SCREEN_WIDTH/2, SCREEN_HEIGHT/2}, false);
 }

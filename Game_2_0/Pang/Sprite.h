@@ -28,7 +28,15 @@ public:
 	Sprite(ALLEGRO_BITMAP *image, Vector2 offset);
 	~Sprite();
 
-	void Ini(ALLEGRO_BITMAP *image);
+	// Creates flat texture
+	void New(Vector2 lenght, ALLEGRO_COLOR color);
+	// Creates flat texture with offset
+	void New(Vector2 lenght, Vector2 offset, ALLEGRO_COLOR color);
+	// Sets texture
+	void New(ALLEGRO_BITMAP *image);
+	// Sets texture with offset
+	void New(ALLEGRO_BITMAP *image, Vector2 offset);
+
 	int GetWidth();
 	int GetHeight();
 	void Draw(Vector2 position);

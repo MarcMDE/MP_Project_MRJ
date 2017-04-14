@@ -27,7 +27,7 @@ ALLEGRO_EVENT event;
 
 Pang pang;
 
-int main(int argc, char **argv)
+int main()
 {
 	printf("GAME_INITIALIZE\n");
 	Initialize();
@@ -141,6 +141,7 @@ void Destroyer()
 	al_destroy_event_queue(eventQueue);
 	al_destroy_timer(fpsTimer);
 	al_destroy_display(display);
+	//pang.~Pang();
 }
 
 void Error(char *msg)

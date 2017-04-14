@@ -9,6 +9,7 @@
 #include <stdio.h> // L'utilitzem per "debugejar" per consola
 #include <allegro5/allegro_native_dialog.h> // Error Message dialog
 #include <allegro5/allegro_image.h> // Image addon ("Draw")
+#include <allegro5/allegro_primitives.h> // Debugging
 #include "GameConfig.h"
 #include "Pang.h"
 
@@ -49,6 +50,11 @@ void Initialize()
 	if (!al_init_image_addon())
 	{
 		Error("Allegro image addon initialitzation failed");
+	}
+
+	if (!al_init_primitives_addon())
+	{
+		Error("Allegro primitives addon initialitzation failed");
 	}
 
 	// Set FPS timer

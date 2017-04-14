@@ -2,15 +2,23 @@
 
 #include "allegro5\allegro.h"
 #include "allegro5\allegro_image.h"
-#include "Animation2D.h"
 #include "GameConfig.h"
+
+#include "Animation2D.h"
+#include "AABB.h"
+#include "CircleCollider.h"
 
 using namespace GameConfig;
 
 class Pang
 {
 private:
-	Animation2D test;
+	Animation2D anim;
+	AABB aBox;
+	AABB bBox;
+	CircleCollider aCirc;
+	CircleCollider bCirc;
+	
 
 public:
 	Pang();

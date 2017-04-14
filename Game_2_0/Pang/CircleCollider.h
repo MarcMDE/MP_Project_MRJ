@@ -4,6 +4,8 @@
 #include <math.h>
 #include "AABB.h"
 
+#include "allegro5/allegro_primitives.h" // Debug
+
 using namespace GameUtils2D;
 
 class CircleCollider
@@ -27,5 +29,7 @@ public:
 	void UpdatePosition(Vector2 position);
 	bool CheckCirclesCollision(CircleCollider b);
 	bool CheckCircleAABBCollision(AABB b);
+
+	void DebugDraw();
 };
 

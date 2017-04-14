@@ -85,3 +85,8 @@ bool AABB::CheckAABBCircleCollision(CircleCollider c)
 	
 	return collision;
 }
+
+void AABB::DebugDraw()
+{
+	al_draw_rectangle(position.x - lenght.x / 2, position.y - lenght.y / 2, position.x + lenght.x / 2, position.y + lenght.y / 2, { 0, 0, 255, 255 }, 1.5f);
+}

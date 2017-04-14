@@ -61,3 +61,8 @@ bool CircleCollider::CheckCircleAABBCollision(AABB b)
 	return b.CheckAABBCircleCollision(*this);
 }
 
+void CircleCollider::DebugDraw()
+{
+	al_draw_circle(position.x, position.y, radius, { 255, 0, 0, 255 }, 1.5f);
+}
+

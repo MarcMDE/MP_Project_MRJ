@@ -1,0 +1,4 @@
+- Calling class constructor after object declaration (inside an other class) --> We decided to use a "New" method instead constructor
+
+- Simetric methods on AABB and CircleCollider. (AABB-CircleCollider coll + CircleCollider-AABB coll returns an error) --> Due to 
+circular including (include AABB on CircleCollider and CircleCollider on AABB) we commented the CircleCollider "redundance"

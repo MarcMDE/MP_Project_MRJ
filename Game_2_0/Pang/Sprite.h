@@ -28,6 +28,7 @@ public:
 	Sprite(ALLEGRO_BITMAP *image, Vector2 offset);
 	~Sprite();
 
+	void Ini(ALLEGRO_BITMAP *image);
 	int GetWidth();
 	int GetHeight();
 	void Draw(Vector2 position);

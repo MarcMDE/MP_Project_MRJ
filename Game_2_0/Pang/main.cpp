@@ -10,6 +10,7 @@
 #include <allegro5/allegro_native_dialog.h> // Error Message dialog
 #include <allegro5/allegro_image.h> // Image addon ("Draw")
 #include "GameConfig.h"
+#include "Pang.h"
 
 void Initialize();
 void GameLoop();
@@ -23,6 +24,8 @@ ALLEGRO_DISPLAY *display;
 bool finish = false;
 bool draw = true;
 ALLEGRO_EVENT event;
+
+Pang pang;
 
 int main(int argc, char **argv)
 {
@@ -80,6 +83,8 @@ void Initialize()
 	al_register_event_source(eventQueue, al_get_keyboard_event_source());
 	al_register_event_source(eventQueue, al_get_timer_event_source(fpsTimer));
 
+	pang.Initialize();
+
 	al_set_target_bitmap(al_get_backbuffer(display));
 }
 
@@ -95,6 +100,7 @@ void GameLoop()
 		if (event.type == ALLEGRO_EVENT_TIMER)
 		{
 			// UPDATE
+			pang.Update();
 
 			draw = true;
 		}
@@ -121,6 +127,7 @@ void GameLoop()
 			al_clear_to_color(al_map_rgb(0, 0, 0));
 
 			// GAME DRAW
+			pang.Draw();
 
 			al_flip_display();
 		}

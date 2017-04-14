@@ -1,4 +1,5 @@
 #include "Sprite.h"
+#include <stdio.h>
 
 void Sprite::CreateFlatTexture(Vector2 lenght, ALLEGRO_COLOR color)
 {
@@ -31,7 +32,6 @@ Sprite::Sprite(Vector2 lenght, Vector2 offset, ALLEGRO_COLOR color)
 Sprite::Sprite(ALLEGRO_BITMAP * image)
 {
 	this->image = image;
-
 	// Sprites are drawed from the center by default
 	offset.x = -al_get_bitmap_width(image) / 2;
 	offset.y = -al_get_bitmap_height(image) / 2; 
@@ -47,6 +47,14 @@ Sprite::Sprite(ALLEGRO_BITMAP *image, Vector2 offset)
 Sprite::~Sprite()
 {
 	al_destroy_bitmap(image);
+}
+
+void Sprite::Ini(ALLEGRO_BITMAP * image)
+{
+	this->image = image;
+	// Sprites are drawed from the center by default
+	offset.x = -al_get_bitmap_width(image) / 2;
+	offset.y = -al_get_bitmap_height(image) / 2;
 }
 
 int Sprite::GetWidth()

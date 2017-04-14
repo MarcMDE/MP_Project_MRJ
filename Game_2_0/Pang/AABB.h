@@ -1,4 +1,6 @@
-#pragma once
+#ifndef AABB_H
+#define AABB_H
+
 
 #include "GameUtils2D.h"
 #include <math.h>
@@ -33,3 +35,4 @@ public:
 	void DebugDraw();
 };
 
+#endif // !AABB_H

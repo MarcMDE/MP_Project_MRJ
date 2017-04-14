@@ -55,8 +55,8 @@ void AABB::UpdatePosition(Vector2 position)
 
 bool AABB::CheckAABBsCollision(AABB b)
 {
-	return (fabs(b.GetPosition().x - position.x) <= (lenght.x + b.GetLenght().x) && 
-		fabs(b.GetPosition().y - position.y) <= (lenght.y + b.GetLenght().y));
+	return (fabs(b.GetPosition().x - position.x) <= (lenght.x/2 + b.GetLenght().x/2) && 
+		fabs(b.GetPosition().y - position.y) <= (lenght.y/2 + b.GetLenght().y/2));
 }
 
 bool AABB::CheckAABBCircleCollision(CircleCollider c)

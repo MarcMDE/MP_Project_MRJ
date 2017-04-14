@@ -56,10 +56,12 @@ bool CircleCollider::CheckCirclesCollision(CircleCollider b)
 	return powf(fabs(b.GetPosition().x - position.x), 2) + powf(fabs(b.GetPosition().y - position.y), 2) <= powf(radius + b.GetRadius(), 2);
 }
 
+/*
 bool CircleCollider::CheckCircleAABBCollision(AABB b)
 {
 	return b.CheckAABBCircleCollision(*this);
 }
+*/
 
 void CircleCollider::DebugDraw()
 {

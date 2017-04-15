@@ -2,3 +2,9 @@
 
 - Simetric methods on AABB and CircleCollider. (AABB-CircleCollider coll + CircleCollider-AABB coll returns an error) --> Due to 
 circular including (include AABB on CircleCollider and CircleCollider on AABB) we commented the CircleCollider "redundance"
+
+- Pass an array initialitzation as parameter to a pointer. 
+Ex: 
+	void Arr(int * a);
+	Arr({2, 3, 4, 1});
+	

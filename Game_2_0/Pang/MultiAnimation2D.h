@@ -21,11 +21,12 @@ public:
 	MultiAnimation2D();
 	~MultiAnimation2D();
 
-	void New(ALLEGRO_BITMAP *image, FramesSequence *animations, int animationsLenght);
+	void New(ALLEGRO_BITMAP *image, int animationsLenght);
+	void NewSequence(FramesSequence sequence, int index);
 
 	void Reset();
 	void Update();
-	void SetSequence(int index);
+	void SetCurrentSequence(int index);
 	void Draw(Vector2 position, bool hFlip);
 
 };

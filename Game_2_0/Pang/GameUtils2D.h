@@ -75,5 +75,6 @@ namespace GameUtils2D
 		int height;
 		int duration;
 		Vector2 offset;
+		bool repeat;
 	};
 }

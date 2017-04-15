@@ -1,6 +1,20 @@
 #include "Player.h"
 #include <stdio.h>
 
+void Player::DefineCurrentAnimation(PlayerAnimations animation)
+{
+	if (currentAnimation != animation)
+	{
+		currentAnimation = animation;
+		animator.Reset();
+	}
+}
+
+void Player::SetCurrentAnimation()
+{
+	animator.SetCurrentSequence(currentAnimation);
+}
+
 Player::Player()
 {
 }
@@ -24,7 +38,13 @@ void Player::New()
 	fallingMovementFactor = PLAYER_1_FALLING_MOV_FACTOR;
 	jumpingMovementFactor = PLAYER_1_JUMPING_MOV_FACTOR;
 
-	sprite.New(al_load_bitmap("character.png"), { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT });
+	animator.New(al_load_bitmap("character_anims.png"), 3);
+	animator.NewSequence({ 4, PLAYER_WIDTH, PLAYER_HEIGHT, 10, { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, true }, RUNNING);
+	animator.NewSequence({ 3, PLAYER_WIDTH, PLAYER_HEIGHT, 10, { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, false }, JUMPING);
+	animator.NewSequence({ 3, PLAYER_WIDTH, PLAYER_HEIGHT, 10, { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, true}, IDLE);
+
+	DefineCurrentAnimation(IDLE);
+
 	collider.New(GetPosition(), { 0, -PLAYER_HEIGHT/2 }, { PLAYER_WIDTH, PLAYER_HEIGHT });
 }
 
@@ -48,21 +68,25 @@ void Player::Update()
 		{
 			isJumping = true;
 			velocity.y = -PLAYER_1_JUMPSPEED;
+			DefineCurrentAnimation(JUMPING);
 		}
 		else if (!isGrounded)
 		{
 			// FALLING
 			velocity.y += GRAVITY_Y;
+			DefineCurrentAnimation(JUMPING);
 		}
 
 		// MOVEMENT
 		if (input.IsKeyDown(PLAYER_1_RIGHT))
 		{
 			direction.x = 1;
+			orientation = RIGHT;
 		}
 		else if (input.IsKeyDown(PLAYER_1_LEFT))
 		{
 			direction.x = -1;
+			orientation = LEFT;
 		}
 
 		if (input.IsKeyDown(PLAYER_1_UP))
@@ -93,10 +117,6 @@ void Player::Update()
 
 		if (isGrounded)
 		{
-			velocity.x += speed.x * direction.x;
-			if (velocity.x > topSpeed.x) velocity.x = topSpeed.x;
-			else if (velocity.x < -topSpeed.x) velocity.x = -topSpeed.x;
-
 			if (direction.x == 0)
 			{
 				if (velocity.x > 0)
@@ -109,6 +129,17 @@ void Player::Update()
 					velocity.x += GROUND_FRICTION_X;
 					if (velocity.x > 0) velocity.x = 0;
 				}
+
+				DefineCurrentAnimation(IDLE);
+			}
+			else
+			{
+				// Speed should have an easing dependant value!
+				velocity.x += speed.x * direction.x;
+				if (velocity.x > topSpeed.x) velocity.x = topSpeed.x;
+				else if (velocity.x < -topSpeed.x) velocity.x = -topSpeed.x;
+
+				DefineCurrentAnimation(RUNNING);
 			}
 		}
 
@@ -124,10 +155,13 @@ void Player::Update()
 			SetPosition({ SCREEN_WIDTH - collider.GetLenght().x / 2, GetPosition().y });
 		}
 
-		printf("P_v: %f\n", velocity.x);
-
 		Translate(velocity);
 		collider.UpdatePosition(GetPosition());
+		SetCurrentAnimation();
+		animator.Update();
+
+		//printf("P_v: %f\n", velocity.x);
+		//printf("Anim: %i\n", (int)currentAnimation);
 	}
 }
 
@@ -135,7 +169,7 @@ void Player::Draw()
 {
 	if (IsDrawable())
 	{
-		sprite.Draw(GetPosition());
+		animator.Draw(GetPosition(), (bool)orientation);
 		collider.DebugDraw();
 	}
 }

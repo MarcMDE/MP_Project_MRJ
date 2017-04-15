@@ -5,20 +5,20 @@
 
 using namespace GameUtils2D;
 
-class GameObject : Transform
+class GameObject : public Transform
 {
 private:
 	bool isActive;
+	bool isDrawable;
 
 public:
 	GameObject();
 	~GameObject();
 
-	void Initialize();
-	void Update();
-	void Draw();
-
+	void New();
 	void SetActive(bool active);
+	void SetDrawable(bool drawable);
 	bool IsActive();
+	bool IsDrawable();
 };
 

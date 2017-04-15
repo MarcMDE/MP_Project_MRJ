@@ -67,4 +67,13 @@ namespace GameUtils2D
 			return{ this->x / rhs, this->y / rhs };
 		}
 	};
+
+	struct FramesSequence
+	{
+		int frames;
+		int width;
+		int height;
+		int duration;
+		Vector2 offset;
+	};
 }

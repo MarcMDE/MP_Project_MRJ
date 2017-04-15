@@ -12,6 +12,7 @@
 #include <allegro5/allegro_primitives.h> // Debugging
 #include "GameConfig.h"
 #include "Pang.h"
+#include "InputsManager.h"
 
 void Initialize();
 void GameLoop();
@@ -107,6 +108,7 @@ void GameLoop()
 		{
 			// UPDATE
 			pang.Update();
+			input.ClearPressedKey();
 
 			draw = true;
 		}
@@ -118,10 +120,13 @@ void GameLoop()
 				// EXIT GAME
 				finish = true;
 			}
-			else
-			{
-				// Other keys pressed
-			}
+		
+			
+			input.SetPressedKey(event.keyboard.keycode);
+		}
+		else if (event.type == ALLEGRO_EVENT_KEY_UP)
+		{
+			input.SetReleasedKey(event.keyboard.keycode);
 		}
 
 		//if (draw && al_is_event_queue_empty(eventQueue))

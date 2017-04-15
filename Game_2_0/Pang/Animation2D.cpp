@@ -5,6 +5,7 @@ Animation2D::Animation2D()
 {
 }
 
+/*
 Animation2D::Animation2D(ALLEGRO_BITMAP * image, Vector2 spriteLenght, int duration)
 {
 	New(image, spriteLenght, duration);
@@ -29,9 +30,11 @@ Animation2D::Animation2D(ALLEGRO_BITMAP * image, Vector2 spriteLenght, int frame
 {
 	New(image, spriteLenght, frames, columns, duration, offset);
 }
+*/
 
 Animation2D::~Animation2D()
 {
+	spriteSheet.~Sprite();
 }
 
 void Animation2D::New(ALLEGRO_BITMAP * image, Vector2 spriteLenght, int duration)
@@ -109,7 +112,7 @@ void Animation2D::Update()
 		}
 		else currentFrame = 0;
 
-		printf("currFrame: %i \n", currentFrame);
+		//printf("currFrame: %i \n", currentFrame);
 	}
 	else
 	{

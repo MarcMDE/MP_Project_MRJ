@@ -61,13 +61,14 @@ bool AABB::CheckAABBsCollision(AABB b)
 
 bool AABB::CheckAABBCircleCollision(CircleCollider c)
 {
-	bool collision;
+	bool collision = false;
 	Vector2 d;
 
 	d.x = fabs(c.GetPosition().x - position.x);
 	d.y = fabs(c.GetPosition().y - position.y);
 
-	if (d.x > lenght.x/2 + c.GetRadius() || d.y > lenght.y/2 + c.GetRadius())
+	
+	if ((d.x > lenght.x/2 + c.GetRadius()) || (d.y > lenght.y/2 + c.GetRadius()))
 	{
 		// Discard collision by AABB - AABB collision
 		collision = false;
@@ -77,6 +78,8 @@ bool AABB::CheckAABBCircleCollision(CircleCollider c)
 		// Check simple collision to avoid harder calculations
 		collision = true;
 	}
+	
+	
 	else if (powf(d.x - lenght.x / 2, 2) + powf(d.y - lenght.y / 2, 2) <= powf(c.GetRadius(), 2))
 	{
 		// Check corner collision
@@ -88,5 +91,5 @@ bool AABB::CheckAABBCircleCollision(CircleCollider c)
 
 void AABB::DebugDraw()
 {
-	al_draw_rectangle(position.x - lenght.x / 2, position.y - lenght.y / 2, position.x + lenght.x / 2, position.y + lenght.y / 2, { 0, 0, 255, 255 }, 1.5f);
+	al_draw_rectangle(position.x - lenght.x / 2, position.y - lenght.y / 2, position.x + lenght.x / 2, position.y + lenght.y / 2, { 0, 0, 255, 255 }, 1.0f);
 }

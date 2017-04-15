@@ -39,6 +39,7 @@ public:
 
 	int GetWidth();
 	int GetHeight();
+	void SetOffset(Vector2 offset);
 	void Draw(Vector2 position);
 	void Draw(Vector2 position, bool hFlip);
 	void Draw(Vector2 position, float rotation, float scale, bool hFlip);

@@ -1,35 +1,19 @@
 #include "GameObject.h"
 
 
-
 GameObject::GameObject()
 {
+	New();
 }
-
 
 GameObject::~GameObject()
 {
 }
 
-void GameObject::Initialize()
+void GameObject::New()
 {
 	isActive = true;
-}
-
-void GameObject::Update()
-{
-	if (isActive)
-	{
-
-	}
-}
-
-void GameObject::Draw()
-{
-	if (isActive)
-	{
-
-	}
+	isDrawable = true;
 }
 
 void GameObject::SetActive(bool active)
@@ -37,7 +21,17 @@ void GameObject::SetActive(bool active)
 	isActive = active;
 }
 
+void GameObject::SetDrawable(bool drawable)
+{
+	isDrawable = drawable;
+}
+
 bool GameObject::IsActive()
 {
 	return isActive;
+}
+
+bool GameObject::IsDrawable()
+{
+	return isDrawable;
 }

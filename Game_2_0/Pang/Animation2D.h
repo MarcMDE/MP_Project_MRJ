@@ -19,11 +19,13 @@ private:
 	
 public:
 	Animation2D();
+	/*
 	Animation2D(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int duration);
 	Animation2D(ALLEGRO_BITMAP *image, int columns, int rows, int duration);
 	Animation2D(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int frames, int columns, int duration);
 	Animation2D(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int duration, Vector2 offset);
 	Animation2D(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int frames, int coulmns, int duration, Vector2 offset);
+	*/
 	~Animation2D();
 
 	void New(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int duration);

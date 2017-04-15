@@ -87,6 +87,11 @@ int Sprite::GetHeight()
 	return al_get_bitmap_height(image);
 }
 
+void Sprite::SetOffset(Vector2 offset)
+{
+	this->offset = offset;
+}
+
 void Sprite::Draw(Vector2 position)
 {
 	al_draw_bitmap(image, position.x + offset.x, position.y + offset.y, 0);

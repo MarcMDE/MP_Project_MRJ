@@ -6,34 +6,52 @@ Pang::Pang()
 {
 }
 
-
 Pang::~Pang()
 {
 }
 
 void Pang::Initialize()
 {
-	anim.New(al_load_bitmap("explosion2.png"), 9, 9, 1);
-	aBox.New({ 100, SCREEN_HEIGHT / 2 }, { 50, 50 });
-	bBox.New({ 230, SCREEN_HEIGHT / 2 }, { 50, 50 });
-	aCirc.New({ 120, SCREEN_HEIGHT / 2 }, 25);
-	bCirc.New({ 320, SCREEN_HEIGHT / 2 }, 25);
-
-	if (aBox.CheckAABBsCollision(bBox)) printf("a-b box Collision\n");
-	if (aCirc.CheckCirclesCollision(bCirc)) printf("a-b circ Collision\n");
-	if (aBox.CheckAABBCircleCollision(aCirc)) printf("a-a box-circ Collisions\n");
+	player.New();
+	isPaused = false;
+	pauseSprite.New({ SCREEN_WIDTH, SCREEN_HEIGHT }, al_map_rgba( 120, 120, 120, 25));
 }
 
 void Pang::Update()
 {
+	/*
 	anim.Update();
+
+	if (input.IsKeyDown((int)ALLEGRO_KEY_A)) auxPosition.x-=2;
+	else if (input.IsKeyDown((int)ALLEGRO_KEY_D)) auxPosition.x+=2;
+	if (input.IsKeyDown((int)ALLEGRO_KEY_W)) auxPosition.y-=2;
+	else if (input.IsKeyDown((int)ALLEGRO_KEY_S)) auxPosition.y+=2;
+
+	aBox.UpdatePosition(auxPosition);
+	if (aBox.CheckAABBsCollision(bBox))
+	{
+		printf("a-b box Collision\n");
+	}
+	if (aBox.CheckAABBCircleCollision(aCirc))
+	{
+		printf("a-a box-circ Collisions\n");
+	}
+	*/
+
+	if (input.IsKeyPressed(ALLEGRO_KEY_P)) isPaused = !isPaused;
+
+	if (!isPaused)
+	{
+		player.Update();
+	}
 }
 
 void Pang::Draw()
 {
-	anim.Draw({ SCREEN_WIDTH/2, SCREEN_HEIGHT/2}, false);
-	aBox.DebugDraw();
-	bBox.DebugDraw();
-	aCirc.DebugDraw();
-	bCirc.DebugDraw();
+	player.Draw();
+
+	if (isPaused)
+	{
+		pauseSprite.Draw({SCREEN_WIDTH/2, SCREEN_HEIGHT/2});
+	}
 }

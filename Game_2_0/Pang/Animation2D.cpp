@@ -111,7 +111,7 @@ void Animation2D::Update()
 	{
 		counter = 0;
 
-		if (currentFrame < frames)
+		if (currentFrame < frames-1)
 		{
 			currentFrame++;
 		}

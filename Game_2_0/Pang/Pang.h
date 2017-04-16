@@ -4,28 +4,16 @@
 #include "allegro5\allegro_image.h"
 #include "GameConfig.h"
 #include "Player.h"
-
-// Testing
-#include "Animation2D.h"
-#include "AABB.h"
-#include "CircleCollider.h"
-#include "InputsManager.h"
+#include "Background.h"
 
 using namespace GameConfig;
 
 class Pang
 {
 private:
-	/*
-	Animation2D anim;
-	AABB aBox;
-	AABB bBox;
-	CircleCollider aCirc;
-	CircleCollider bCirc;
-	Vector2 auxPosition;
-	*/
-
 	Player player;
+	Background background;
+
 	bool isPaused;
 	Sprite pauseSprite;
 

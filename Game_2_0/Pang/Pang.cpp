@@ -13,6 +13,11 @@ Pang::~Pang()
 void Pang::Initialize()
 {
 	player.New();
+	background.New(al_load_bitmap("main_background.png"), 2);
+	background.NewAnimation(al_load_bitmap("clowd.png"), { 128, 128 }, 4, 2, 20, { 200, 150 }, 0);
+	background.NewAnimation(al_load_bitmap("sun.png"), { 128, 128 }, 2, 2, 30, { SCREEN_WIDTH - 150, 150 }, 1);
+
+
 	isPaused = false;
 	pauseSprite.New({ SCREEN_WIDTH, SCREEN_HEIGHT }, al_map_rgba( 120, 120, 120, 25));
 }
@@ -43,11 +48,13 @@ void Pang::Update()
 	if (!isPaused)
 	{
 		player.Update();
+		background.Update();
 	}
 }
 
 void Pang::Draw()
 {
+	background.Draw();
 	player.Draw();
 
 	if (isPaused)

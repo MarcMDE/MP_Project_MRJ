@@ -119,6 +119,7 @@
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Animation2D.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InputsManager.cpp" />
@@ -132,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="AABB.h" />
     <ClInclude Include="Animation2D.h" />
+    <ClInclude Include="Background.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameObject.h" />

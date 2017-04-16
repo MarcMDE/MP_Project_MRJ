@@ -8,3 +8,5 @@ Ex:
 	void Arr(int * a);
 	Arr({2, 3, 4, 1});
 	
+
+- Destructor call destructor call ("nested classed") --> Check Anim2D Destructor

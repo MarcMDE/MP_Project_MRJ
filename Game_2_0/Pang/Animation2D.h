@@ -16,6 +16,7 @@ private:
 	int columns;
 	Vector2 lenght;
 	Sprite spriteSheet;
+	bool repeat;
 	
 public:
 	Animation2D();
@@ -28,14 +29,15 @@ public:
 	*/
 	~Animation2D();
 
-	void New(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int duration);
-	void New(ALLEGRO_BITMAP *image, int columns, int rows, int duration);
-	void New(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int frames, int columns, int duration);
-	void New(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int duration, Vector2 offset);
-	void New(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int frames, int coulmns, int duration, Vector2 offset);
+	void New(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int duration, bool repeat);
+	void New(ALLEGRO_BITMAP *image, int columns, int rows, int duration, bool repeat);
+	void New(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int frames, int columns, int duration, bool repeat);
+	void New(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int duration, Vector2 offset, bool repeat);
+	void New(ALLEGRO_BITMAP *image, Vector2 spriteLenght, int frames, int coulmns, int duration, Vector2 offset, bool repeat);
 
 	void Reset();
 	void Update();
 	void Draw(Vector2 position, bool hFlip);
+	bool isFinished();
 };
 

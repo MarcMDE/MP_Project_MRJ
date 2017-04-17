@@ -15,7 +15,7 @@ void Pang::Initialize()
 	player.New();
 	background.New(al_load_bitmap("main_background.png"), 2);
 	background.NewAnimation(al_load_bitmap("clowd.png"), { 128, 128 }, 4, 2, 20, { 200, 150 }, 0);
-	background.NewAnimation(al_load_bitmap("sun.png"), { 128, 128 }, 2, 2, 30, { SCREEN_WIDTH - 150, 150 }, 1);
+	background.NewAnimation(al_load_bitmap("solet.png"), { 512, 512 }, 4, 2, 10, { SCREEN_WIDTH - 150, 150 }, 1);
 
 
 	isPaused = false;

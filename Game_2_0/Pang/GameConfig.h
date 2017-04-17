@@ -30,4 +30,18 @@ namespace GameConfig
 	const float PLAYER_1_JUMPING_MOV_FACTOR = 0.85f;
 	
 	const int PLAYER_1_SOURCEPOSITION_X = SCREEN_WIDTH / 3;
+
+	// BUBBLES
+	const int CATEGORIES_LENGHT = 5;
+	const int BUBBLES_RADIUS[CATEGORIES_LENGHT] = { 8, 16, 32, 64, 128 };
+	const GameUtils2D::Vector2 BUBBLES_SPEED[CATEGORIES_LENGHT] =
+	{
+		{ 5.5f, 20.0f },
+		{ 5.0f, 20.0f },
+		{ 4.5f, 20.0f },
+		{ 4.0f, 20.0f },
+		{ 3.5f, 20.0f }
+	};
+	
+	
 }

@@ -34,18 +34,24 @@ void Background::NewAnimation(ALLEGRO_BITMAP * image, Vector2 spriteLenght, int 
 
 void Background::Update()
 {
-	for (int i = 0; i < animationsLenght; i++)
+	if (IsActive())
 	{
-		animations[i].Update();
+		for (int i = 0; i < animationsLenght; i++)
+		{
+			animations[i].Update();
+		}
 	}
 }
 
 void Background::Draw()
 {
-	back.Draw(GetPosition());
-
-	for (int i = 0; i < animationsLenght; i++)
+	if (IsDrawable())
 	{
-		animations[i].Draw(animationsPosition[i], false);
+		back.Draw(GetPosition());
+
+		for (int i = 0; i < animationsLenght; i++)
+		{
+			animations[i].Draw(animationsPosition[i], false);
+		}
 	}
 }

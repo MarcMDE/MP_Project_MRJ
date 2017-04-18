@@ -4,32 +4,35 @@
 
 void Bubble::Move()
 {
-
-	DefineCurrentAnimation(IDLE);
-
-	velocity.x = BUBBLES_SPEED[category].x * directionX;
-	velocity.y += GRAVITY_Y;
+	
+	if (currentAnimation == BUBBLEANIM_GROUND_COLLISION && animator.IsCurrentSequenceFinished());
+	{
+		DefineCurrentAnimation(BUBBLEANIM_IDLE);
+	}
+	
 
 	if (GetPosition().y + collider.GetRadius() >= GROUND_Y)
 	{
 		velocity.y = -BUBBLES_SPEED[category].y;
-		SetPosition({ GetPosition().x, GROUND_Y });
-		DefineCurrentAnimation(GROUND_COLLISION);
+		SetPosition({ GetPosition().x, GROUND_Y - collider.GetRadius()});
+		DefineCurrentAnimation(BUBBLEANIM_GROUND_COLLISION);
 	}
 
 	if (GetPosition().x + collider.GetRadius() >= SCREEN_WIDTH)
 	{
 		directionX = -1;
-		orientation = LEFT;
 		SetPosition({ SCREEN_WIDTH - collider.GetRadius(), GetPosition().y });
 	}
 	else if (GetPosition().x - collider.GetRadius() <= 0)
 	{
 		directionX = 1;
-		orientation = RIGHT;
 		SetPosition({ SCREEN_WIDTH + collider.GetRadius(), GetPosition().y });
 	}
 
+	velocity.x = BUBBLES_SPEED[category].x * directionX;
+	velocity.y += GRAVITY_Y;
+
+	animator.SetCurrentSequence(currentAnimation);
 	Translate(velocity);
 }
 
@@ -51,13 +54,18 @@ Bubble::~Bubble()
 {
 }
 
-void Bubble::New(Vector2 position, int category, MultiAnimation2D animator, int directionX)
+void Bubble::New(Vector2 position, int category, int directionX, ALLEGRO_BITMAP * spriteSheet)
 {
 	SetPosition(position);
 	this->category = category;
-	this->animator = animator;
 	velocity = { 0, 0 };
 	this->directionX = directionX;
+
+	animator.New(spriteSheet, BUBBLES_SEQUENCES_LENGHT);
+	animator.NewSequence({ BUBBLES_SEQUENCE_FRAMES, BUBBLES_RADIUS[category]*2, BUBBLES_RADIUS[category]*2, BUBBLES_SEQUENCE_DURATION, 
+	{(float)-BUBBLES_RADIUS[category] / 2, (float)-BUBBLES_RADIUS[category] / 2 }, true }, 0);
+	animator.NewSequence({ BUBBLES_SEQUENCE_FRAMES, BUBBLES_RADIUS[category]*2, BUBBLES_RADIUS[category]*2, BUBBLES_SEQUENCE_DURATION, 
+	{(float)-BUBBLES_RADIUS[category] / 2, (float)-BUBBLES_RADIUS[category] / 2 }, false }, 1);
 
 	collider.New(GetPosition(), BUBBLES_RADIUS[category]);
 }
@@ -80,6 +88,7 @@ void Bubble::Update()
 	{
 		Move();
 		collider.UpdatePosition(GetPosition());
+		animator.Update();
 	}
 }
 
@@ -87,6 +96,7 @@ void Bubble::Draw()
 {
 	if (IsDrawable())
 	{
-		animator.Draw(GetPosition(), (bool)orientation);
+		animator.Draw(GetPosition(), false);
+		collider.DebugDraw();
 	}
 }

@@ -132,7 +132,7 @@ void Animation2D::Draw(Vector2 position, bool hFlip)
 		lenght, (int)hFlip);
 }
 
-bool Animation2D::isFinished()
+bool Animation2D::IsFinished()
 {
 	return (!repeat && currentFrame >= frames);
 }

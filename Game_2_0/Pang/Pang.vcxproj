@@ -144,7 +144,6 @@
     <ClInclude Include="MultiAnimation2D.h" />
     <ClInclude Include="Pang.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>

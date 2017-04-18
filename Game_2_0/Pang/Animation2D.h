@@ -38,6 +38,6 @@ public:
 	void Reset();
 	void Update();
 	void Draw(Vector2 position, bool hFlip);
-	bool isFinished();
+	bool IsFinished();
 };
 

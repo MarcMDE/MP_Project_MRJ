@@ -2,14 +2,11 @@
 
 #include "GameObject.h"
 #include "AABB.h"
-//#include "Sprite.h" // Temp
 #include "MultiAnimation2D.h"
 #include "GameConfig.h"
 #include "GameUtils2D.h"
 #include "InputsManager.h"
 
-enum PlayerAnimations { RUNNING = 0, JUMPING, IDLE };
-enum PlayerOrientation { RIGHT = 0, LEFT};
 
 using namespace GameConfig;
 using namespace GameUtils2D;
@@ -17,6 +14,7 @@ using namespace GameUtils2D;
 class Player : public GameObject
 {
 private:
+	enum PlayerAnimations { RUNNING = 0, JUMPING, IDLE };
 	Vector2 velocity;
 	Vector2 speed;
 	Vector2 topSpeed;
@@ -27,7 +25,7 @@ private:
 	float jumpingMovementFactor;
 	AABB collider;
 	MultiAnimation2D animator;
-	PlayerOrientation orientation;
+	Orientation orientation;
 	PlayerAnimations currentAnimation;
 
 	void DefineCurrentAnimation(PlayerAnimations animation);

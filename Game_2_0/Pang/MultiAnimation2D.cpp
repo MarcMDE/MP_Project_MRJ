@@ -71,3 +71,8 @@ void MultiAnimation2D::Draw(Vector2 position, bool hFlip)
 	spriteSheet.DrawRegion(position, { (float)currentFrame * animations[currentAnimation].width, sourceY },
 	{(float)animations[currentAnimation].width, (float)animations[currentAnimation].height}, (int)hFlip);
 }
+
+bool MultiAnimation2D::IsCurrentSequenceFinished()
+{
+	return (!animations[currentAnimation].repeat && currentFrame >= animations[currentAnimation].frames);
+}

@@ -2,6 +2,8 @@
 
 namespace GameUtils2D
 {
+	enum Orientation {RIGHT = 0, LEFT};
+
 	struct Vector2
 	{
 		float x;

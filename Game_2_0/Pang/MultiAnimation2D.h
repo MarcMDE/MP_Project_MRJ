@@ -28,6 +28,7 @@ public:
 	void Update();
 	void SetCurrentSequence(int index);
 	void Draw(Vector2 position, bool hFlip);
+	bool IsCurrentSequenceFinished();
 
 };
 

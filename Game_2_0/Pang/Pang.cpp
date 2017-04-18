@@ -17,6 +17,9 @@ void Pang::Initialize()
 	background.NewAnimation(al_load_bitmap("clowd.png"), { 128, 128 }, 4, 2, 20, { 200, 150 }, 0);
 	background.NewAnimation(al_load_bitmap("solet.png"), { 512, 512 }, 4, 2, 10, { SCREEN_WIDTH - 150, 150 }, 1);
 
+	bI = al_load_bitmap("SpriteSheet_4.png");
+	b.New({ SCREEN_WIDTH / 2, 150 }, 4, 1, bI);
+
 
 	isPaused = false;
 	pauseSprite.New({ SCREEN_WIDTH, SCREEN_HEIGHT }, al_map_rgba( 120, 120, 120, 25));
@@ -49,6 +52,7 @@ void Pang::Update()
 	{
 		player.Update();
 		background.Update();
+		b.Update();
 	}
 }
 
@@ -56,6 +60,7 @@ void Pang::Draw()
 {
 	background.Draw();
 	player.Draw();
+	b.Draw();
 
 	if (isPaused)
 	{

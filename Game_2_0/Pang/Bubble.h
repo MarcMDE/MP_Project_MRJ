@@ -9,8 +9,7 @@
 using namespace GameUtils2D;
 using namespace GameConfig;
 
-enum Orientation { RIGHT = 0, LEFT };
-enum BubbleAnimations {IDLE = 0, GROUND_COLLISION};
+enum BubbleAnimations {BUBBLEANIM_IDLE = 0, BUBBLEANIM_GROUND_COLLISION};
 
 class Bubble : public GameObject
 {
@@ -20,7 +19,6 @@ private:
 	MultiAnimation2D animator;
 	Vector2 velocity;
 	int directionX;
-	Orientation orientation;
 	BubbleAnimations currentAnimation;
 
 	void Move();
@@ -30,7 +28,7 @@ public:
 	Bubble();
 	~Bubble();
 
-	void New(Vector2 position, int category, MultiAnimation2D animator, int directionX);
+	void New(Vector2 position, int category, int directionX, ALLEGRO_BITMAP * spriteSheet);
 	void Activate();
 	void Deactivate();
 

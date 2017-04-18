@@ -89,6 +89,7 @@ void Player::Update()
 			orientation = LEFT;
 		}
 
+		/*
 		if (input.IsKeyDown(PLAYER_1_UP))
 		{
 			direction.y = -1;
@@ -97,6 +98,7 @@ void Player::Update()
 		{
 			direction.y = 1;
 		}
+		*/
 
 		/*
 		if (!isJumping && !isGrounded)

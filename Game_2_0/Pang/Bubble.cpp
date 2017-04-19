@@ -1,21 +1,25 @@
 #include "Bubble.h"
-
+#include "stdio.h"
 
 
 void Bubble::Move()
 {
+	velocity.x = BUBBLES_SPEED[category].x * directionX;
+	velocity.y += GRAVITY_Y;
+
+	Translate(velocity);
 	
-	if (currentAnimation == BUBBLEANIM_GROUND_COLLISION && animator.IsCurrentSequenceFinished());
+	if (currentAnimation == BUBBLEANIM_GROUND_COLLISION && animator.IsCurrentSequenceFinished() == true)
 	{
 		DefineCurrentAnimation(BUBBLEANIM_IDLE);
 	}
 	
-
 	if (GetPosition().y + collider.GetRadius() >= GROUND_Y)
 	{
 		velocity.y = -BUBBLES_SPEED[category].y;
 		SetPosition({ GetPosition().x, GROUND_Y - collider.GetRadius()});
 		DefineCurrentAnimation(BUBBLEANIM_GROUND_COLLISION);
+		printf("bounce\n");
 	}
 
 	if (GetPosition().x + collider.GetRadius() >= SCREEN_WIDTH)
@@ -26,14 +30,11 @@ void Bubble::Move()
 	else if (GetPosition().x - collider.GetRadius() <= 0)
 	{
 		directionX = 1;
-		SetPosition({ SCREEN_WIDTH + collider.GetRadius(), GetPosition().y });
+		SetPosition({ 0 + collider.GetRadius(), GetPosition().y });
 	}
 
-	velocity.x = BUBBLES_SPEED[category].x * directionX;
-	velocity.y += GRAVITY_Y;
-
 	animator.SetCurrentSequence(currentAnimation);
-	Translate(velocity);
+	//printf("Curr anim: %i\n", (int)currentAnimation);
 }
 
 void Bubble::DefineCurrentAnimation(BubbleAnimations animation)
@@ -63,10 +64,11 @@ void Bubble::New(Vector2 position, int category, int directionX, ALLEGRO_BITMAP 
 
 	animator.New(spriteSheet, BUBBLES_SEQUENCES_LENGHT);
 	animator.NewSequence({ BUBBLES_SEQUENCE_FRAMES, BUBBLES_RADIUS[category]*2, BUBBLES_RADIUS[category]*2, BUBBLES_SEQUENCE_DURATION, 
-	{(float)-BUBBLES_RADIUS[category] / 2, (float)-BUBBLES_RADIUS[category] / 2 }, true }, 0);
+	{(float)-BUBBLES_RADIUS[category], (float)-BUBBLES_RADIUS[category] }, true }, 0);
 	animator.NewSequence({ BUBBLES_SEQUENCE_FRAMES, BUBBLES_RADIUS[category]*2, BUBBLES_RADIUS[category]*2, BUBBLES_SEQUENCE_DURATION, 
-	{(float)-BUBBLES_RADIUS[category] / 2, (float)-BUBBLES_RADIUS[category] / 2 }, false }, 1);
+	{(float)-BUBBLES_RADIUS[category], (float)-BUBBLES_RADIUS[category] }, false }, 1);
 
+	DefineCurrentAnimation(BUBBLEANIM_IDLE);
 	collider.New(GetPosition(), BUBBLES_RADIUS[category]);
 }
 

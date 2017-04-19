@@ -34,17 +34,17 @@ namespace GameConfig
 	// BUBBLES
 	const int BUBBLES_SEQUENCES_LENGHT = 2;
 	const int BUBBLES_SEQUENCE_FRAMES = 4;
-	const int BUBBLES_SEQUENCE_DURATION = 15;
+	const int BUBBLES_SEQUENCE_DURATION = 10;
 	
 	const int BUBBLES_CATEGORIES_LENGHT = 5;
 	const int BUBBLES_RADIUS[BUBBLES_CATEGORIES_LENGHT] = { 8, 16, 32, 64, 128 };
 	const GameUtils2D::Vector2 BUBBLES_SPEED[BUBBLES_CATEGORIES_LENGHT] =
 	{
-		{ 5.5f, 20.0f },
-		{ 5.0f, 20.0f },
-		{ 4.5f, 20.0f },
-		{ 4.0f, 20.0f },
-		{ 3.5f, 20.0f }
+		{ 5.5f, 30.0f },
+		{ 5.0f, 30.0f },
+		{ 4.5f, 30.0f },
+		{ 4.0f, 30.0f },
+		{ 3.5f, 30.0f }
 	};
 	
 	

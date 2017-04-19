@@ -74,5 +74,5 @@ void MultiAnimation2D::Draw(Vector2 position, bool hFlip)
 
 bool MultiAnimation2D::IsCurrentSequenceFinished()
 {
-	return (!animations[currentAnimation].repeat && currentFrame >= animations[currentAnimation].frames);
+	return !animations[currentAnimation].repeat && currentFrame >= animations[currentAnimation].frames - 1;
 }

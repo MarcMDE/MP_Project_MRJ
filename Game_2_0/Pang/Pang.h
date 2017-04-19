@@ -5,6 +5,7 @@
 #include "GameConfig.h"
 #include "Player.h"
 #include "Background.h"
+#include "BubbleManager.h"
 #include "Bubble.h" // temp
 #include "MultiAnimation2D.h" // temp
 
@@ -15,10 +16,10 @@ class Pang
 private:
 	Player player;
 	Background background;
+	BubbleManager bubbleManager;
 
-
-	Bubble b; // temp
-	ALLEGRO_BITMAP *bI; // temp
+	//Bubble b; // temp
+	//ALLEGRO_BITMAP *bI; // temp
 
 	bool isPaused;
 	Sprite pauseSprite;

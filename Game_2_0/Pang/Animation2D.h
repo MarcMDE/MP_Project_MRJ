@@ -40,4 +40,3 @@ public:
 	void Draw(Vector2 position, bool hFlip);
 	bool IsFinished();
 };
-

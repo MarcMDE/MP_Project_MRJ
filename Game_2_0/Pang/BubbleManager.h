@@ -19,5 +19,8 @@ public:
 	~BubbleManager();
 
 	void New(int category);
+
+	void Update();
+	void Draw();
 };
 

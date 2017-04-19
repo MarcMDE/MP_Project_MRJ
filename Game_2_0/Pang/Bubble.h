@@ -20,6 +20,7 @@ private:
 	Vector2 velocity;
 	int directionX;
 	BubbleAnimations currentAnimation;
+	bool isHit;
 
 	void Move();
 	void DefineCurrentAnimation(BubbleAnimations animation);
@@ -29,9 +30,12 @@ public:
 	~Bubble();
 
 	void New(Vector2 position, int category, int directionX, ALLEGRO_BITMAP * spriteSheet);
+
+	void SetAsHit();
+	int GetCategory();
+	bool IsHit();
 	void Activate();
 	void Deactivate();
-
 	void Update();
 	void Draw();
 };

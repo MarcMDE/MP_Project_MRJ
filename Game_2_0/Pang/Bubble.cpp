@@ -64,6 +64,7 @@ void Bubble::New(Vector2 position, int category, int directionX, ALLEGRO_BITMAP 
 	this->category = category;
 	velocity = { 0, 0 };
 	this->directionX = directionX;
+	isHit = false;
 
 	animator.New(spriteSheet, BUBBLES_SEQUENCES_LENGHT);
 	animator.NewSequence({ BUBBLES_SEQUENCE_FRAMES, BUBBLES_RADIUS[category]*2, BUBBLES_RADIUS[category]*2, BUBBLES_SEQUENCE_DURATION, 
@@ -73,6 +74,22 @@ void Bubble::New(Vector2 position, int category, int directionX, ALLEGRO_BITMAP 
 
 	DefineCurrentAnimation(BUBBLEANIM_IDLE);
 	collider.New(GetPosition(), BUBBLES_RADIUS[category]);
+	Activate();
+}
+
+void Bubble::SetAsHit()
+{
+	isHit = true;
+}
+
+int Bubble::GetCategory()
+{
+	return category;
+}
+
+bool Bubble::IsHit()
+{
+	return isHit;
 }
 
 void Bubble::Activate()

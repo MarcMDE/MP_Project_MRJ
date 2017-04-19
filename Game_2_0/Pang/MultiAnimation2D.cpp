@@ -2,6 +2,7 @@
 
 MultiAnimation2D::MultiAnimation2D()
 {
+	animations = NULL;
 }
 
 

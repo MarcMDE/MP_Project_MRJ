@@ -48,6 +48,9 @@ void Bubble::DefineCurrentAnimation(BubbleAnimations animation)
 
 Bubble::Bubble()
 {
+	SetPosition({ 0, 0 });
+	category = 0;
+	directionX = 0;
 }
 
 

@@ -121,6 +121,7 @@
     <ClCompile Include="Animation2D.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bubble.cpp" />
+    <ClCompile Include="BubbleManager.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InputsManager.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="Animation2D.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bubble.h" />
+    <ClInclude Include="BubbleManager.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameObject.h" />

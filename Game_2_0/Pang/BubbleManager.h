@@ -3,9 +3,11 @@
 #include "GameConfig.h"
 #include "GameUtils2D.h"
 #include <math.h>
+#include <string>
 
 using namespace GameConfig;
 using namespace GameUtils2D;
+using namespace std;
 
 class BubbleManager
 {

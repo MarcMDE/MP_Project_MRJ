@@ -62,6 +62,7 @@ void Bubble::New(Vector2 position, int category, int directionX, ALLEGRO_BITMAP 
 {
 	SetPosition(position);
 	this->category = category;
+
 	velocity = { 0, 0 };
 	this->directionX = directionX;
 	isHit = false;
@@ -108,6 +109,7 @@ void Bubble::Update()
 {
 	if (IsActive())
 	{
+		printf("BALL\n");
 		Move();
 		collider.UpdatePosition(GetPosition());
 		animator.Update();

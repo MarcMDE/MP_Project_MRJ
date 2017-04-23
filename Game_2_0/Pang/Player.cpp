@@ -89,7 +89,9 @@ void Player::Update()
 			orientation = LEFT;
 		}
 
+		
 		/*
+		// Direction.y in case of stairs or some (not jump) vertical movement
 		if (input.IsKeyDown(PLAYER_1_UP))
 		{
 			direction.y = -1;
@@ -99,6 +101,7 @@ void Player::Update()
 			direction.y = 1;
 		}
 		*/
+		
 
 		/*
 		if (!isJumping && !isGrounded)

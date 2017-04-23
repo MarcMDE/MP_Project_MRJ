@@ -50,13 +50,19 @@ void BubbleManager::New(int category)
 	
 	bubblesLenght = pow(2, category);
 	bubbles = (Bubble*)malloc(sizeof(Bubble)*bubblesLenght);
-	
+	newBubbles = new bool[bubblesLenght];
+
 	for (int i = 0; i < category + 1; i++)  // category 4 --> 5 different bubbles
 	{
 		spriteSheet[i] = al_load_bitmap(path[i]);
 		printf(path[i]);
-		bubbles[i].New({ SCREEN_WIDTH / 2 , BUBBLES_MAX_HEIGT }, 0, 1, spriteSheet[category]); // Pas per referenica??
+		//bubbles[i].New({ SCREEN_WIDTH / 2 , BUBBLES_MAX_HEIGT }, 0, 1, spriteSheet[i]); // Pas per referenica??
+	}
+
+	for (int i = 0; i < bubblesLenght; i++)
+	{
 		bubbles[i].Deactivate();
+		newBubbles[i] = false;
 	}
 
 	bubbles[0].New({ SCREEN_WIDTH / 2 , BUBBLES_MAX_HEIGT}, category, 1, spriteSheet[category]);
@@ -65,28 +71,36 @@ void BubbleManager::New(int category)
 
 void BubbleManager::Update()
 {
+	int j;
 	for (int i = 0; i < bubblesLenght; i++)
 	{
-		printf("num %i", i);
-		//bubbles[i].Update();
+		if (!newBubbles[i])
+		{
+			bubbles[i].Update();
+		}
 
-		/*if (bubbles[i].IsHit())
+		if (bubbles[i].IsHit() && bubbles[i].IsActive())
 		{
 			if (bubbles[i].GetCategory() > 0)
 			{
-				int j = 0;
+				j = 0;
 				while (j < bubblesLenght && bubbles[j].IsActive())
 				{
 					j++;
 				}
-
-				bubbles[j].New({ bubbles[i].GetPosition().x - BUBBLES_RADIUS[bubbles[i].GetCategory() - 1], bubbles[i].GetPosition().y }, bubbles[i].GetCategory() - 1, 
+				bubbles[j].New({ bubbles[i].GetPosition().x - BUBBLES_RADIUS[bubbles[i].GetCategory() - 1], bubbles[i].GetPosition().y }, bubbles[i].GetCategory() - 1,
 					-1, spriteSheet[bubbles[i].GetCategory() - 1]);
-				bubbles[i].New({ bubbles[i].GetPosition().x - BUBBLES_RADIUS[bubbles[i].GetCategory() - 1], bubbles[i].GetPosition().y }, bubbles[i].GetCategory() - 1,
-					-1, spriteSheet[bubbles[i].GetCategory() - 1]);
+				newBubbles[j] = true;
+				bubbles[i].New({ bubbles[i].GetPosition().x + BUBBLES_RADIUS[bubbles[i].GetCategory() - 1], bubbles[i].GetPosition().y }, bubbles[i].GetCategory() - 1,
+					1, spriteSheet[bubbles[i].GetCategory() - 1]);
 			}
 			else bubbles[i].Deactivate();
-		}*/
+		}
+	}
+
+	for (int i = 0; i < bubblesLenght; i++)
+	{
+		newBubbles[i] = false;
 	}
 }
 
@@ -94,6 +108,6 @@ void BubbleManager::Draw()
 {
 	for (int i = 0; i < bubblesLenght; i++)
 	{
-		//bubbles[i].Draw();
+		bubbles[i].Draw();
 	}
 }

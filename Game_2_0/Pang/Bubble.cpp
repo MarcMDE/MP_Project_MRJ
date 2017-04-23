@@ -109,10 +109,14 @@ void Bubble::Update()
 {
 	if (IsActive())
 	{
-		printf("BALL\n");
+		printf("BALL ");
 		Move();
 		collider.UpdatePosition(GetPosition());
 		animator.Update();
+		if (input.IsKeyPressed(ALLEGRO_KEY_K))
+		{
+			isHit = true;
+		}
 	}
 }
 

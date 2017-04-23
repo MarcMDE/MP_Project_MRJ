@@ -5,6 +5,7 @@
 #include "CircleCollider.h"
 #include "GameConfig.h"
 #include "MultiAnimation2D.h"
+#include "InputsManager.h"
 
 using namespace GameUtils2D;
 using namespace GameConfig;

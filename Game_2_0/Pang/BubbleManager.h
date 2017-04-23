@@ -15,6 +15,7 @@ private:
 	int bubblesLenght;
 	Bubble * bubbles;
 	ALLEGRO_BITMAP **spriteSheet;
+	bool * newBubbles;
 
 public:
 	BubbleManager();

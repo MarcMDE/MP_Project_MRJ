@@ -8,6 +8,10 @@ Pang::Pang()
 
 Pang::~Pang()
 {
+	player.~Player();
+	background.~Background();
+	bubbleManager.~BubbleManager();
+	pauseSprite.~Sprite();
 }
 
 void Pang::Initialize()

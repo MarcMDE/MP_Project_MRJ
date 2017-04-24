@@ -51,6 +51,7 @@ void Pang::Update()
 
 	if (!isPaused)
 	{
+		player.CheckBubblesCollision(bubbleManager.GetBubbles(), bubbleManager.GetBubblesLenght());
 		player.Update();
 		background.Update();
 		bubbleManager.Update();

@@ -28,6 +28,7 @@ public:
 	Vector2 GetLenght();
 	void EnlargeLenght(Vector2 d);
 	void SetLenght(Vector2 lenght);
+	void SetOffset(Vector2 offset);
 	void UpdatePosition(Vector2 position);
 	bool CheckAABBsCollision(AABB b);
 	bool CheckAABBCircleCollision(CircleCollider c);

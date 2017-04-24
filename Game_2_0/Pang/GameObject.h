@@ -20,5 +20,7 @@ public:
 	void SetDrawable(bool drawable);
 	bool IsActive();
 	bool IsDrawable();
+	void Activate();
+	void Deactivate();
 };
 

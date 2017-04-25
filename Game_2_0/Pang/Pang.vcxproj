@@ -119,7 +119,6 @@
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Animation2D.cpp" />
-    <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bubble.cpp" />
     <ClCompile Include="BubbleManager.cpp" />
@@ -137,7 +136,6 @@
   <ItemGroup>
     <ClInclude Include="AABB.h" />
     <ClInclude Include="Animation2D.h" />
-    <ClInclude Include="Arrow.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bubble.h" />
     <ClInclude Include="BubbleManager.h" />

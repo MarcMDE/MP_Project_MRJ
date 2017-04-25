@@ -9,6 +9,14 @@ BubbleManager::BubbleManager()
 
 BubbleManager::~BubbleManager()
 {
+	for (int i = 0; i < bubblesLenght; i++)
+	{
+		bubbles[i].~Bubble();
+	}
+
+	delete[]bubbles;
+	delete[]newBubbles;
+	delete[]spriteSheet;
 }
 
 void BubbleManager::New(int category)
@@ -49,7 +57,8 @@ void BubbleManager::New(int category)
 	}
 	
 	bubblesLenght = pow(2, category);
-	bubbles = (Bubble*)malloc(sizeof(Bubble)*bubblesLenght);
+	//bubbles = (Bubble*)malloc(sizeof(Bubble)*bubblesLenght);
+	bubbles = new Bubble[bubblesLenght];
 	newBubbles = new bool[bubblesLenght];
 
 	for (int i = 0; i < category + 1; i++)  // category 4 --> 5 different bubbles

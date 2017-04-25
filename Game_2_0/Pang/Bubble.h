@@ -39,5 +39,6 @@ public:
 	void Deactivate();
 	void Update();
 	void Draw();
+	CircleCollider GetCollider();
 };
 

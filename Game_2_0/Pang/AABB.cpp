@@ -48,6 +48,15 @@ void AABB::SetLenght(Vector2 lenght)
 	this->lenght = lenght;
 }
 
+void AABB::SetOffset(Vector2 offset)
+{
+	this->offset.x = -this->offset.x;
+	this->offset.y = -this->offset.y;
+	UpdatePosition(GetPosition());
+	this->offset = offset;
+	UpdatePosition(GetPosition());
+}
+
 void AABB::UpdatePosition(Vector2 position)
 {
 	this->position = position + offset;
@@ -61,7 +70,7 @@ bool AABB::CheckAABBsCollision(AABB b)
 
 bool AABB::CheckAABBCircleCollision(CircleCollider c)
 {
-	bool collision = false;
+	bool collision = true;
 	Vector2 d;
 
 	d.x = fabs(c.GetPosition().x - position.x);

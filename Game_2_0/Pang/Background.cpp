@@ -9,23 +9,14 @@ Background::Background()
 
 Background::~Background()
 {
-	for (int i = 0; i < animationsLenght; i++)
-	{
-		animations[i].~Animation2D();
-	}
-
-	delete[]animations;
-	delete[]animationsPosition;
 }
 
 void Background::New(ALLEGRO_BITMAP * image, int animationsLenght)
 {
 	back.New(image);
 	this->animationsLenght = animationsLenght;
-	animations = new Animation2D[animationsLenght];
-	animationsPosition = new Vector2[animationsLenght];
-	//animations = (Animation2D*)malloc(sizeof(Animation2D) * animationsLenght);
-	//animationsPosition = (Vector2*)malloc(sizeof(Vector2) * animationsLenght);
+	animations = (Animation2D*)malloc(sizeof(Animation2D) * animationsLenght);
+	animationsPosition = (Vector2*)malloc(sizeof(Vector2) * animationsLenght);
 	SetPosition({ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 });
 }
 

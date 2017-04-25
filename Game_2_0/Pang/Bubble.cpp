@@ -56,8 +56,6 @@ Bubble::Bubble()
 
 Bubble::~Bubble()
 {
-	collider.~CircleCollider();
-	animator.~MultiAnimation2D();
 }
 
 void Bubble::New(Vector2 position, int category, int directionX, ALLEGRO_BITMAP * spriteSheet)

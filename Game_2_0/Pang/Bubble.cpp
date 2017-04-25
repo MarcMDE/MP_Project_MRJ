@@ -109,6 +109,7 @@ void Bubble::Update()
 {
 	if (IsActive())
 	{
+		printf("BALL ");
 		Move();
 		collider.UpdatePosition(GetPosition());
 		animator.Update();
@@ -126,9 +127,4 @@ void Bubble::Draw()
 		animator.Draw(GetPosition(), false);
 		collider.DebugDraw();
 	}
-}
-
-CircleCollider Bubble::GetCollider()
-{
-	return collider;
 }

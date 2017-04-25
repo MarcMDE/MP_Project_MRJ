@@ -66,16 +66,7 @@ void BubbleManager::New(int category)
 	}
 
 	bubbles[0].New({ SCREEN_WIDTH / 2 , BUBBLES_MAX_HEIGT}, category, 1, spriteSheet[category]);
-}
-
-Bubble * BubbleManager::GetBubbles()
-{
-	return bubbles;
-}
-
-int BubbleManager::GetBubblesLenght()
-{
-	return bubblesLenght;
+	printf("asd\n");
 }
 
 void BubbleManager::Update()

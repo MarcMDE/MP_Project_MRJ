@@ -35,7 +35,6 @@ void Player::New()
 	velocity = { 0, 0 };
 	isGrounded = false;
 	isJumping = false;
-	isAlive = true;
 	fallingMovementFactor = PLAYER_1_FALLING_MOV_FACTOR;
 	jumpingMovementFactor = PLAYER_1_JUMPING_MOV_FACTOR;
 
@@ -43,8 +42,6 @@ void Player::New()
 	animator.NewSequence({ 4, PLAYER_WIDTH, PLAYER_HEIGHT, 10, { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, true }, RUNNING);
 	animator.NewSequence({ 3, PLAYER_WIDTH, PLAYER_HEIGHT, 10, { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, false }, JUMPING);
 	animator.NewSequence({ 3, PLAYER_WIDTH, PLAYER_HEIGHT, 10, { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, true}, IDLE);
-
-	arrow.New(al_load_bitmap("arrowSpriteSheet.png"));
 
 	DefineCurrentAnimation(IDLE);
 
@@ -91,13 +88,6 @@ void Player::Update()
 			direction.x = -1;
 			orientation = LEFT;
 		}
-
-		if (input.IsKeyPressed(PLAYER_1_SHOT) && !arrow.IsActive())
-		{
-			arrow.Shot(GetPosition());
-		}
-
-		arrow.Update();
 
 		
 		/*
@@ -184,33 +174,7 @@ void Player::Draw()
 {
 	if (IsDrawable())
 	{
-		arrow.Draw();
 		animator.Draw(GetPosition(), (bool)orientation);
 		collider.DebugDraw();
 	}
-}
-
-void Player::CheckBubblesCollision(Bubble * b, int lenght)
-{
-	int i = 0;
-	while (isAlive && i < lenght)
-	{
-		if (b[i].IsActive() && collider.CheckAABBCircleCollision(b[i].GetCollider()))
-		{
-			isAlive = false;
-			
-			// TEMP
-			//SetActive(false);
-			//SetDrawable(false);
-			// Set death anim.
-		}
-		i++;
-	}
-
-	arrow.CheckBubblesCollision(b, lenght);
-}
-
-bool Player::IsAlive()
-{
-	return isAlive;
 }

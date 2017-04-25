@@ -5,7 +5,7 @@
 void Bubble::Move()
 {
 	velocity.x = BUBBLES_SPEED[category].x * directionX;
-	velocity.y += GRAVITY_Y;
+	velocity.y += BUBBLES_GRAVITY_Y;
 
 	Translate(velocity);
 	

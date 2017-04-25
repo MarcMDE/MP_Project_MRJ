@@ -20,7 +20,7 @@ void Pang::Initialize()
 	background.New(al_load_bitmap("main_background.png"), 2);
 	background.NewAnimation(al_load_bitmap("clowd.png"), { 128, 128 }, 4, 2, 20, { 200, 150 }, 0);
 	background.NewAnimation(al_load_bitmap("solet.png"), { 512, 512 }, 4, 2, 10, { SCREEN_WIDTH - 150, 150 }, 1);
-	bubbleManager.New(4);
+	bubbleManager.New(2);
 
 	//bI = al_load_bitmap("SpriteSheet_4.png"); // Temp
 	//b.New({ SCREEN_WIDTH / 2, 150 }, 4, 1, bI); // Temp

@@ -51,7 +51,7 @@ void Player::New()
 
 	DefineCurrentAnimation(IDLE);
 
-	collider.New(GetPosition(), { 0, -PLAYER_HEIGHT/2 }, { PLAYER_WIDTH, PLAYER_HEIGHT });
+	collider.New(GetPosition(), { 0, -PLAYER_HEIGHT/2 + PLAYER_HEIGHT/2 - PLAYER_COLLIDER_HEIGHT/2 }, { PLAYER_COLLIDER_WIDTH, PLAYER_COLLIDER_HEIGHT });
 }
 
 void Player::Update()
@@ -203,8 +203,8 @@ void Player::CheckBubblesCollision(Bubble * b, int lenght)
 			isAlive = false;
 			
 			// TEMP
-			//SetActive(false);
-			//SetDrawable(false);
+			SetActive(false);
+			SetDrawable(false);
 			// Set death anim.
 		}
 		i++;

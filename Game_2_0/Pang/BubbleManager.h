@@ -23,9 +23,6 @@ public:
 
 	void New(int category);
 
-	Bubble* GetBubbles();
-	int GetBubblesLenght();
-
 	void Update();
 	void Draw();
 };

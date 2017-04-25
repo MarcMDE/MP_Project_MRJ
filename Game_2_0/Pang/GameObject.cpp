@@ -35,15 +35,3 @@ bool GameObject::IsDrawable()
 {
 	return isDrawable;
 }
-
-void GameObject::Activate()
-{
-	SetActive(true);
-	SetDrawable(true);
-}
-
-void GameObject::Deactivate()
-{
-	SetActive(false);
-	SetDrawable(false);
-}

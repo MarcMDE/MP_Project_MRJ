@@ -31,14 +31,6 @@ namespace GameConfig
 	
 	const int PLAYER_1_SOURCEPOSITION_X = SCREEN_WIDTH / 3;
 
-	// ARROW
-	const int ARROW_BODY_WIDTH = 16;
-	const int ARROW_HEAD_WIDTH = 32;
-	const int ARROW_HEAD_HEIGHT = 32;
-	const float ARROW_SPEED = 12.0f;
-	const int ARROW_BODY_MAX_LENGHT = SCREEN_HEIGHT - ARROW_HEAD_HEIGHT;
-	const int ARROW_DURATION = 50;
-
 	// BUBBLES
 	const int BUBBLES_SEQUENCES_LENGHT = 2;
 	const int BUBBLES_SEQUENCE_FRAMES = 4;
@@ -49,11 +41,11 @@ namespace GameConfig
 	const int BUBBLES_RADIUS[BUBBLES_CATEGORIES_LENGHT] = { 8, 16, 32, 64, 128 };
 	const GameUtils2D::Vector2 BUBBLES_SPEED[BUBBLES_CATEGORIES_LENGHT] =
 	{
-		{ 5.5f, 35.0f },
-		{ 5.25f, 34.0f },
-		{ 5.0f, 33.0f },
-		{ 4.75f, 32.0f },
-		{ 4.5f, 31.0f }
+		{ 5.5f, 30.0f },
+		{ 5.0f, 30.0f },
+		{ 4.5f, 30.0f },
+		{ 4.0f, 30.0f },
+		{ 3.5f, 30.0f }
 	};
 	
 	

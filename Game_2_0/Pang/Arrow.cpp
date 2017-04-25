@@ -11,8 +11,6 @@ Arrow::Arrow()
 
 Arrow::~Arrow()
 {
-	sprite.~Sprite();
-	collider.~AABB();
 }
 
 void Arrow::New(ALLEGRO_BITMAP * image)

@@ -21,6 +21,9 @@ Player::Player()
 
 Player::~Player()
 {
+	collider.~AABB();
+	animator.~MultiAnimation2D();
+	arrow.~Arrow();
 }
 
 void Player::New()

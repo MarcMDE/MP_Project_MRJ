@@ -8,7 +8,7 @@ MultiAnimation2D::MultiAnimation2D()
 
 MultiAnimation2D::~MultiAnimation2D()
 {
-	free(animations);
+	delete[]animations;
 	spriteSheet.~Sprite();
 }
 
@@ -17,8 +17,8 @@ void MultiAnimation2D::New(ALLEGRO_BITMAP * image, int animationsLenght)
 	spriteSheet.New(image);
 	this->animationsLenght = animationsLenght;
 
-	animations = (FramesSequence*)malloc(sizeof(FramesSequence) * 3);
-
+	//animations = (FramesSequence*)malloc(sizeof(FramesSequence) * animationsLenght);
+	animations = new FramesSequence[animationsLenght];
 	currentAnimation = 0;
 	Reset();
 }

@@ -26,28 +26,24 @@ Player::~Player()
 	arrow.~Arrow();
 }
 
-void Player::New()
+void Player::New(int index)
 {
-	SetPosition({ PLAYER_1_SOURCEPOSITION_X, GROUND_Y });
+	SetPosition({ (float)PLAYER_SOURCEPOSITION_X[index], GROUND_Y });
 	SetRotation(0);
 	SetScale(1);
 
-	speed = PLAYER_1_SPEED;
-	topSpeed = { PLAYER_1_TOPSPEED_X, 0 };
 	direction = { 0, 0 };
 	velocity = { 0, 0 };
 	isGrounded = false;
 	isJumping = false;
 	isAlive = true;
-	fallingMovementFactor = PLAYER_1_FALLING_MOV_FACTOR;
-	jumpingMovementFactor = PLAYER_1_JUMPING_MOV_FACTOR;
 
-	animator.New(al_load_bitmap("character_anims.png"), 3);
+	animator.New(al_load_bitmap(PLAYER_SPRITE[index]), 3);
 	animator.NewSequence({ 4, PLAYER_WIDTH, PLAYER_HEIGHT, 10, { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, true }, RUNNING);
 	animator.NewSequence({ 3, PLAYER_WIDTH, PLAYER_HEIGHT, 10, { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, false }, JUMPING);
 	animator.NewSequence({ 3, PLAYER_WIDTH, PLAYER_HEIGHT, 10, { -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, true}, IDLE);
 
-	arrow.New(al_load_bitmap("arrowSpriteSheet.png"));
+	arrow.New(al_load_bitmap(ARROW_SPRITE));
 
 	DefineCurrentAnimation(IDLE);
 
@@ -70,10 +66,10 @@ void Player::Update()
 		}
 
 		// JUMP
-		if (isGrounded && !isJumping && input.IsKeyPressed(PLAYER_1_JUMP))
+		if (isGrounded && !isJumping && input.IsKeyPressed(PLAYER_JUMP[index]))
 		{
 			isJumping = true;
-			velocity.y = -PLAYER_1_JUMPSPEED;
+			velocity.y = -PLAYER_JUMPSPEED;
 			DefineCurrentAnimation(JUMPING);
 		}
 		else if (!isGrounded)
@@ -84,18 +80,18 @@ void Player::Update()
 		}
 
 		// MOVEMENT
-		if (input.IsKeyDown(PLAYER_1_RIGHT))
+		if (input.IsKeyDown(PLAYER_RIGHT[index]))
 		{
 			direction.x = 1;
 			orientation = RIGHT;
 		}
-		else if (input.IsKeyDown(PLAYER_1_LEFT))
+		else if (input.IsKeyDown(PLAYER_LEFT[index]))
 		{
 			direction.x = -1;
 			orientation = LEFT;
 		}
 
-		if (input.IsKeyPressed(PLAYER_1_SHOT) && !arrow.IsActive())
+		if (input.IsKeyPressed(PLAYER_SHOT[index]) && !arrow.IsActive())
 		{
 			arrow.Shot(GetPosition());
 		}
@@ -153,9 +149,9 @@ void Player::Update()
 			else
 			{
 				// Speed should have an easing dependant value!
-				velocity.x += speed.x * direction.x;
-				if (velocity.x > topSpeed.x) velocity.x = topSpeed.x;
-				else if (velocity.x < -topSpeed.x) velocity.x = -topSpeed.x;
+				velocity.x += PLAYER_SPEED.x * direction.x;
+				if (velocity.x > PLAYER_TOPSPEED_X[index]) velocity.x = PLAYER_TOPSPEED_X[index];
+				else if (velocity.x < -PLAYER_TOPSPEED_X[index]) velocity.x = -PLAYER_TOPSPEED_X[index];
 
 				DefineCurrentAnimation(RUNNING);
 			}

@@ -16,16 +16,13 @@ using namespace GameUtils2D;
 class Player : public GameObject
 {
 private:
+	int index;
 	enum PlayerAnimations { RUNNING = 0, JUMPING, IDLE };
 	Vector2 velocity;
-	Vector2 speed;
-	Vector2 topSpeed;
 	Vector2 direction;
 	bool isGrounded;
 	bool isJumping;
 	bool isAlive;
-	float fallingMovementFactor;
-	float jumpingMovementFactor;
 	AABB collider;
 	MultiAnimation2D animator;
 	Orientation orientation;
@@ -39,7 +36,7 @@ public:
 	Player();
 	~Player();
 	
-	void New();
+	void New(int index);
 	void Update();
 	void Draw();
 	void CheckBubblesCollision(Bubble *b, int lenght);

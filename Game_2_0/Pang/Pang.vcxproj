@@ -125,6 +125,7 @@
     <ClCompile Include="BubbleManager.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameUtils2D.cpp" />
     <ClCompile Include="InputsManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />

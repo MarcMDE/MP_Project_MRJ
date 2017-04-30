@@ -79,4 +79,8 @@ namespace GameUtils2D
 		Vector2 offset;
 		bool repeat;
 	};
+
+	// Copies a to b
+	void CharSringCpy(char a[], char b[], int dim);
+	void CharSringCpy(char a[], char b[]);
 }

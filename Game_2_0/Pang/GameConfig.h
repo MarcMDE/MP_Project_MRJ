@@ -2,6 +2,8 @@
 #include "allegro5/allegro.h"
 #include "GameUtils2D.h"
 
+// CORRETGIR CLASSES AMB NOVES CONST (NOMENCLATURA)
+
 namespace GameConfig
 {
 	// GENERAL
@@ -16,25 +18,28 @@ namespace GameConfig
 	const int PLAYER_HEIGHT = 128;
 	const int PLAYER_COLLIDER_WIDTH = 30;
 	const int PLAYER_COLLIDER_HEIGHT = 110;
+	const GameUtils2D::Vector2 PLAYER_SPEED = { 0.2f, 4.0f };
+	const float PLAYER_JUMPSPEED = 20.5f;
+	const float PLAYER_FALLING_MOV_FACTOR = 0.4f;
+	const float PLAYER_JUMPING_MOV_FACTOR = 0.85f;
 
 	// PLAYER_1
-	const char PLAYER_1_SPRITE[30] = "assets/player/player.png";
-	const int PLAYER_1_RIGHT = ALLEGRO_KEY_D;
-	const int PLAYER_1_LEFT = ALLEGRO_KEY_A;
-	const int PLAYER_1_UP = ALLEGRO_KEY_W;
-	const int PLAYER_1_DOWN = ALLEGRO_KEY_S;
-	const int PLAYER_1_JUMP = ALLEGRO_KEY_W;
-	const int PLAYER_1_SHOT = ALLEGRO_KEY_SPACE;
-	const int PLAYER_1_TOPSPEED_X = 6.0f;
 
-	const GameUtils2D::Vector2 PLAYER_1_SPEED = { 0.2f, 4.0f };
-	const float PLAYER_1_JUMPSPEED = 20.5f;
-	const float PLAYER_1_FALLING_MOV_FACTOR = 0.4f;
-	const float PLAYER_1_JUMPING_MOV_FACTOR = 0.85f;
-	
-	const int PLAYER_1_SOURCEPOSITION_X = SCREEN_WIDTH / 3;
+	const int PLAYERS_LENGT = 1;
+	const char PLAYER_SPRITE[PLAYERS_LENGT][50] = { "assets/character/character_01_spriteSheet.png" };
+	const char PLAYER_RIGHT[PLAYERS_LENGT] = { ALLEGRO_KEY_D };
+	const int PLAYER_LEFT[PLAYERS_LENGT] = { ALLEGRO_KEY_A };
+	const int PLAYER_UP[PLAYERS_LENGT] = { ALLEGRO_KEY_W };
+	const int PLAYER_DOWN[PLAYERS_LENGT] = { ALLEGRO_KEY_S };
+	const int PLAYER_JUMP[PLAYERS_LENGT] = { ALLEGRO_KEY_W };
+	const int PLAYER_SHOT[PLAYERS_LENGT] = { ALLEGRO_KEY_SPACE };
+	const float PLAYER_TOPSPEED_X[PLAYERS_LENGT] = { 6.0f };
+
+
+	const int PLAYER_SOURCEPOSITION_X[PLAYERS_LENGT] = { SCREEN_WIDTH / 3 };
 
 	// ARROW
+	const char ARROW_SPRITE[45] = "assets/character/arrow_spriteSheet.png";
 	const int ARROW_BODY_WIDTH = 16;
 	const int ARROW_HEAD_WIDTH = 32;
 	const int ARROW_HEAD_HEIGHT = 32;
@@ -59,21 +64,43 @@ namespace GameConfig
 		{ 4.75f, 20.0f },
 		{ 4.5f, 18.0f }
 	};
-	
+
 	// LEVELS
 	const int LEVELS_LENGHT = 1;
 
-	//LEVEL_01
-		// BACKGROUND
-	const char LEVEL_01_BACKGROUND [45] = "assets/levels/level_01/background.png";
-	const int LEVEL_01_BACKGROUNDANIMS_LENGHT = 2;
-	const char LEVEL_01_BACKGROUNDANIMS_0 [45] = "assets/levels/level_01/bgAnim_0.png";
-	const char LEVEL_01_BACKGROUNDANIMS_1 [45] = "assets/levels/level_01/bgAnim_1.png";
-	const Vector2 LEVEL_01_BACKGROUNDANIMS_0_LENGHT = { 256, 256 };
 
+	char LEVEL_BACKGROUND[LEVELS_LENGHT][40] = { "assets/levels/level_01/background.png" };
 
-		//BUBBLES
-	const int LEVEL_01_BUBBLEMANAGERS_LENGHT = 1;
-	const int LEVEL_01_BUBBLEMANAGERS_0_CAT = 3;
+	const int LEVEL_BACKGROUNDANIMS_LENGHT = 3;
+	const char LEVEL_BACKGROUNDANIMS[LEVELS_LENGHT][LEVEL_BACKGROUNDANIMS_LENGHT][45] =
+	{
+		{
+			"assets/levels/level_01/bgAnim_0.png",
+			"assets/levels/level_01/bgAnim_1.png" ,
+			"assets/levels/level_01/bgAnim_2.png"
+		}
+	};
 
+	const GameUtils2D::Vector2 LEVEL_BACKGROUNDANIM_LENGHT[LEVELS_LENGHT][LEVEL_BACKGROUNDANIMS_LENGHT] =
+	{
+		{
+			{ 128, 128 },
+			{ 512, 512 },
+			{ 256, 256 }
+		}
+	};
+	const int LEVEL_BACKGROUNDANIM_FRAMES[LEVELS_LENGHT][LEVEL_BACKGROUNDANIMS_LENGHT] = { { 4, 4, 4 } };
+	const int LEVEL_BACKGROUNDANIM_COLUMNS[LEVELS_LENGHT][LEVEL_BACKGROUNDANIMS_LENGHT] = { { 2, 2, 2 } };
+	const int LEVEL_BACKGROUNDANIM_DURATION[LEVELS_LENGHT][LEVEL_BACKGROUNDANIMS_LENGHT] = { { 20, 20, 20 } };
+	const GameUtils2D::Vector2 LEVEL_BACKGROUNDANIM_POSITION[LEVELS_LENGHT][LEVEL_BACKGROUNDANIMS_LENGHT] =
+	{
+		{
+			{10, 10},
+			{SCREEN_WIDTH - 550, 50},
+			{200, 200}
+		}
+	};
+
+	const int LEVEL_BUBBLEMANAGERS_LENGHT[LEVELS_LENGHT] = { 1 };
+	const int LEVEL_BUBBLEMANAGERS_CAT[LEVELS_LENGHT] = { 3 };
 }

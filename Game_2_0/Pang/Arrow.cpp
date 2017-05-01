@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 
-
 Arrow::Arrow()
 {
 }

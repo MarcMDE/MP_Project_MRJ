@@ -1,4 +1,5 @@
 #pragma once
+
 #include "allegro5/allegro.h"
 #include "GameUtils2D.h"
 
@@ -24,7 +25,6 @@ namespace GameConfig
 	const float PLAYER_JUMPING_MOV_FACTOR = 0.85f;
 
 	// PLAYER_1
-
 	const int PLAYERS_LENGT = 1;
 	const char PLAYER_SPRITE[PLAYERS_LENGT][50] = { "assets/character/character_01_spriteSheet.png" };
 	const char PLAYER_RIGHT[PLAYERS_LENGT] = { ALLEGRO_KEY_D };
@@ -34,7 +34,6 @@ namespace GameConfig
 	const int PLAYER_JUMP[PLAYERS_LENGT] = { ALLEGRO_KEY_W };
 	const int PLAYER_SHOT[PLAYERS_LENGT] = { ALLEGRO_KEY_SPACE };
 	const float PLAYER_TOPSPEED_X[PLAYERS_LENGT] = { 6.0f };
-
 
 	const int PLAYER_SOURCEPOSITION_X[PLAYERS_LENGT] = { SCREEN_WIDTH / 3 };
 
@@ -68,8 +67,7 @@ namespace GameConfig
 	// LEVELS
 	const int LEVELS_LENGHT = 1;
 
-
-	char LEVEL_BACKGROUND[LEVELS_LENGHT][40] = { "assets/levels/level_01/background.png" };
+	const char LEVEL_BACKGROUND[LEVELS_LENGHT][40] = { {"assets/levels/level_01/background.png"} };
 
 	const int LEVEL_BACKGROUNDANIMS_LENGHT = 3;
 	const char LEVEL_BACKGROUNDANIMS[LEVELS_LENGHT][LEVEL_BACKGROUNDANIMS_LENGHT][45] =
@@ -84,6 +82,7 @@ namespace GameConfig
 	const GameUtils2D::Vector2 LEVEL_BACKGROUNDANIM_LENGHT[LEVELS_LENGHT][LEVEL_BACKGROUNDANIMS_LENGHT] =
 	{
 		{
+			// LEVEL 01
 			{ 128, 128 },
 			{ 512, 512 },
 			{ 256, 256 }

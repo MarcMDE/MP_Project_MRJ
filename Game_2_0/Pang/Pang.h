@@ -15,7 +15,7 @@ class Pang
 {
 private:
 	Player player;
-	Background background;
+	//Background background;
 	BubbleManager bubbleManager;
 
 	//Bubble b; // temp

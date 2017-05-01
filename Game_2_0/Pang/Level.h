@@ -15,5 +15,7 @@ public:
 	~Level();
 
 	void New(int level);
+	void Update();
+	void Draw();
 };
 

@@ -5,7 +5,6 @@ MultiAnimation2D::MultiAnimation2D()
 	animations = NULL;
 }
 
-
 MultiAnimation2D::~MultiAnimation2D()
 {
 	delete[]animations;

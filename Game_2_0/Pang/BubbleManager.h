@@ -12,10 +12,12 @@ using namespace std;
 class BubbleManager
 {
 private:
+	
 	int bubblesLenght;
 	Bubble * bubbles;
 	ALLEGRO_BITMAP **spriteSheet;
 	bool * newBubbles;
+	int activeBubbles;
 
 public:
 	BubbleManager();
@@ -25,6 +27,7 @@ public:
 
 	Bubble* GetBubbles();
 	int GetBubblesLenght();
+	int GetActiveBubblesLeft();
 
 	void Update();
 	void Draw();

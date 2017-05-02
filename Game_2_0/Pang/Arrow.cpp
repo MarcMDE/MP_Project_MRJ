@@ -83,7 +83,9 @@ void Arrow::Draw()
 		// Draw
 		sprite.DrawRegion({GetPosition().x, GetPosition().y - lenghtY}, { ARROW_BODY_WIDTH, ARROW_BODY_MAX_LENGHT - ARROW_HEAD_HEIGHT }, { ARROW_HEAD_WIDTH, ARROW_HEAD_HEIGHT }, false);
 		
+		#ifdef DEBUG	
 		collider.DebugDraw();
+		#endif
 	}
 }
 

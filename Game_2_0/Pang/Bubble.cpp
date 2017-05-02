@@ -126,7 +126,9 @@ void Bubble::Draw()
 	if (IsDrawable())
 	{
 		animator.Draw(GetPosition(), false);
+		#ifdef DEBUG	
 		collider.DebugDraw();
+		#endif
 	}
 }
 

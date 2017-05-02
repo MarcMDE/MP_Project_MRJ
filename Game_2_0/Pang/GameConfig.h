@@ -3,7 +3,7 @@
 #include "allegro5/allegro.h"
 #include "GameUtils2D.h"
 
-// CORRETGIR CLASSES AMB NOVES CONST (NOMENCLATURA)
+#define DEBUG
 
 namespace GameConfig
 {

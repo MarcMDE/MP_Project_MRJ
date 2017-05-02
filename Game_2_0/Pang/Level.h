@@ -17,5 +17,7 @@ public:
 	void New(int level);
 	void Update();
 	void Draw();
+	Bubble* GetBubbles();
+	int GetBubblesLenght();
 };
 

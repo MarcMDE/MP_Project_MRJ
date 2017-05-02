@@ -75,6 +75,7 @@ void BubbleManager::New(int category)
 	}
 
 	bubbles[0].New({ SCREEN_WIDTH / 2 , BUBBLES_MAX_HEIGT}, category, 1, spriteSheet[category]);
+	activeBubbles = 1;
 }
 
 Bubble * BubbleManager::GetBubbles()
@@ -85,6 +86,11 @@ Bubble * BubbleManager::GetBubbles()
 int BubbleManager::GetBubblesLenght()
 {
 	return bubblesLenght;
+}
+
+int BubbleManager::GetActiveBubblesLeft()
+{
+	return activeBubbles;
 }
 
 void BubbleManager::Update()
@@ -111,8 +117,14 @@ void BubbleManager::Update()
 				newBubbles[j] = true;
 				bubbles[i].New({ bubbles[i].GetPosition().x + BUBBLES_RADIUS[bubbles[i].GetCategory() - 1], bubbles[i].GetPosition().y }, bubbles[i].GetCategory() - 1,
 					1, spriteSheet[bubbles[i].GetCategory() - 1]);
+
+				activeBubbles++;
 			}
-			else bubbles[i].Deactivate();
+			else
+			{
+				bubbles[i].Deactivate();
+				activeBubbles--;
+			}
 		}
 	}
 

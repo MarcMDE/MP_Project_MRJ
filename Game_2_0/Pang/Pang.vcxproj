@@ -127,6 +127,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InputsManager.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelsManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MultiAnimation2D.cpp" />
     <ClCompile Include="Pang.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="GameUtils2D.h" />
     <ClInclude Include="InputsManager.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelsManager.h" />
     <ClInclude Include="MultiAnimation2D.h" />
     <ClInclude Include="Pang.h" />
     <ClInclude Include="Player.h" />

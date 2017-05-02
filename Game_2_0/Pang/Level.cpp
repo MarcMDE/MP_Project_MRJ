@@ -6,6 +6,7 @@ Level::Level()
 
 Level::~Level()
 {
+	delete[] bubbleManagers;
 }
 
 void Level::New(int level)
@@ -24,16 +25,37 @@ void Level::New(int level)
 
 	for (int i = 0; i < LEVEL_BUBBLEMANAGERS_LENGHT[level]; i++)
 	{
-		// Init bubblemanagers	
+		// Init bubblemanagers
+		bubbleManagers[i].New(LEVEL_BUBBLEMANAGERS_CAT[level]);
 	}
 }
 
 void Level::Update()
 {
 	background.Update();
+
+	for (int i = 0; i < LEVEL_BUBBLEMANAGERS_LENGHT[level]; i++)
+	{
+		bubbleManagers[i].Update();
+	}
 }
 
 void Level::Draw()
 {
 	background.Draw();
+
+	for (int i = 0; i < LEVEL_BUBBLEMANAGERS_LENGHT[level]; i++)
+	{
+		bubbleManagers[i].Draw();
+	}
+}
+
+Bubble * Level::GetBubbles()
+{
+	return bubbleManagers[level].GetBubbles();
+}
+
+int Level::GetBubblesLenght()
+{
+	return bubbleManagers[level].GetBubblesLenght();
 }

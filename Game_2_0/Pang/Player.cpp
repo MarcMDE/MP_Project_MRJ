@@ -185,7 +185,10 @@ void Player::Draw()
 	{
 		arrow.Draw();
 		animator.Draw(GetPosition(), (bool)orientation);
+
+		#ifdef DEBUG	
 		collider.DebugDraw();
+		#endif
 	}
 }
 

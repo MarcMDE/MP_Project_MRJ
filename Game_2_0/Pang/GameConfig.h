@@ -14,6 +14,7 @@ namespace GameConfig
 	const int GROUND_Y = SCREEN_HEIGHT;
 	const float GRAVITY_Y = 1.0f;
 	const float GROUND_FRICTION_X = 0.05f;
+	const int MAX_ATTEMPTS = 10;
 
 	const int PLAYER_WIDTH = 128;
 	const int PLAYER_HEIGHT = 128;
@@ -65,6 +66,8 @@ namespace GameConfig
 	};
 
 	// LEVELS
+	enum PangLevels { LEVEL_01 = 0, LEVEL_02, LEVEL_03 };
+
 	const int LEVELS_LENGHT = 1;
 
 	const char LEVEL_BACKGROUND[LEVELS_LENGHT][40] = { {"assets/levels/level_01/background.png"} };
@@ -101,5 +104,5 @@ namespace GameConfig
 	};
 
 	const int LEVEL_BUBBLEMANAGERS_LENGHT[LEVELS_LENGHT] = { 1 };
-	const int LEVEL_BUBBLEMANAGERS_CAT[LEVELS_LENGHT] = { 3 };
+	const int LEVEL_BUBBLEMANAGERS_CAT[LEVELS_LENGHT][3] = { {3, 3, 3} };
 }

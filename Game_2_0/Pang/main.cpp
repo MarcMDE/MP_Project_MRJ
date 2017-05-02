@@ -9,6 +9,7 @@
 #include <stdio.h> // L'utilitzem per "debugejar" per consola
 #include <allegro5/allegro_native_dialog.h> // Error Message dialog
 #include <allegro5/allegro_image.h> // Image addon ("Draw")
+#include <allegro5/allegro_font.h> // Font Addon
 #include <allegro5/allegro_primitives.h> // Debugging
 #include "GameConfig.h"
 #include "Pang.h"
@@ -57,6 +58,10 @@ void Initialize()
 	{
 		Error("Allegro primitives addon initialitzation failed");
 	}
+	//if (!al_init_font_addon())
+	//{
+		//Error("Allegro font addon initialitzation failed");
+	//}
 
 	// Set FPS timer
 	fpsTimer = al_create_timer(1.0f / GameConfig::FIXED_FRAMERATE);

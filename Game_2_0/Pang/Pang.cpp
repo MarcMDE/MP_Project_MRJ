@@ -17,7 +17,7 @@ Pang::~Pang()
 void Pang::Initialize()
 {
 	player.New(0);
-	level.New(0);
+	levelManager.StartNewLevel(0);
 	//background.New(al_load_bitmap("main_background.png"), 2);
 	//background.NewAnimation(al_load_bitmap("clowd.png"), { 128, 128 }, 4, 2, 20, { 200, 150 }, 0);
 	//background.NewAnimation(al_load_bitmap("solet.png"), { 512, 512 }, 4, 2, 10, { SCREEN_WIDTH - 150, 150 }, 1);
@@ -56,21 +56,27 @@ void Pang::Update()
 
 	if (!isPaused)
 	{
-		player.CheckBubblesCollision(level.GetBubbles(), level.GetBubblesLenght());
-		level.Update();
-		player.Update();
-		//background.Update();
-		
-		//b.Update(); // Temp
+		if (levelManager.GetIsStarted())
+		{
+			player.CheckBubblesCollision(levelManager.GetBubbles(), levelManager.GetBubblesLenght());
+			player.Update();
+
+			if (!player.IsAlive())
+			{
+				levelManager.RestartLevel();
+				player.SetAsAlive();
+			}
+
+			if (levelManager.GetActiveBubblesLeft() <= 0) levelManager.StartNextLevel();
+		}
+		levelManager.Update();
 	}
 }
 
 void Pang::Draw()
 {
-	//background.Draw();
-	level.Draw();
+	levelManager.Draw();
 	player.Draw();
-	//b.Draw(); // Temp
 
 	if (isPaused)
 	{

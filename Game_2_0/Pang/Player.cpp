@@ -216,3 +216,8 @@ bool Player::IsAlive()
 {
 	return isAlive;
 }
+
+void Player::SetAsAlive()
+{
+	isAlive = true;
+}

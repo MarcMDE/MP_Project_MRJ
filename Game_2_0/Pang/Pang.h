@@ -8,9 +8,10 @@
 #include "Player.h"
 #include "Background.h"
 #include "BubbleManager.h"
-#include "Level.h"
-#include "Bubble.h" // temp
-#include "MultiAnimation2D.h" // temp
+#include "LevelsManager.h"
+//#include "Level.h" // temp
+//#include "Bubble.h" // temp
+//#include "MultiAnimation2D.h" // temp
 
 using namespace GameConfig;
 
@@ -18,12 +19,7 @@ class Pang
 {
 private:
 	Player player;
-	Level level;
-	//Background background;
-	//BubbleManager bubbleManager;
-
-	//Bubble b; // temp
-	//ALLEGRO_BITMAP *bI; // temp
+	LevelsManager levelManager;
 
 	bool isPaused;
 	Sprite pauseSprite;

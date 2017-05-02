@@ -19,5 +19,6 @@ public:
 	void Draw();
 	Bubble* GetBubbles();
 	int GetBubblesLenght();
+	int GetActiveBubblesLeft();
 };
 

@@ -41,5 +41,6 @@ public:
 	void Draw();
 	void CheckBubblesCollision(Bubble *b, int lenght);
 	bool IsAlive();
+	void SetAsAlive();
 };
 

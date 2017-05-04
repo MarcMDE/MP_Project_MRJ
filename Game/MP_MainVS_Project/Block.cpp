@@ -1,23 +1,37 @@
 #include "Block.h"
 
-
-
-Block::Block(Vector2 position, Vector2 lenght, BlockTypes type, ALLEGRO_BITMAP *texture)
+Block::Block()
 {
-	body = Body({ position, 0, 0 }, { 0, 0 }, lenght);
-	sprite = Sprite(lenght, al_map_rgb(0, 255, 0));
-	sprite.SetTexture(texture);
-	this->type = type;
-	active = true;
+}
+
+
+Block::Block(Vector2 position, Vector2 lenght,  float friction)
+{
+	body = Body(position, { 0, 0 }, lenght);
+	this->friction = friction;
 }
 
 Block::~Block()
 {
 }
 
-Vector2 Block::GetPosition()
+Vector2 Block::GetPosition() const
 {
-	return body.GetPosition();
+	return body.GetTransform().GetPosition();
 }
 
+float Block::GetFriction() const
+{
+	return friction;
+}
+
+void Block::Update()
+{
+	//body.UpdateOnScreen();
+}
+
+void Block::DrawUpdate(Sprite sprite)
+{
+	body.Draw(sprite);
+}
 

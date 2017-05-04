@@ -1,4 +1,5 @@
 #include "Body.h"
+#include <stdio.h>
 
 Body::Body()
 {
@@ -7,53 +8,55 @@ Body::Body()
 Body::Body(Transform transform, Vector2 colliderOffset, Vector2 colliderLenght)
 {
 	this->transform = transform;
-	collider = AABB(transform.position, colliderOffset, colliderLenght);
+	collider = AABB(transform.GetPosition(), colliderOffset, colliderLenght);
+}
+
+Body::Body(Vector2 position, Vector2 colliderOffset, Vector2 colliderLenght)
+{
+	transform = Transform(position);
+	collider = AABB(position, colliderOffset, colliderLenght);
+}
+
+Body::Body(Vector2 position, float scale, Vector2 colliderOffset, Vector2 colliderLenght)
+{
+	transform = Transform(position);
+	transform.SetScale(scale);
+	collider = AABB(position, colliderOffset, colliderLenght);
 }
 
 Body::~Body()
 {
 }
 
-Vector2 Body::GetPosition() const
-{
-	return transform.position;
-}
-
-void Body::SetRotation(float degrees)
-{
-	transform.rotation = degrees;
-}
-
-float Body::GetRotation() const
-{
-	return transform.rotation;
-}
-
-void Body::SetScale(float scale)
-{
-	transform.scale = scale;
-}
-
-float Body::GetScale() const
-{
-	return transform.scale;
-}
-
 void Body::SetCollider(Vector2 offset, Vector2 lenght)
 {
-	collider = AABB(transform.position, offset, lenght);
-}
-
-void Body::SetPosition(Vector2 position)
-{
-	transform.position = position;
-	collider.UpdatePosition(transform.position);
+	collider = AABB(transform.GetPosition(), offset, lenght);
 }
 
 void Body::UpdatePosition(Vector2 displacement)
 {
-	transform.position.x += displacement.x;
-	transform.position.y += displacement.y;
-	collider.UpdatePosition(transform.position);
+	transform.Translate(displacement);
+	collider.UpdatePosition(transform.GetPosition());
+}
+
+void Body::SetInstantPosition(Vector2 position)
+{
+	transform.SetPosition(position);
+	collider.UpdatePosition(position);
+}
+
+void Body::Draw(Sprite sprite)
+{
+	sprite.Draw(transform.GetPosition());	
+}
+
+Transform Body::GetTransform() const
+{
+	return transform;
+}
+
+Vector2 Body::GetPos() const
+{
+	return transform.GetPosition();
 }
 

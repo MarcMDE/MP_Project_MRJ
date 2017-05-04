@@ -1,23 +1,20 @@
 #pragma once
 #include "CharacterController.h"
-#include "Sprite.h"
+#include "GameUtils.h"
 
 class Player
 {
 private:
-	const Vector2 playerLenght = { 64, 128 };
-	const Vector2 speed = { 0.01f, 0.01f };
-	const Vector2 colliderOffset = {playerLenght.x / 2, playerLenght.y / 2};
-	CharacterController controller;
-	// Animation anim
 	Sprite sprite;
+	CharacterController controller;
 
 public:
 	Player();
-	Player(Transform transform, Vector2 friction);
-	void Initialize(Transform transform, Vector2 friction);
+	Player(Vector2 sourcePosition, Vector2 topSpeed, Vector2 speedIncrement, ALLEGRO_BITMAP * texture );
 	~Player();
-	void Update();
+	void Update(char key, bool isKeyDown);
 	void Draw();
+	Vector2 GetPos() const;
+	
 };
 

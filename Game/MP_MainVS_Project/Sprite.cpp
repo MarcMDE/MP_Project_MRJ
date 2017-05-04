@@ -12,20 +12,45 @@ Sprite::Sprite(Vector2 lenght, ALLEGRO_COLOR color)
 	offset.y = lenght.y / 2;
 }
 
-Sprite::~Sprite()
+Sprite::Sprite(Vector2 lenght, Vector2 offset, ALLEGRO_COLOR color)
 {
+	CreateFlatTexture(lenght, color);
+	this->offset = offset;
 }
 
-void Sprite::LoadTexture(char * path)
+Sprite::Sprite(ALLEGRO_BITMAP * texture)
+{
+	this->texture = texture;
+	offset = { 0, 0 };
+}
+
+Sprite::Sprite(Vector2 offset, ALLEGRO_BITMAP * texture)
+{
+	this->texture = texture;
+	this->offset = offset;
+}
+
+Sprite::Sprite(char * path)
 {
 	texture = al_load_bitmap(path);
 	offset = { 0, 0 };
 }
 
-void Sprite::SetTexture(ALLEGRO_BITMAP * texture)
+Sprite::Sprite(Vector2 offset, char * path)
 {
-	this->texture = texture;
+	texture = al_load_bitmap(path);
+	this->offset = offset;
 }
+
+Vector2 Sprite::GetLenght()
+{
+	return{ (float)al_get_bitmap_width(texture), (float)al_get_bitmap_height(texture) };
+}
+
+Sprite::~Sprite()
+{
+}
+
 
 void Sprite::CreateFlatTexture(Vector2 lenght, ALLEGRO_COLOR color)
 {

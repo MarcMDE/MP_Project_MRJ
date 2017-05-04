@@ -19,6 +19,30 @@ Player::Player()
 {
 }
 
+Player::Player(int index)
+{
+	SetPosition({ (float)PLAYER_SOURCEPOSITION_X[index], GROUND_Y });
+	SetRotation(0);
+	SetScale(1);
+
+	direction = { 0, 0 };
+	velocity = { 0, 0 };
+	isGrounded = false;
+	isJumping = false;
+	isAlive = true;
+
+	animator.New(al_load_bitmap(PLAYER_SPRITE[index]), 3);
+	animator.NewSequence({ 4, PLAYER_WIDTH, PLAYER_HEIGHT, 10,{ -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, true }, RUNNING);
+	animator.NewSequence({ 3, PLAYER_WIDTH, PLAYER_HEIGHT, 10,{ -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, false }, JUMPING);
+	animator.NewSequence({ 3, PLAYER_WIDTH, PLAYER_HEIGHT, 10,{ -PLAYER_WIDTH / 2, -PLAYER_HEIGHT }, true }, IDLE);
+
+	arrow.New(al_load_bitmap(ARROW_SPRITE));
+
+	DefineCurrentAnimation(IDLE);
+
+	collider.New(GetPosition(), { 0, -PLAYER_HEIGHT / 2 + PLAYER_HEIGHT / 2 - PLAYER_COLLIDER_HEIGHT / 2 }, { PLAYER_COLLIDER_WIDTH, PLAYER_COLLIDER_HEIGHT });
+}
+
 Player::~Player()
 {
 	collider.~AABB();
@@ -200,7 +224,7 @@ void Player::CheckBubblesCollision(Bubble * b, int lenght)
 		if (b[i].IsActive() && collider.CheckAABBCircleCollision(b[i].GetCollider()))
 		{
 			isAlive = false;
-			
+			arrow.Restart();
 			// TEMP
 			SetActive(false);
 			SetDrawable(false);
@@ -220,4 +244,10 @@ bool Player::IsAlive()
 void Player::SetAsAlive()
 {
 	isAlive = true;
+	SetPosition({ (float)PLAYER_SOURCEPOSITION_X[0], (float)GROUND_Y });
+	collider.UpdatePosition(GetPosition());
+	DefineCurrentAnimation(IDLE);
+	SetCurrentAnimation();
+	animator.Reset();
+	Activate();
 }

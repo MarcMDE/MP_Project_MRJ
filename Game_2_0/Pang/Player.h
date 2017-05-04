@@ -34,6 +34,7 @@ private:
 
 public:
 	Player();
+	Player(int index);
 	~Player();
 	
 	void New(int index);

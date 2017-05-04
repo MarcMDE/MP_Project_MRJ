@@ -5,14 +5,14 @@ LevelsManager::LevelsManager()
 	//m_font = al_create_builtin_font();
 }
 
-/*
+
 LevelsManager::LevelsManager(int level)
 {
 	m_currentLevel = level;
 	m_level.New(level);
-	isStarted = false;
+	m_isStarted = false;
 }
-*/
+
 
 
 LevelsManager::~LevelsManager()
@@ -30,6 +30,7 @@ void LevelsManager::StartNewLevel(int level)
 	m_level.New(level);
 	m_isStarted = false;
 	level = m_currentLevel;
+	m_level.Update(); // Check why needed. // Temp
 }
 
 void LevelsManager::StartNextLevel()
@@ -47,6 +48,14 @@ void LevelsManager::Update()
 	{
 		m_isStarted = true;
 	}
+
+#ifdef DEBUG
+	if (input.IsKeyPressed(ALLEGRO_KEY_R))
+	{
+		RestartLevel();
+	}
+#endif // DEBUG
+
 }
 
 void LevelsManager::Draw()

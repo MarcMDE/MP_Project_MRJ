@@ -14,7 +14,7 @@ private:
 
 public:
 	LevelsManager();
-	//LevelsManager(int level);
+	LevelsManager(int level);
 	~LevelsManager();
 
 	void RestartLevel();

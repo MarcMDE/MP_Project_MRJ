@@ -25,7 +25,7 @@ void Pang::Initialize()
 	
 	//bI = al_load_bitmap("SpriteSheet_4.png"); // Temp
 	//b.New({ SCREEN_WIDTH / 2, 150 }, 4, 1, bI); // Temp
-
+	player.Update(); // Check why needed. // Temp
 
 	isPaused = false;
 	pauseSprite.New({ SCREEN_WIDTH, SCREEN_HEIGHT }, al_map_rgba( 120, 120, 120, 25));

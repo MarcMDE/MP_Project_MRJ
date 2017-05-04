@@ -106,3 +106,9 @@ void Arrow::Reset()
 	lenghtY = 0;
 	counter = 0;
 }
+
+void Arrow::Restart()
+{
+	Reset();
+	Deactivate();
+}

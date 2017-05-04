@@ -20,6 +20,7 @@ private:
 
 	void Reset();
 
+
 public:
 	Arrow();
 	~Arrow();
@@ -29,6 +30,7 @@ public:
 	void CheckBubblesCollision(Bubble * b, int lenght);
 	void Draw();
 	void Shot(Vector2 position);
+	void Restart();
 
 };
 

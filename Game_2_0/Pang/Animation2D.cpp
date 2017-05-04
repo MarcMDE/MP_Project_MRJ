@@ -107,23 +107,25 @@ void Animation2D::Reset()
 
 void Animation2D::Update()
 {
-	if (counter >= duration)
+	if (duration != -1)
 	{
-		counter = 0;
-
-		if (currentFrame < frames-1)
+		if (counter >= duration)
 		{
-			currentFrame++;
+			counter = 0;
+
+			if (currentFrame < frames - 1)
+			{
+				currentFrame++;
+			}
+			else if (repeat) currentFrame = 0;
+
+			//printf("currFrame: %i \n", currentFrame);
 		}
-		else if (repeat) currentFrame = 0;
-
-		//printf("currFrame: %i \n", currentFrame);
+		else
+		{
+			counter++;
+		}
 	}
-	else
-	{
-		counter++;
-	}
-
 }
 
 void Animation2D::Draw(Vector2 position, bool hFlip)

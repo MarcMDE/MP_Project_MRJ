@@ -74,13 +74,6 @@
     <Allegro_AddonPrimitives>true</Allegro_AddonPrimitives>
     <Allegro_AddonTTF>true</Allegro_AddonTTF>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Allegro_AddonImage>true</Allegro_AddonImage>
-    <Allegro_AddonTTF>true</Allegro_AddonTTF>
-    <Allegro_AddonPrimitives>true</Allegro_AddonPrimitives>
-    <Allegro_AddonDialog>true</Allegro_AddonDialog>
-    <Allegro_AddonFont>true</Allegro_AddonFont>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -133,12 +126,15 @@
     <ClCompile Include="BubbleManager.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameUtils2D.cpp" />
     <ClCompile Include="InputsManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelsManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MultiAnimation2D.cpp" />
     <ClCompile Include="Pang.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticlesEmitter.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -159,6 +155,8 @@
     <ClInclude Include="LevelsManager.h" />
     <ClInclude Include="MultiAnimation2D.h" />
     <ClInclude Include="Pang.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticlesEmitter.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Transform.h" />

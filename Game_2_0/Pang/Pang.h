@@ -9,6 +9,8 @@
 #include "Background.h"
 #include "BubbleManager.h"
 #include "LevelsManager.h"
+
+#include "ParticlesEmitter.h" // temp
 //#include "Level.h" // temp
 //#include "Bubble.h" // temp
 //#include "MultiAnimation2D.h" // temp
@@ -20,6 +22,7 @@ class Pang
 private:
 	Player player;
 	LevelsManager levelManager;
+	ParticlesEmitter pEmitter;
 
 	bool isPaused;
 	Sprite pauseSprite;

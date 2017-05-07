@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdlib.h>
+
 namespace GameUtils2D
 {
 	enum Orientation {RIGHT = 0, LEFT};
@@ -79,8 +81,8 @@ namespace GameUtils2D
 		Vector2 offset;
 		bool repeat;
 	};
-
-	// Copies a to b
-	void CharSringCpy(char a[], char b[], int dim);
-	void CharSringCpy(char a[], char b[]);
+	
+	// TODO: REPAIR!
+	int GetRandomValue(int a, int b);
+	float GetRandomValue(float a, float b);
 }

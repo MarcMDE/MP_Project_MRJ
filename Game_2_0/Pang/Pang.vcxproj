@@ -126,12 +126,15 @@
     <ClCompile Include="BubbleManager.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameUtils2D.cpp" />
     <ClCompile Include="InputsManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelsManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MultiAnimation2D.cpp" />
     <ClCompile Include="Pang.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticlesEmitter.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -152,6 +155,8 @@
     <ClInclude Include="LevelsManager.h" />
     <ClInclude Include="MultiAnimation2D.h" />
     <ClInclude Include="Pang.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticlesEmitter.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Transform.h" />

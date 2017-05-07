@@ -16,8 +16,12 @@ Pang::~Pang()
 
 void Pang::Initialize()
 {
+	srand((unsigned int)time(NULL));
+
 	player.New(0);
 	levelManager.StartNewLevel(0);
+	pEmitter.New(TEST, { SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 }, al_load_bitmap(PARTICLES_SPRITE[TEST]));
+	
 	//background.New(al_load_bitmap("main_background.png"), 2);
 	//background.NewAnimation(al_load_bitmap("clowd.png"), { 128, 128 }, 4, 2, 20, { 200, 150 }, 0);
 	//background.NewAnimation(al_load_bitmap("solet.png"), { 512, 512 }, 4, 2, 10, { SCREEN_WIDTH - 150, 150 }, 1);
@@ -58,6 +62,12 @@ void Pang::Update()
 	{
 		if (levelManager.GetIsStarted())
 		{
+			pEmitter.Update();
+			if (!pEmitter.IsAnyParticleActive())
+			{
+				printf("BURST!\n");
+				pEmitter.Burst();
+			}
 			player.CheckBubblesCollision(levelManager.GetBubbles(), levelManager.GetBubblesLenght());
 			player.Update();
 
@@ -77,6 +87,7 @@ void Pang::Draw()
 {
 	levelManager.Draw();
 	player.Draw();
+	pEmitter.Draw();
 
 	if (isPaused)
 	{

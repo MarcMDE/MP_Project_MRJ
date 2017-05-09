@@ -35,7 +35,14 @@ void LevelsManager::StartNewLevel(int level)
 
 void LevelsManager::StartNextLevel()
 {
-	StartNewLevel(m_currentLevel + 1);
+	if (m_currentLevel < LEVELS_LENGHT - 1)
+	{
+		StartNewLevel(m_currentLevel + 1);
+	}
+	else
+	{
+		// TODO: END SCREEN
+	}
 }
 
 void LevelsManager::Update()

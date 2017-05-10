@@ -112,11 +112,11 @@ namespace GameConfig
 	enum Emitters{TEST = 0};
 	const int EMITTERS_LENGHT = 1;
 	const char PARTICLES_SPRITE[EMITTERS_LENGHT][45] = { "assets/particles/test_particle.png" };
-	const int PARTICLES_LENGHT[EMITTERS_LENGHT] = { 30 };
+	const int PARTICLES_LENGHT[EMITTERS_LENGHT] = { 150 };
 	const float PARTICLES_MIN_SPEED[EMITTERS_LENGHT] = { 1.0f };
-	const float PARTICLES_MAX_SPEED[EMITTERS_LENGHT] = { 2.0f };
+	const float PARTICLES_MAX_SPEED[EMITTERS_LENGHT] = { 4.0f };
 	const int PARTICLES_MIN_DURATION[EMITTERS_LENGHT] = { 60 };
-	const int PARTICLES_MAX_DURATION[EMITTERS_LENGHT] = { 90 };
+	const int PARTICLES_MAX_DURATION[EMITTERS_LENGHT] = { 150 };
 }
 
 

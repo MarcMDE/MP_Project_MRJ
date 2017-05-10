@@ -16,7 +16,7 @@ Pang::~Pang()
 
 void Pang::Initialize()
 {
-	srand((unsigned int)time(NULL));
+	srand(time(NULL));
 
 	player.New(0);
 	levelManager.StartNewLevel(0);
@@ -55,6 +55,8 @@ void Pang::Update()
 		printf("a-a box-circ Collisions\n");
 	}
 	*/
+
+	printf("R: %f\n", GetRandomValue(5.0f, 10.0f));
 
 	if (input.IsKeyPressed(ALLEGRO_KEY_P)) isPaused = !isPaused;
 

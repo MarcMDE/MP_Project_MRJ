@@ -10,6 +10,7 @@
 #include "BubbleManager.h"
 #include "LevelsManager.h"
 
+#include "PowerUp.h"
 #include "ParticlesEmitter.h" // temp
 //#include "Level.h" // temp
 //#include "Bubble.h" // temp
@@ -22,7 +23,8 @@ class Pang
 private:
 	Player player;
 	LevelsManager levelManager;
-	ParticlesEmitter pEmitter;
+	ParticlesEmitter pEmitter; // Temp
+	PowerUp pU; // Temp
 
 	bool isPaused;
 	Sprite pauseSprite;

@@ -21,5 +21,6 @@ public:
 	void Update();
 	void Draw();
 	bool IsAnyParticleActive();
+
 };
 

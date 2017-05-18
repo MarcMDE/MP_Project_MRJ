@@ -30,9 +30,10 @@ void ParticlesEmitter::Burst()
 			// TODO: CHECK RANDOM FUNCS!!!
 			m_particles[i].New(
 			GetPosition(),
-			{GetRandomValue(PARTICLES_MIN_SPEED[m_type], PARTICLES_MAX_SPEED[m_type]), GetRandomValue(PARTICLES_MIN_SPEED[m_type], PARTICLES_MAX_SPEED[m_type]) },
-			{(float)GetRandomValue(-1, 1), (float)GetRandomValue(-1, 1)},
-			{ GetRandomValue(PARTICLES_MIN_DURATION[m_type], PARTICLES_MAX_DURATION[m_type])}
+			{GetRandomValue(PARTICLES_MIN_SPEED[m_type], PARTICLES_MAX_SPEED[m_type]) },
+			{GetRandomValue(-1.0f, 1.0f), GetRandomValue(-0.5f, -1.0f)},
+			{ GetRandomValue(PARTICLES_MIN_DURATION[m_type], PARTICLES_MAX_DURATION[m_type])}, 
+			true
 			);
 		}
 	}

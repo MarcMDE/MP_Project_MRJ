@@ -251,3 +251,8 @@ void Player::SetAsAlive()
 	animator.Reset();
 	Activate();
 }
+
+AABB Player::GetCollider()
+{
+	return collider;
+}

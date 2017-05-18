@@ -106,17 +106,27 @@ namespace GameConfig
 
 	// TODO: Detectar colisio amb multiples Emitters!
 	const int LEVEL_BUBBLEMANAGERS_LENGHT[LEVELS_LENGHT] = { 1 };
-	const int LEVEL_BUBBLEMANAGERS_CAT[LEVELS_LENGHT][3] = { {3, 3, 3} };
+	const int LEVEL_BUBBLEMANAGERS_CAT[LEVELS_LENGHT][3] = { {4, 3, 3} };
 
 	// PARTICLES
 	enum Emitters{TEST = 0};
 	const int EMITTERS_LENGHT = 1;
 	const char PARTICLES_SPRITE[EMITTERS_LENGHT][45] = { "assets/particles/test_particle.png" };
-	const int PARTICLES_LENGHT[EMITTERS_LENGHT] = { 150 };
-	const float PARTICLES_MIN_SPEED[EMITTERS_LENGHT] = { 1.0f };
-	const float PARTICLES_MAX_SPEED[EMITTERS_LENGHT] = { 4.0f };
+	const int PARTICLES_LENGHT[EMITTERS_LENGHT] = { 30 };
+	const float PARTICLES_MIN_SPEED[EMITTERS_LENGHT] = { -2.0f };
+	const float PARTICLES_MAX_SPEED[EMITTERS_LENGHT] = { 2.0f };
 	const int PARTICLES_MIN_DURATION[EMITTERS_LENGHT] = { 60 };
-	const int PARTICLES_MAX_DURATION[EMITTERS_LENGHT] = { 150 };
+	const int PARTICLES_MAX_DURATION[EMITTERS_LENGHT] = { 90 };
+	const float PARTICLES_GRAVITY = 0.05f;
+
+	// POWERUPS
+	enum PowerUps{HEALTH_UP = 0, SPEED_UP, TIME_STOP};
+	const int POWERUPS_LENGHT = 3;
+	const float POWERUPS_GRAVITY = 0.05f;
+	const char POWERUPS_SPRITE[POWERUPS_LENGHT][45] = {"assets/powerups/health_up.png"};
+	const int POWERUPS_DURATION = 4 * FIXED_FRAMERATE;
+
+
 }
 
 

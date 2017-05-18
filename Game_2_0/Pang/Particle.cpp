@@ -23,24 +23,24 @@ void Particle::Construct(ALLEGRO_BITMAP * image)
 	Deactivate();
 }
 
-void Particle::New(Vector2 position, Vector2 speed, Vector2 direction, int duration)
+void Particle::New(Vector2 position, float speed, Vector2 direction, int duration, bool gravity)
 {
 	SetPosition(position);
 	m_speed = speed;
 	m_direction = direction;
 	m_velocity = { 0, 0 };
 	m_counter = duration;
+	m_gravity = gravity;
 	Activate();
-	
-
+	m_velocity = m_direction * m_speed;
 }
 
 void Particle::Update()
 {
 	if (IsActive())
 	{
-		m_velocity = m_speed*m_direction;
 		Translate(m_velocity);
+		if (m_gravity) m_velocity.y += PARTICLES_GRAVITY;
 
 		if (m_counter == 0)
 		{

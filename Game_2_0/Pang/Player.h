@@ -43,5 +43,6 @@ public:
 	void CheckBubblesCollision(Bubble *b, int lenght);
 	bool IsAlive();
 	void SetAsAlive();
+	AABB GetCollider();
 };
 

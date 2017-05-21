@@ -19,6 +19,7 @@ void Pang::Initialize()
 	srand(time(NULL));
 
 	player.New(0);
+	levelManager.New(LEVEL_01);
 	levelManager.StartNewLevel(0);
 	pEmitter.New(TEST, { SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 }, al_load_bitmap(PARTICLES_SPRITE[TEST]));
 	pU.New(HEALTH_UP);
@@ -97,6 +98,7 @@ void Pang::Draw()
 	player.Draw();
 	pEmitter.Draw();
 	pU.Draw();
+
 	if (isPaused)
 	{
 		pauseSprite.Draw({SCREEN_WIDTH/2, SCREEN_HEIGHT/2});

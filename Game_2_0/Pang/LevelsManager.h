@@ -1,22 +1,24 @@
 #pragma once
 #include "Level.h"
 #include "InputsManager.h"
-#include "allegro5/allegro_font.h"
+#include "UI.h"
+
 
 class LevelsManager
 {
 private:
-	int m_currentLevel;
+	PangLevels m_currentLevel;
 	Level m_level;
 	bool m_isStarted;
 	int m_attempts;
-	ALLEGRO_FONT* m_font;
+	UI uInterface;
 
 public:
 	LevelsManager();
-	LevelsManager(int level);
+	LevelsManager(PangLevels level);
 	~LevelsManager();
 
+	void New(PangLevels level);
 	void RestartLevel();
 	void StartNewLevel(int level);
 	void StartNextLevel();

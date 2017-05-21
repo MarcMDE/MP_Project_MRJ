@@ -2,27 +2,40 @@
 
 LevelsManager::LevelsManager()
 {
-	//m_font = al_create_builtin_font();
 }
 
-
-LevelsManager::LevelsManager(int level)
+LevelsManager::LevelsManager(PangLevels level)
 {
 	m_currentLevel = level;
 	m_level.New(level);
 	m_isStarted = false;
 }
 
-
-
 LevelsManager::~LevelsManager()
 {
 }
 
+void LevelsManager::New(PangLevels level)
+{
+	m_currentLevel = level;
+	m_level.New(level);
+	m_isStarted = false;
+	m_attempts = MAX_ATTEMPTS;
+	uInterface.New();
+}
+
 void LevelsManager::RestartLevel()
 {
-	StartNewLevel(m_currentLevel);
-	m_attempts--;
+	if (m_attempts > 0)
+	{
+		StartNewLevel(m_currentLevel);
+		m_attempts--;
+	}
+	else
+	{
+		// GAME END
+		uInterface.SetCurrentTitle(GAME_OVER);
+	}
 }
 
 void LevelsManager::StartNewLevel(int level)
@@ -31,6 +44,7 @@ void LevelsManager::StartNewLevel(int level)
 	m_isStarted = false;
 	level = m_currentLevel;
 	m_level.Update(); // Check why needed. // Temp
+	uInterface.SetCurrentTitle(LEVEL);
 }
 
 void LevelsManager::StartNextLevel()
@@ -56,6 +70,8 @@ void LevelsManager::Update()
 		m_isStarted = true;
 	}
 
+	uInterface.Update();
+
 #ifdef DEBUG
 	if (input.IsKeyPressed(ALLEGRO_KEY_R))
 	{
@@ -66,13 +82,9 @@ void LevelsManager::Update()
 }
 
 void LevelsManager::Draw()
-{
-	//if (!m_isStarted) al_draw_text(m_font, al_map_rgb(255, 255, 255), SCREEN_WIDTH / 2, SCREEN_HEIGHT - 70, ALLEGRO_ALIGN_CENTER, "PRESS <SPACE> TO START!!!");
-	
-	m_level.Draw();
-
-	//al_draw_textf(m_font, al_map_rgb(255, 255, 255), 100, SCREEN_HEIGHT - 70, ALLEGRO_ALIGN_CENTER, "Attempts: %i", m_attempts);
-	
+{	
+	m_level.Draw();	
+	uInterface.Draw(m_currentLevel, m_attempts, !m_isStarted);
 }
 
 bool LevelsManager::GetIsStarted()

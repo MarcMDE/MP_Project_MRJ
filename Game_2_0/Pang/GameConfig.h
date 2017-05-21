@@ -126,7 +126,24 @@ namespace GameConfig
 	const char POWERUPS_SPRITE[POWERUPS_LENGHT][45] = {"assets/powerups/health_up.png"};
 	const int POWERUPS_DURATION = 4 * FIXED_FRAMERATE;
 
+	// UI
+	enum Titles { LEVEL_COMPLETE = 0, GAME_OVER, GAME_COMPLETE, LEVEL };
 
+	const char UI_PRESS_SPACE_MESSAGE[35] = "Press <SPACE> to START";
+	const char UI_LEVEL_COMPLETE_MESSAGE[25] = "LEVEL COMPLETE!";
+	const char UI_GAME_OVER_MESSAGE[20] = "GAME OVER!";
+	const char UI_GAME_COMPLETE_MESSAGE[20] = "LEVEL COMPLETE";
+	const char UI_LEVEL_MESSAGE[LEVELS_LENGHT][10] = { "LEVEL 1" };
+	const char UI_ATTEMPTS_MESSAGE[15] = "ATTEMPTS: %i";
+
+	const int UI_TIME_POSITION_Y = 75;
+	const int UI_ATTEMPTS_POSITION_X = 65;
+	const int UI_ATTEMPTS_POSITION_Y = SCREEN_HEIGHT - 60;
+	const int UI_TITLES_POSITION_Y = 250;
+	const int UI_MESSAGES_POSITION_Y = SCREEN_HEIGHT - 150;
+	const int UI_TITLES_LENGHT = 4;
+
+	const int UI_TITLES_DURATION = 2 * FIXED_FRAMERATE;
 }
 
 

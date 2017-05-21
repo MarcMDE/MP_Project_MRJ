@@ -139,7 +139,9 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PowerUp.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABB.h" />
@@ -162,7 +164,9 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PowerUp.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Pang.rc" />

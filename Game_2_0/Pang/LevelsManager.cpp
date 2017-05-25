@@ -64,13 +64,13 @@ void LevelsManager::Update()
 	if (m_isStarted)
 	{
 		m_level.Update();
+		uInterface.Update();
 	}
 	else if (input.IsKeyPressed(ALLEGRO_KEY_SPACE))
 	{
 		m_isStarted = true;
 	}
 
-	uInterface.Update();
 
 #ifdef DEBUG
 	if (input.IsKeyPressed(ALLEGRO_KEY_R))

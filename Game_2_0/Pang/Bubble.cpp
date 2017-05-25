@@ -114,10 +114,14 @@ void Bubble::Update()
 		Move();
 		collider.UpdatePosition(GetPosition());
 		animator.Update();
+
+#ifdef DEBUG
 		if (input.IsKeyPressed(ALLEGRO_KEY_K))
 		{
 			isHit = true;
 		}
+#endif
+
 	}
 }
 

@@ -125,9 +125,12 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bubble.cpp" />
     <ClCompile Include="BubbleManager.cpp" />
+    <ClCompile Include="CharInput.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameUtils2D.cpp" />
+    <ClCompile Include="Highscore.cpp" />
+    <ClCompile Include="HighscoresManager.cpp" />
     <ClCompile Include="InputsManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelsManager.cpp" />
@@ -150,10 +153,13 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bubble.h" />
     <ClInclude Include="BubbleManager.h" />
+    <ClInclude Include="CharInput.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameUtils2D.h" />
+    <ClInclude Include="Highscore.h" />
+    <ClInclude Include="HighscoresManager.h" />
     <ClInclude Include="InputsManager.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelsManager.h" />

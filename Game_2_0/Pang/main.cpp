@@ -108,6 +108,10 @@ void GameLoop()
 	do
 	{
 		al_wait_for_event(eventQueue, &event);
+		if (event.type == ALLEGRO_EVENT_KEY_CHAR)
+		{
+			printf("TEST: %c\n", event.keyboard.unichar);
+		}
 
 		if (event.type == ALLEGRO_EVENT_TIMER)
 		{
@@ -126,7 +130,7 @@ void GameLoop()
 				finish = true;
 			}
 		
-			
+				
 			input.SetPressedKey(event.keyboard.keycode);
 		}
 		else if (event.type == ALLEGRO_EVENT_KEY_UP)

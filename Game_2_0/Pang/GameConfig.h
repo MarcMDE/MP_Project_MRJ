@@ -3,7 +3,7 @@
 #include "allegro5/allegro.h"
 #include "GameUtils2D.h"
 
-#define DEBUG
+//#define DEBUG
 
 namespace GameConfig
 {
@@ -11,7 +11,7 @@ namespace GameConfig
 	const int SCREEN_WIDTH = 1280;
 	const int SCREEN_HEIGHT = 720;
 	const int FIXED_FRAMERATE = 60;
-	const int GROUND_Y = SCREEN_HEIGHT - 40;
+	const int GROUND_Y = SCREEN_HEIGHT - 20;
 	const float GRAVITY_Y = 1.0f;
 	const float GROUND_FRICTION_X = 0.05f;
 	const int MAX_ATTEMPTS = 10;
@@ -24,6 +24,9 @@ namespace GameConfig
 	const float PLAYER_JUMPSPEED = 20.5f;
 	const float PLAYER_FALLING_MOV_FACTOR = 0.4f;
 	const float PLAYER_JUMPING_MOV_FACTOR = 0.85f;
+
+	const int KEY_CONFIRM = ALLEGRO_KEY_ENTER;
+	const int KEY_ERASE = ALLEGRO_KEY_BACKSPACE;
 
 	// PLAYER_1
 	const int PLAYERS_LENGT = 1;
@@ -53,8 +56,15 @@ namespace GameConfig
 	const int BUBBLES_SEQUENCE_DURATION = 10;
 	const int BUBBLES_MAX_HEIGT = 150;
 	const float BUBBLES_GRAVITY_Y = 0.35f;
-
 	const int BUBBLES_CATEGORIES_LENGHT = 5;
+	const char BUBBLES_SPRITE[BUBBLES_CATEGORIES_LENGHT][45] = 
+	{
+		{ "assets/bubbles/Bubble_SpriteSheet_0.png" },
+		{ "assets/bubbles/Bubble_SpriteSheet_1.png" }, 
+		{ "assets/bubbles/Bubble_SpriteSheet_2.png" }, 
+		{ "assets/bubbles/Bubble_SpriteSheet_3.png" }, 
+		{ "assets/bubbles/Bubble_SpriteSheet_4.png" } 
+	};
 	const int BUBBLES_RADIUS[BUBBLES_CATEGORIES_LENGHT] = { 8, 16, 32, 64, 128 };
 	const GameUtils2D::Vector2 BUBBLES_SPEED[BUBBLES_CATEGORIES_LENGHT] =
 	{
@@ -88,7 +98,7 @@ namespace GameConfig
 			// LEVEL 01
 			{ 512, 512 },
 			{ 512, 512 },
-			{ 1280, 100 }
+			{ 1280, 110 }
 		}
 	};
 
@@ -98,9 +108,9 @@ namespace GameConfig
 	const GameUtils2D::Vector2 LEVEL_BACKGROUNDANIM_POSITION[LEVELS_LENGHT][LEVEL_BACKGROUNDANIMS_LENGHT] =
 	{
 		{
-			{250, GROUND_Y - 256},
-			{SCREEN_WIDTH - 175, 125},
-			{0 + 640, GROUND_Y - 50}
+			{250, GROUND_Y - 276}, // TREE
+			{SCREEN_WIDTH - 175, 125}, // SUN
+			{0 + 640, GROUND_Y - 50} // FENCE
 		}
 	};
 
@@ -144,15 +154,10 @@ namespace GameConfig
 	const int UI_TITLES_LENGHT = 4;
 
 	const int UI_TITLES_DURATION = 2 * FIXED_FRAMERATE;
+
+	// HIGHSCORE
+	const int HS_NAME_LENGHT = 6 + 1;
+	const int HS_LENGHT = 10;
+	const char HS_FILENAME[20] = "highscores.txt";
+	const char HS_DEFAULT_NAME[HS_NAME_LENGHT] = "XXXXXX";
 }
-
-
-
-
-
-
-
-
-
-
-

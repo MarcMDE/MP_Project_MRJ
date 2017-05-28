@@ -7,6 +7,7 @@ class CharInput
 private:
 	char m_key;
 	bool m_keyPressed;
+	bool m_isActive;
 
 public:
 	CharInput();
@@ -16,6 +17,8 @@ public:
 	char GetPressedKey();
 	bool AnyKeyPressed();
 	void ClearPressedKey();
+	void SetActive(bool active);
+	bool IsActive();
 };
 
 extern CharInput charInput;

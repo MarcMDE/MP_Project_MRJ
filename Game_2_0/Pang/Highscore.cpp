@@ -21,7 +21,7 @@ void Highscore::New()
 	m_score = 0;
 }
 
-string Highscore::GetName()
+char* Highscore::GetName()
 {
 	return m_name;
 }
@@ -41,8 +41,12 @@ void Highscore::SetScore(PangLevels level, int seconds, int attemptsLeft)
 	m_score = ((int)level + 1) * 1000 - seconds + attemptsLeft * 100;
 }
 
-void Highscore::SetName(string name)
+void Highscore::SetName(char name[HS_NAME_LENGHT])
 {
-	m_name = name;
+	for (int i = 0; i < HS_NAME_LENGHT; i++)
+	{
+		m_name[i] = name[i];
+	}
+	//m_name[HS_NAME_LENGHT - 1] = '\n';
 }
 

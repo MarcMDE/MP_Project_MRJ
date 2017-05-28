@@ -219,6 +219,7 @@ void Player::Draw()
 void Player::CheckBubblesCollision(Bubble * b, int lenght)
 {
 	int i = 0;
+
 	while (isAlive && i < lenght)
 	{
 		if (b[i].IsActive() && collider.CheckAABBCircleCollision(b[i].GetCollider()))
@@ -226,8 +227,7 @@ void Player::CheckBubblesCollision(Bubble * b, int lenght)
 			isAlive = false;
 			arrow.Restart();
 			// TEMP
-			SetActive(false);
-			SetDrawable(false);
+			Deactivate();
 			// Set death anim.
 		}
 		i++;

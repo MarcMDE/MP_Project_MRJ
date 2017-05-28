@@ -61,6 +61,14 @@ void ParticlesEmitter::Draw()
 	}
 }
 
+void ParticlesEmitter::Reset()
+{
+	for (int i = 0; i < PARTICLES_LENGHT[m_type]; i++)
+	{
+		m_particles[i].Deactivate();
+	}
+}
+
 bool ParticlesEmitter::IsAnyParticleActive()
 {
 	int i = 0;

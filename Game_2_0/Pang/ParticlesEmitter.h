@@ -20,6 +20,7 @@ public:
 	void Burst();
 	void Update();
 	void Draw();
+	void Reset();
 	bool IsAnyParticleActive();
 
 };

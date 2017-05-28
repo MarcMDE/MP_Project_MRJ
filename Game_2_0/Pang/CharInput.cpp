@@ -6,6 +6,7 @@ CharInput::CharInput()
 {
 	m_key = 'a';
 	m_keyPressed = false;
+	m_isActive = false;
 }
 
 
@@ -21,7 +22,7 @@ void CharInput::SetPressedKey(char key)
 
 char CharInput::GetPressedKey()
 {
-	return m_keyPressed;
+	return m_key;
 }
 
 bool CharInput::AnyKeyPressed()
@@ -32,4 +33,14 @@ bool CharInput::AnyKeyPressed()
 void CharInput::ClearPressedKey()
 {
 	m_keyPressed = false;
+}
+
+void CharInput::SetActive(bool active)
+{
+	m_isActive = active;
+}
+
+bool CharInput::IsActive()
+{
+	return m_isActive;
 }

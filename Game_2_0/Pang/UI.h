@@ -29,6 +29,7 @@ public:
 
 	void New();
 	void Update();
+	void TimerUpdate();
 	void Draw(PangLevels level, int attempts, bool startMsg);
 	bool AnyTitleActive();
 	void SetCurrentTitle(Titles title);

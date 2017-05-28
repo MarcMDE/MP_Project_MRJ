@@ -9,7 +9,7 @@ using namespace std;
 class Highscore
 {
 private:
-	string m_name;
+	char m_name[HS_NAME_LENGHT];
 	int m_score;
 	
 public:
@@ -17,10 +17,10 @@ public:
 	~Highscore();
 
 	void New();
-	string GetName();
+	char* GetName();
 	int GetScore();
 	void SetScore(int score);
 	void SetScore(PangLevels level, int seconds, int attemptsLeft);
-	void SetName(string name);
+	void SetName(char name[HS_NAME_LENGHT]);
 };
 

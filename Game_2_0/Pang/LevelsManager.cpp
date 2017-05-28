@@ -21,11 +21,13 @@ void LevelsManager::New(PangLevels level)
 	m_level.New(level);
 	m_isStarted = false;
 	m_attempts = MAX_ATTEMPTS;
-	uInterface.New();
+	m_uInterface.New();
+	m_startNewLevel = false;
+	m_gameFinished = false;
 }
 
 void LevelsManager::RestartLevel()
-{
+{	
 	if (m_attempts > 0)
 	{
 		StartNewLevel(m_currentLevel);
@@ -34,7 +36,8 @@ void LevelsManager::RestartLevel()
 	else
 	{
 		// GAME END
-		uInterface.SetCurrentTitle(GAME_OVER);
+		m_uInterface.SetCurrentTitle(GAME_OVER);
+		m_gameFinished = true;
 	}
 }
 
@@ -44,7 +47,7 @@ void LevelsManager::StartNewLevel(int level)
 	m_isStarted = false;
 	level = m_currentLevel;
 	m_level.Update(); // Check why needed. // Temp
-	uInterface.SetCurrentTitle(LEVEL);
+	m_uInterface.SetCurrentTitle(LEVEL);
 }
 
 void LevelsManager::StartNextLevel()
@@ -56,6 +59,7 @@ void LevelsManager::StartNextLevel()
 	else
 	{
 		// TODO: END SCREEN
+		m_uInterface.SetCurrentTitle(GAME_COMPLETE);
 	}
 }
 
@@ -63,8 +67,29 @@ void LevelsManager::Update()
 {
 	if (m_isStarted)
 	{
-		m_level.Update();
-		uInterface.Update();
+		if (m_level.GetActiveBubblesLeft() <= 0)
+		{
+			if (m_startNewLevel)
+			{
+				if (!m_uInterface.AnyTitleActive())
+				{
+					StartNextLevel();
+				}
+			}
+			else
+			{
+				m_uInterface.SetCurrentTitle(LEVEL_COMPLETE);
+				m_startNewLevel = true;
+			}
+		}
+
+		if (!m_gameFinished)
+		{
+			m_level.Update();
+			m_uInterface.TimerUpdate();
+		}
+		
+		m_uInterface.Update();	
 	}
 	else if (input.IsKeyPressed(ALLEGRO_KEY_SPACE))
 	{
@@ -84,7 +109,11 @@ void LevelsManager::Update()
 void LevelsManager::Draw()
 {	
 	m_level.Draw();	
-	uInterface.Draw(m_currentLevel, m_attempts, !m_isStarted);
+}
+
+void LevelsManager::DrawUI()
+{
+	m_uInterface.Draw(m_currentLevel, m_attempts, !m_isStarted);
 }
 
 bool LevelsManager::GetIsStarted()
@@ -105,4 +134,31 @@ int LevelsManager::GetBubblesLenght()
 int LevelsManager::GetActiveBubblesLeft()
 {
 	return m_level.GetActiveBubblesLeft();
+}
+
+bool LevelsManager::IsGameFinished()
+{
+	return m_gameFinished;
+}
+
+PangLevels LevelsManager::GetCurrentLevel()
+{
+	return m_currentLevel;
+}
+
+int LevelsManager::GetTime()
+{
+	int min, sec;
+	m_uInterface.GetCurrentTime(min, sec);
+	return sec + min * 60;
+}
+
+int LevelsManager::GetAttemptsLeft()
+{
+	return m_attempts;
+}
+
+bool LevelsManager::AnyTitleActive()
+{
+	return m_uInterface.AnyTitleActive();
 }

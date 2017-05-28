@@ -9,8 +9,8 @@
 #include "Background.h"
 #include "BubbleManager.h"
 #include "LevelsManager.h"
-
-#include "PowerUp.h"
+#include "HighscoresManager.h"
+#include "PowerUp.h" // temp
 #include "ParticlesEmitter.h" // temp
 //#include "Level.h" // temp
 //#include "Bubble.h" // temp
@@ -23,10 +23,12 @@ class Pang
 private:
 	Player player;
 	LevelsManager levelManager;
+	HighscoresManager m_highscores;
 	ParticlesEmitter pEmitter; // Temp
 	PowerUp pU; // Temp
 
-	bool isPaused;
+	bool m_setNewHighscore;
+	bool m_isPaused;
 	Sprite pauseSprite;
 
 public:
@@ -36,5 +38,6 @@ public:
 	void Initialize();
 	void Update();
 	void Draw();
+	void Save();
 };
 

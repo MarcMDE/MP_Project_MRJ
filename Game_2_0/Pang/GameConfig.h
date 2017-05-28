@@ -14,7 +14,7 @@ namespace GameConfig
 	const int GROUND_Y = SCREEN_HEIGHT - 20;
 	const float GRAVITY_Y = 1.0f;
 	const float GROUND_FRICTION_X = 0.05f;
-	const int MAX_ATTEMPTS = 10;
+	const int MAX_ATTEMPTS = 0;
 
 	const int PLAYER_WIDTH = 128;
 	const int PLAYER_HEIGHT = 128;
@@ -116,7 +116,7 @@ namespace GameConfig
 
 	// TODO: Detectar colisio amb multiples Emitters!
 	const int LEVEL_BUBBLEMANAGERS_LENGHT[LEVELS_LENGHT] = { 1 };
-	const int LEVEL_BUBBLEMANAGERS_CAT[LEVELS_LENGHT][3] = { {4, 3, 3} };
+	const int LEVEL_BUBBLEMANAGERS_CAT[LEVELS_LENGHT][3] = { {3, 3, 3} };
 
 	// PARTICLES
 	enum Emitters{TEST = 0};
@@ -155,9 +155,26 @@ namespace GameConfig
 
 	const int UI_TITLES_DURATION = 2 * FIXED_FRAMERATE;
 
+	const ALLEGRO_COLOR UI_TITLES_COLOR = al_map_rgb(255, 255, 255);
+	const ALLEGRO_COLOR UI_MESSAGES_COLOR = al_map_rgb(255, 255, 255);
+
 	// HIGHSCORE
-	const int HS_NAME_LENGHT = 6 + 1;
+	const int HS_NAME_LENGHT = 7;
 	const int HS_LENGHT = 10;
-	const char HS_FILENAME[20] = "highscores.txt";
+	const char HS_FILENAME[30] = "assets/highscores.txt";
 	const char HS_DEFAULT_NAME[HS_NAME_LENGHT] = "XXXXXX";
+	const char HS_BG_SPRITE[40] = "assets/levels/hs_background.png";
+	const char HS_ENTERNAME_SPRITE[40] = "assets/levels/hs_entername.png";
+	const ALLEGRO_COLOR HS_FONT_COLOR = al_map_rgb(255, 255, 255);
+	const int HS_BG_POSITION_X = SCREEN_WIDTH / 2;
+	const int HS_BG_POSITION_Y = 350;
+	const int HS_OFFSET_X = -85;
+	const int HS_OFFSET_Y = -90;
+	const int HS_SCORESPACE = 165;
+	const int HS_LINESPACE = 32;
+	const int HS_ENTERNAME_POSITION_X = SCREEN_WIDTH / 2;
+	const int HS_ENTERNAME_POSITION_Y = SCREEN_HEIGHT / 2 - 150;
+	const int HS_ENTERNAME_OFFSET_X = 40;
+	const int HS_ENTERNAME_OFFSET_Y = 30;
+
 }

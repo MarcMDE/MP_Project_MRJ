@@ -14,6 +14,7 @@
 #include "GameConfig.h"
 #include "Pang.h"
 #include "InputsManager.h"
+#include "CharInput.h"
 
 void Initialize();
 void GameLoop();
@@ -30,16 +31,19 @@ ALLEGRO_EVENT event;
 
 Pang pang;
 
-int main()
+void main()
 {
 	printf("GAME_INITIALIZE\n");
 	Initialize();
 	printf("GAME_UPDATE\n");
 	GameLoop();
+	pang.Save();
 	printf("GAME_DESTROYER\n");
 	Destroyer();
+	
+	al_rest(1);
 
-	return 0;
+	//return 0;
 }
 
 void Initialize()
@@ -108,16 +112,13 @@ void GameLoop()
 	do
 	{
 		al_wait_for_event(eventQueue, &event);
-		if (event.type == ALLEGRO_EVENT_KEY_CHAR)
-		{
-			printf("TEST: %c\n", event.keyboard.unichar);
-		}
 
 		if (event.type == ALLEGRO_EVENT_TIMER)
 		{
 			// UPDATE
 			pang.Update();
 			input.ClearPressedKey();
+			charInput.ClearPressedKey();
 
 			draw = true;
 		}
@@ -137,9 +138,16 @@ void GameLoop()
 		{
 			input.SetReleasedKey(event.keyboard.keycode);
 		}
+		else if (charInput.IsActive() && event.type == ALLEGRO_EVENT_KEY_CHAR)
+		{
+			charInput.SetPressedKey(event.keyboard.unichar);
 
-		//if (draw && al_is_event_queue_empty(eventQueue))
-		if (draw)
+			//printf("as: %c\n", charInput.GetPressedKey());
+			printf("TEST: %c\n", event.keyboard.unichar);
+		}
+
+		//if (draw)
+		if (draw && al_is_event_queue_empty(eventQueue))
 		{
 			// DRAW
 			draw = false;

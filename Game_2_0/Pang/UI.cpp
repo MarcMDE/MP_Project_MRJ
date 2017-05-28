@@ -22,11 +22,15 @@ void UI::New()
 
 void UI::Update()
 {
-	m_timer.Update();
 	if (m_counter > 0)
 	{
 		m_counter--;
 	}
+}
+
+void UI::TimerUpdate()
+{
+	m_timer.Update();
 }
 
 void UI::Draw(PangLevels level, int attempts, bool startMsg)

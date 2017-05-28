@@ -23,16 +23,12 @@ void Pang::Initialize()
 	levelManager.StartNewLevel(0);
 	pEmitter.New(TEST, { SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 }, al_load_bitmap(PARTICLES_SPRITE[TEST]));
 	pU.New(HEALTH_UP);
-	//background.New(al_load_bitmap("main_background.png"), 2);
-	//background.NewAnimation(al_load_bitmap("clowd.png"), { 128, 128 }, 4, 2, 20, { 200, 150 }, 0);
-	//background.NewAnimation(al_load_bitmap("solet.png"), { 512, 512 }, 4, 2, 10, { SCREEN_WIDTH - 150, 150 }, 1);
-	//bubbleManager.New(2);
-	
-	//bI = al_load_bitmap("SpriteSheet_4.png"); // Temp
-	//b.New({ SCREEN_WIDTH / 2, 150 }, 4, 1, bI); // Temp
+	m_highscores.New();
+	m_highscores.ReadHighscores();
+
 	player.Update(); // Check why needed. // Temp
 
-	isPaused = false;
+	m_isPaused = false;
 	pauseSprite.New({ SCREEN_WIDTH, SCREEN_HEIGHT }, al_map_rgba( 120, 120, 120, 25));
 }
 
@@ -57,11 +53,11 @@ void Pang::Update()
 	}
 	*/
 
-	if (input.IsKeyPressed(ALLEGRO_KEY_P)) isPaused = !isPaused;
+	if (input.IsKeyPressed(ALLEGRO_KEY_P) && !charInput.IsActive()) m_isPaused = !m_isPaused;
 
-	if (!isPaused)
+	if (!m_isPaused)
 	{
-		if (levelManager.GetIsStarted())
+		if (levelManager.GetIsStarted() && !levelManager.IsGameFinished())
 		{
 			if (!pU.IsActive())
 			{
@@ -72,7 +68,6 @@ void Pang::Update()
 			if (pU.CheckPlayerCollision(player.GetCollider()))
 			{		
 				pEmitter.SetPosition(pU.GetPosition());
-				printf("BURST!\n");
 				pEmitter.Burst();
 			}
 			pEmitter.Update();
@@ -83,10 +78,30 @@ void Pang::Update()
 			if (!player.IsAlive())
 			{
 				levelManager.RestartLevel();
-				player.SetAsAlive();
+				if (!levelManager.IsGameFinished()) player.SetAsAlive();
+				pEmitter.Reset();
 			}
-
-			if (levelManager.GetActiveBubblesLeft() <= 0) levelManager.StartNextLevel();
+			/*
+				if (levelManager.GetActiveBubblesLeft() <= 0)
+				{
+					levelManager.StartNextLevel();
+				}
+			*/
+			if (!levelManager.IsGameFinished())
+			{
+				m_setNewHighscore = m_highscores.IsHighscore(levelManager.GetCurrentLevel(), levelManager.GetTime(), levelManager.GetAttemptsLeft());
+			}
+		}
+		else if (levelManager.IsGameFinished())
+		{
+			if (m_setNewHighscore)
+			{
+				if (m_highscores.EnterName(levelManager.AnyTitleActive()))
+				{
+					m_highscores.AddNewHighscore();
+					m_setNewHighscore = false;
+				}
+			}
 		}
 		levelManager.Update();
 	}
@@ -95,12 +110,31 @@ void Pang::Update()
 void Pang::Draw()
 {
 	levelManager.Draw();
+	pU.Draw();
 	player.Draw();
 	pEmitter.Draw();
-	pU.Draw();
+	levelManager.DrawUI();
 
-	if (isPaused)
+
+	if (levelManager.IsGameFinished())
+	{
+		if (m_setNewHighscore)
+		{
+			m_highscores.DrawEnterName(levelManager.AnyTitleActive());
+		}
+		else
+		{
+			m_highscores.DrawHighscores();
+		}
+	}
+	
+	if (m_isPaused)
 	{
 		pauseSprite.Draw({SCREEN_WIDTH/2, SCREEN_HEIGHT/2});
 	}
+}
+
+void Pang::Save()
+{
+	m_highscores.SaveHighscores();
 }

@@ -97,6 +97,11 @@ void Sprite::Draw(Vector2 position)
 	al_draw_bitmap(image, position.x + offset.x, position.y + offset.y, 0);
 }
 
+void Sprite::Draw(int xPosition, int yPosition)
+{
+	al_draw_bitmap(image, xPosition + (int)offset.x, yPosition + (int)offset.y, 0);
+}
+
 void Sprite::Draw(Vector2 position, bool hFlip)
 {
 	al_draw_bitmap(image, position.x + offset.x, position.y + offset.y, (int)hFlip);

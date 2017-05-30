@@ -45,9 +45,6 @@ Player::Player(int index)
 
 Player::~Player()
 {
-	collider.~AABB();
-	animator.~MultiAnimation2D();
-	arrow.~Arrow();
 }
 
 void Player::New(int index)

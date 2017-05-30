@@ -10,7 +10,8 @@
 #include "BubbleManager.h"
 #include "LevelsManager.h"
 #include "HighscoresManager.h"
-#include "PowerUp.h" // temp
+#include "PowerUpsManager.h"
+//#include "PowerUp.h" // temp
 #include "ParticlesEmitter.h" // temp
 //#include "Level.h" // temp
 //#include "Bubble.h" // temp

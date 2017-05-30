@@ -41,20 +41,25 @@ void LevelsManager::RestartLevel()
 	}
 }
 
-void LevelsManager::StartNewLevel(int level)
+void LevelsManager::StartNewLevel(PangLevels level)
 {
+	if (level != m_currentLevel) m_level.Deinitialize();
 	m_level.New(level);
 	m_isStarted = false;
-	level = m_currentLevel;
+	m_startNewLevel = false;
+	m_gameFinished = false;
+	m_currentLevel = level;
 	m_level.Update(); // Check why needed. // Temp
 	m_uInterface.SetCurrentTitle(LEVEL);
+	powerUpsManager.Reset();
+
 }
 
 void LevelsManager::StartNextLevel()
 {
 	if (m_currentLevel < LEVELS_LENGHT - 1)
 	{
-		StartNewLevel(m_currentLevel + 1);
+		StartNewLevel((PangLevels)((int)m_currentLevel + 1));
 	}
 	else
 	{
@@ -89,6 +94,12 @@ void LevelsManager::Update()
 			m_uInterface.TimerUpdate();
 		}
 		
+		if (powerUpsManager.IsEffectActive(HEALTH_UP))
+		{
+			m_attempts++;
+			powerUpsManager.DeactivateEffect(HEALTH_UP);
+		}
+
 		m_uInterface.Update();	
 	}
 	else if (input.IsKeyPressed(ALLEGRO_KEY_SPACE))

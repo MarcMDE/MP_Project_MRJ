@@ -11,6 +11,8 @@
 #include <allegro5/allegro_image.h> // Image addon ("Draw")
 #include <allegro5/allegro_font.h> // Font Addon
 #include <allegro5/allegro_primitives.h> // Debugging
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
 #include "GameConfig.h"
 #include "Pang.h"
 #include "InputsManager.h"
@@ -66,6 +68,18 @@ void Initialize()
 	//{
 		//Error("Allegro font addon initialitzation failed");
 	//}
+
+	if (!al_install_audio()) {
+		Error("audio:: Failed to initialize audio");
+	}
+
+	if (!al_init_acodec_addon()) {
+		Error("audio: Failed to initialize audio codecs");
+	}
+
+	if (!al_reserve_samples(1)) {
+		Error("audio: Failed to reserve samples");
+	}
 
 	// Set FPS timer
 	fpsTimer = al_create_timer(1.0f / GameConfig::FIXED_FRAMERATE);
@@ -169,7 +183,6 @@ void Destroyer()
 	al_destroy_event_queue(eventQueue);
 	al_destroy_timer(fpsTimer);
 	al_destroy_display(display);
-	//pang.~Pang();
 }
 
 void Error(char *msg)

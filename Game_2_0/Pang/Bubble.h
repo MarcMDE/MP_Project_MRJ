@@ -6,6 +6,7 @@
 #include "GameConfig.h"
 #include "MultiAnimation2D.h"
 #include "InputsManager.h"
+//#include "PowerUpsManager.h"
 
 using namespace GameUtils2D;
 using namespace GameConfig;
@@ -37,7 +38,7 @@ public:
 	bool IsHit();
 	void Activate();
 	void Deactivate();
-	void Update();
+	void Update(bool move);
 	void Draw();
 	CircleCollider GetCollider();
 };

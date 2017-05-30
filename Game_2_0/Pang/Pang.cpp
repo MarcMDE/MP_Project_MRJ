@@ -8,10 +8,6 @@ Pang::Pang()
 
 Pang::~Pang()
 {
-	player.~Player();
-	//background.~Background();
-	//bubbleManager.~BubbleManager();
-	pauseSprite.~Sprite();
 }
 
 void Pang::Initialize()
@@ -20,9 +16,10 @@ void Pang::Initialize()
 
 	player.New(0);
 	levelManager.New(LEVEL_01);
-	levelManager.StartNewLevel(0);
+	levelManager.StartNewLevel(LEVEL_01);
 	pEmitter.New(TEST, { SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 }, al_load_bitmap(PARTICLES_SPRITE[TEST]));
 	pU.New(HEALTH_UP);
+	powerUpsManager.New();
 	m_highscores.New();
 	m_highscores.ReadHighscores();
 
@@ -59,19 +56,28 @@ void Pang::Update()
 	{
 		if (levelManager.GetIsStarted() && !levelManager.IsGameFinished())
 		{
+
+			powerUpsManager.Update();
+			/*
 			if (!pU.IsActive())
 			{
 				pU.Spawn({ SCREEN_WIDTH / 2, -100 });
 			}
+			*/
 
-			pU.Update();
+			//pU.Update();
+
+			/*
 			if (pU.CheckPlayerCollision(player.GetCollider()))
 			{		
 				pEmitter.SetPosition(pU.GetPosition());
 				pEmitter.Burst();
 			}
 			pEmitter.Update();
+			
+			*/
 
+			powerUpsManager.CheckPlayerCollision(player.GetCollider());
 			player.CheckBubblesCollision(levelManager.GetBubbles(), levelManager.GetBubblesLenght());
 			player.Update();
 
@@ -79,7 +85,7 @@ void Pang::Update()
 			{
 				levelManager.RestartLevel();
 				if (!levelManager.IsGameFinished()) player.SetAsAlive();
-				pEmitter.Reset();
+				//pEmitter.Reset();
 			}
 			/*
 				if (levelManager.GetActiveBubblesLeft() <= 0)
@@ -90,6 +96,7 @@ void Pang::Update()
 			if (!levelManager.IsGameFinished())
 			{
 				m_setNewHighscore = m_highscores.IsHighscore(levelManager.GetCurrentLevel(), levelManager.GetTime(), levelManager.GetAttemptsLeft());
+
 			}
 		}
 		else if (levelManager.IsGameFinished())
@@ -104,14 +111,21 @@ void Pang::Update()
 			}
 		}
 		levelManager.Update();
+
+		if (powerUpsManager.IsEffectActive(EXPLOSIVE_DIARREA))
+		{
+			powerUpsManager.DeactivateEffect(EXPLOSIVE_DIARREA);
+		}
 	}
 }
 
 void Pang::Draw()
 {
 	levelManager.Draw();
-	pU.Draw();
+	//pU.Draw();
+	powerUpsManager.Draw();
 	player.Draw();
+
 	pEmitter.Draw();
 	levelManager.DrawUI();
 

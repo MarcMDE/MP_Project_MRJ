@@ -2,6 +2,13 @@
 #include <stdio.h>
 
 
+void BubbleManager::Deinitialize()
+{
+	delete[]bubbles;
+	delete[]newBubbles;
+	delete[]spriteSheet;
+}
+
 BubbleManager::BubbleManager()
 {
 }
@@ -9,14 +16,7 @@ BubbleManager::BubbleManager()
 
 BubbleManager::~BubbleManager()
 {
-	for (int i = 0; i < bubblesLenght; i++)
-	{
-		bubbles[i].~Bubble();
-	}
-
-	delete[]bubbles;
-	delete[]newBubbles;
-	delete[]spriteSheet;
+	Deinitialize();
 }
 
 void BubbleManager::New(int category)
@@ -67,11 +67,13 @@ void BubbleManager::Update()
 	{
 		if (!newBubbles[i])
 		{
-			bubbles[i].Update();
+			bubbles[i].Update(!powerUpsManager.IsEffectActive(PARALYSIS));
 		}
 
-		if (bubbles[i].IsHit() && bubbles[i].IsActive())
+		if ((bubbles[i].IsHit() || (powerUpsManager.IsEffectActive(EXPLOSIVE_DIARREA)) && newBubbles[i] == false) && bubbles[i].IsActive()) // Bubble Destoyed
 		{
+			powerUpsManager.SpawnRandomPowerUp(bubbles[i].GetPosition()); // Spawn Power Up
+
 			if (bubbles[i].GetCategory() > 0)
 			{
 				j = 0;
@@ -86,6 +88,7 @@ void BubbleManager::Update()
 					1, spriteSheet[bubbles[i].GetCategory() - 1]);
 
 				activeBubbles++;
+				if (powerUpsManager.IsEffectActive(PARALYSIS)) bubbles[j].Update(true);
 			}
 			else
 			{

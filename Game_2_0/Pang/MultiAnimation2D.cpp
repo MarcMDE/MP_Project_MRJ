@@ -8,7 +8,6 @@ MultiAnimation2D::MultiAnimation2D()
 MultiAnimation2D::~MultiAnimation2D()
 {
 	delete[]animations;
-	spriteSheet.~Sprite();
 }
 
 void MultiAnimation2D::New(ALLEGRO_BITMAP * image, int animationsLenght)

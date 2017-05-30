@@ -80,3 +80,8 @@ bool PowerUp::CheckPlayerCollision(AABB c)
 	}
 	return false;
 }
+
+PowerUps PowerUp::GetType()
+{
+	return m_type;
+}

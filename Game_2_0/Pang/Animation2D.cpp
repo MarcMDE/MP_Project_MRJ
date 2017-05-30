@@ -34,7 +34,6 @@ Animation2D::Animation2D(ALLEGRO_BITMAP * image, Vector2 spriteLenght, int frame
 
 Animation2D::~Animation2D()
 {
-	spriteSheet.~Sprite();
 }
 
 void Animation2D::New(ALLEGRO_BITMAP * image, Vector2 spriteLenght, int duration, bool repeat)

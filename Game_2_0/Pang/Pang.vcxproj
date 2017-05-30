@@ -74,6 +74,8 @@
     <Allegro_AddonPrimitives>true</Allegro_AddonPrimitives>
     <Allegro_AddonTTF>true</Allegro_AddonTTF>
     <Allegro_AddonFont>true</Allegro_AddonFont>
+    <Allegro_AddonAudio>true</Allegro_AddonAudio>
+    <Allegro_AddonAcodec>true</Allegro_AddonAcodec>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -122,6 +124,7 @@
     <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Animation2D.cpp" />
     <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bubble.cpp" />
     <ClCompile Include="BubbleManager.cpp" />
@@ -141,6 +144,7 @@
     <ClCompile Include="ParticlesEmitter.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PowerUp.cpp" />
+    <ClCompile Include="PowerUpsManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -150,6 +154,7 @@
     <ClInclude Include="AABB.h" />
     <ClInclude Include="Animation2D.h" />
     <ClInclude Include="Arrow.h" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bubble.h" />
     <ClInclude Include="BubbleManager.h" />
@@ -169,6 +174,7 @@
     <ClInclude Include="ParticlesEmitter.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PowerUp.h" />
+    <ClInclude Include="PowerUpsManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Transform.h" />

@@ -8,16 +8,16 @@ void Bubble::Move()
 	velocity.y += BUBBLES_GRAVITY_Y;
 
 	Translate(velocity);
-	
+
 	if (currentAnimation == BUBBLEANIM_GROUND_COLLISION && animator.IsCurrentSequenceFinished() == true)
 	{
 		DefineCurrentAnimation(BUBBLEANIM_IDLE);
 	}
-	
+
 	if (GetPosition().y + collider.GetRadius() >= GROUND_Y)
 	{
 		velocity.y = -BUBBLES_SPEED[category].y;
-		SetPosition({ GetPosition().x, GROUND_Y - collider.GetRadius()});
+		SetPosition({ GetPosition().x, GROUND_Y - collider.GetRadius() });
 		DefineCurrentAnimation(BUBBLEANIM_GROUND_COLLISION);
 		printf("bounce\n");
 	}
@@ -35,6 +35,7 @@ void Bubble::Move()
 
 	animator.SetCurrentSequence(currentAnimation);
 	//printf("Curr anim: %i\n", (int)currentAnimation);
+	
 }
 
 void Bubble::DefineCurrentAnimation(BubbleAnimations animation)
@@ -56,8 +57,6 @@ Bubble::Bubble()
 
 Bubble::~Bubble()
 {
-	collider.~CircleCollider();
-	animator.~MultiAnimation2D();
 }
 
 void Bubble::New(Vector2 position, int category, int directionX, ALLEGRO_BITMAP * spriteSheet)
@@ -107,11 +106,11 @@ void Bubble::Deactivate()
 	SetDrawable(false);
 }
 
-void Bubble::Update()
+void Bubble::Update(bool move)
 {
 	if (IsActive())
 	{
-		Move();
+		if (move) Move();
 		collider.UpdatePosition(GetPosition());
 		animator.Update();
 

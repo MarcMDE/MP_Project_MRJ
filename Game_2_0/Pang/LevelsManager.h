@@ -2,6 +2,7 @@
 #include "Level.h"
 #include "InputsManager.h"
 #include "UI.h"
+#include "PowerUpsManager.h"
 
 
 class LevelsManager
@@ -22,7 +23,7 @@ public:
 
 	void New(PangLevels level);
 	void RestartLevel();
-	void StartNewLevel(int level);
+	void StartNewLevel(PangLevels level);
 	void StartNextLevel();
 	void Update();
 	void Draw();

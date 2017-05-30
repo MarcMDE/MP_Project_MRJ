@@ -9,7 +9,7 @@ Level::~Level()
 	delete[] bubbleManagers;
 }
 
-void Level::New(int level)
+void Level::New(PangLevels level)
 {
 	this->level = level;
 	
@@ -65,4 +65,15 @@ int Level::GetBubblesLenght()
 int Level::GetActiveBubblesLeft()
 {
 	return bubbleManagers[level].GetActiveBubblesLeft();
+}
+
+void Level::Deinitialize()
+{
+	for (int i = 0; i < LEVEL_BUBBLEMANAGERS_LENGHT[(int)level]; i++)
+	{
+		bubbleManagers[i].Deinitialize();
+	}
+		delete bubbleManagers;
+		bubbleManagers = NULL;
+	
 }

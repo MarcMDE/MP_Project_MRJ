@@ -8,13 +8,16 @@
 #include "InputsManager.h"
 #include "Sprite.h"
 #include "allegro5\allegro_font.h"
+#include <list>
 
 using namespace GameConfig;
+using namespace std;
 
 class HighscoresManager
 {
 private:
-	Highscore m_highscores[HS_LENGHT];
+	//Highscore m_highscores[HS_LENGHT];
+	list<Highscore> m_highscoresList;
 	ALLEGRO_FONT *m_font;
 	Sprite m_bgSprite;
 	Sprite m_enterNameSprite;

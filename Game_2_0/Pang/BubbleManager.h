@@ -4,6 +4,7 @@
 #include "GameUtils2D.h"
 #include <math.h>
 #include <string>
+#include "PowerUpsManager.h"
 
 using namespace GameConfig;
 using namespace GameUtils2D;
@@ -31,5 +32,6 @@ public:
 
 	void Update();
 	void Draw();
+	void Deinitialize();
 };
 

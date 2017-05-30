@@ -28,6 +28,6 @@ public:
 	void Update();
 	void Draw();
 	bool CheckPlayerCollision(AABB c);
-
+	PowerUps GetType();
 };
 

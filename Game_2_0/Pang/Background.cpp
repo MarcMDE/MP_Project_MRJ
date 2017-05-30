@@ -9,11 +9,6 @@ Background::Background()
 
 Background::~Background()
 {
-	for (int i = 0; i < animationsLenght; i++)
-	{
-		animations[i].~Animation2D();
-	}
-
 	delete[]animations;
 	delete[]animationsPosition;
 }

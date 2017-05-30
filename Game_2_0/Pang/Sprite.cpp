@@ -45,7 +45,7 @@ Sprite::Sprite(ALLEGRO_BITMAP *image, Vector2 offset)
 
 Sprite::~Sprite()
 {
-	al_destroy_bitmap(image);
+	//al_destroy_bitmap(image);
 }
 
 void Sprite::New(Vector2 lenght, ALLEGRO_COLOR color)

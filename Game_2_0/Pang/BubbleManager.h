@@ -5,6 +5,7 @@
 #include <math.h>
 #include <string>
 #include "PowerUpsManager.h"
+#include "AudioManager.h"
 
 using namespace GameConfig;
 using namespace GameUtils2D;

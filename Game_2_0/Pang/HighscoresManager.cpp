@@ -13,6 +13,7 @@ HighscoresManager::HighscoresManager()
 HighscoresManager::~HighscoresManager()
 {
 	m_highscoresList.clear();
+	
 }
 
 void HighscoresManager::New()

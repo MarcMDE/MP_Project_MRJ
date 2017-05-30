@@ -3,7 +3,7 @@
 #include "allegro5/allegro.h"
 #include "GameUtils2D.h"
 
-#define DEBUG
+//#define DEBUG
 
 namespace GameConfig
 {
@@ -14,7 +14,7 @@ namespace GameConfig
 	const int GROUND_Y = SCREEN_HEIGHT - 20;
 	const float GRAVITY_Y = 1.0f;
 	const float GROUND_FRICTION_X = 0.05f;
-	const int MAX_ATTEMPTS = 0;
+	const int MAX_ATTEMPTS = 9;
 
 	const int PLAYER_WIDTH = 128;
 	const int PLAYER_HEIGHT = 128;
@@ -137,7 +137,7 @@ namespace GameConfig
 
 	// TODO: Detectar colisio amb multiples Emitters!
 	const int LEVEL_BUBBLEMANAGERS_LENGHT[LEVELS_LENGHT] = { 1/*, 1 */};
-	const int LEVEL_BUBBLEMANAGERS_CAT[LEVELS_LENGHT][3] = { {3, 3, 3}/*, {4, 4, 4 } */};
+	const int LEVEL_BUBBLEMANAGERS_CAT[LEVELS_LENGHT][3] = { {4, 4, 4}/*, {4, 4, 4 } */};
 
 	// PARTICLES
 	enum Emitters{TEST = 0};
@@ -206,7 +206,11 @@ namespace GameConfig
 	const int HS_ENTERNAME_OFFSET_Y = 30;
 
 	// AUDIO
-	enum Musics {MAIN = 0};
+	enum Musics { MAIN = 0 };
+	enum Sounds { PLOP = 0, BOING };
+	const int AUDIO_LENGHT = 3;
+	const int AUDIO_SOUNDS_LENGHT = 2;
 	const char AUDIO_MUSIC[40] = { "assets/audio/music.ogg" };
+	const char AUDIO_SOUND[AUDIO_SOUNDS_LENGHT][35] = { "assets/audio/plop.ogg", "assets/audio/boing.ogg" };
 
 }

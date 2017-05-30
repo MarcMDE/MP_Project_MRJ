@@ -77,7 +77,7 @@ void Initialize()
 		Error("audio: Failed to initialize audio codecs");
 	}
 
-	if (!al_reserve_samples(1)) {
+	if (!al_reserve_samples(AUDIO_LENGHT)) {
 		Error("audio: Failed to reserve samples");
 	}
 
@@ -155,9 +155,7 @@ void GameLoop()
 		else if (charInput.IsActive() && event.type == ALLEGRO_EVENT_KEY_CHAR)
 		{
 			charInput.SetPressedKey(event.keyboard.unichar);
-
-			//printf("as: %c\n", charInput.GetPressedKey());
-			printf("TEST: %c\n", event.keyboard.unichar);
+			//printf("TEST: %c\n", event.keyboard.unichar);
 		}
 
 		//if (draw)

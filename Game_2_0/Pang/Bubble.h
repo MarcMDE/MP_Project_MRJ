@@ -6,6 +6,7 @@
 #include "GameConfig.h"
 #include "MultiAnimation2D.h"
 #include "InputsManager.h"
+#include "AudioManager.h"
 //#include "PowerUpsManager.h"
 
 using namespace GameUtils2D;

@@ -19,7 +19,7 @@ void Bubble::Move()
 		velocity.y = -BUBBLES_SPEED[category].y;
 		SetPosition({ GetPosition().x, GROUND_Y - collider.GetRadius() });
 		DefineCurrentAnimation(BUBBLEANIM_GROUND_COLLISION);
-		printf("bounce\n");
+		audioManager.PlaySound(BOING);
 	}
 
 	if (GetPosition().x + collider.GetRadius() >= SCREEN_WIDTH)

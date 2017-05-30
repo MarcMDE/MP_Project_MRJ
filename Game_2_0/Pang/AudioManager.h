@@ -8,13 +8,16 @@ using namespace GameConfig;
 class AudioManager
 {
 private:
-	ALLEGRO_SAMPLE *music = NULL;
+	ALLEGRO_SAMPLE *m_music = NULL;
+	ALLEGRO_SAMPLE *m_sounds[AUDIO_SOUNDS_LENGHT];
 public:
 	AudioManager();
 	~AudioManager();
 
 	void New();
 	void PlayMusic();
+	void PlaySound(Sounds sound);
+	void StopMusic();
 };
 
 extern AudioManager audioManager;

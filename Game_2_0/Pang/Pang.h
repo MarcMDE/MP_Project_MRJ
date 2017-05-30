@@ -13,6 +13,7 @@
 #include "PowerUpsManager.h"
 //#include "PowerUp.h" // temp
 #include "ParticlesEmitter.h" // temp
+#include "AudioManager.h"
 //#include "Level.h" // temp
 //#include "Bubble.h" // temp
 //#include "MultiAnimation2D.h" // temp

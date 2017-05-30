@@ -6,7 +6,7 @@ void BubbleManager::Deinitialize()
 {
 	delete[]bubbles;
 	delete[]newBubbles;
-	delete[]spriteSheet;
+	//delete[]spriteSheet;
 }
 
 BubbleManager::BubbleManager()
@@ -72,6 +72,8 @@ void BubbleManager::Update()
 
 		if ((bubbles[i].IsHit() || (powerUpsManager.IsEffectActive(EXPLOSIVE_DIARREA)) && newBubbles[i] == false) && bubbles[i].IsActive()) // Bubble Destoyed
 		{
+			audioManager.PlaySound(PLOP);
+
 			powerUpsManager.SpawnRandomPowerUp(bubbles[i].GetPosition()); // Spawn Power Up
 
 			if (bubbles[i].GetCategory() > 0)

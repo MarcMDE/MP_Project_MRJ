@@ -24,10 +24,13 @@ void LevelsManager::New(PangLevels level)
 	m_uInterface.New();
 	m_startNewLevel = false;
 	m_gameFinished = false;
+	m_playerAlive = true;
 }
 
 void LevelsManager::RestartLevel()
 {	
+	
+	m_playerAlive = false;
 	if (m_attempts > 0)
 	{
 		StartNewLevel(m_currentLevel);
@@ -65,6 +68,7 @@ void LevelsManager::StartNextLevel()
 	{
 		// TODO: END SCREEN
 		m_uInterface.SetCurrentTitle(GAME_COMPLETE);
+		m_gameFinished = true;
 	}
 }
 
@@ -72,7 +76,8 @@ void LevelsManager::Update()
 {
 	if (m_isStarted)
 	{
-		if (m_level.GetActiveBubblesLeft() <= 0)
+		
+		if (IsGameFinished() && m_playerAlive)
 		{
 			if (m_startNewLevel)
 			{
@@ -83,10 +88,12 @@ void LevelsManager::Update()
 			}
 			else
 			{
+				m_playerAlive = false;
 				m_uInterface.SetCurrentTitle(LEVEL_COMPLETE);
-				m_startNewLevel = true;
 			}
 		}
+
+		
 
 		if (!m_gameFinished)
 		{
@@ -172,4 +179,10 @@ int LevelsManager::GetAttemptsLeft()
 bool LevelsManager::AnyTitleActive()
 {
 	return m_uInterface.AnyTitleActive();
+}
+
+void LevelsManager::SetGameComplete()
+{
+	m_gameFinished = true;
+	m_playerAlive = true;
 }

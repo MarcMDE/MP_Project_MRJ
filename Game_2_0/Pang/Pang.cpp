@@ -22,11 +22,13 @@ void Pang::Initialize()
 	powerUpsManager.New();
 	m_highscores.New();
 	m_highscores.ReadHighscores();
+	audioManager.New();
 
 	player.Update(); // Check why needed. // Temp
 
 	m_isPaused = false;
 	pauseSprite.New({ SCREEN_WIDTH, SCREEN_HEIGHT }, al_map_rgba( 120, 120, 120, 25));
+	audioManager.PlayMusic();
 }
 
 void Pang::Update()
@@ -81,6 +83,11 @@ void Pang::Update()
 			player.CheckBubblesCollision(levelManager.GetBubbles(), levelManager.GetBubblesLenght());
 			player.Update();
 
+			if (levelManager.GetActiveBubblesLeft() <= 0)
+			{
+				levelManager.SetGameComplete();
+			}
+
 			if (!player.IsAlive())
 			{
 				levelManager.RestartLevel();
@@ -93,10 +100,10 @@ void Pang::Update()
 					levelManager.StartNextLevel();
 				}
 			*/
-			if (!levelManager.IsGameFinished())
+
+			if (levelManager.IsGameFinished())
 			{
 				m_setNewHighscore = m_highscores.IsHighscore(levelManager.GetCurrentLevel(), levelManager.GetTime(), levelManager.GetAttemptsLeft());
-
 			}
 		}
 		else if (levelManager.IsGameFinished())
